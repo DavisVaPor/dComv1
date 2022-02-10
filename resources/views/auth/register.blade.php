@@ -1,6 +1,6 @@
 <x-guest-layout>
     <x-jet-authentication-card>
-        <x-slot name="logo">
+        <x-slot name="logo" class="w-8 h-8">
             <x-jet-authentication-card-logo />
         </x-slot>
 
@@ -8,15 +8,34 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
+            <div class="text-3xl text-center">
+                <span class=" font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-700">
+                    Registro
+                </span>
+            </div>
             <div>
                 <x-jet-label for="name" value="{{ __('Name') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
 
             <div class="mt-4">
+                <x-jet-label for="apellido" value="{{ __('Apellido') }}" />
+                <x-jet-input id="apellido" class="block mt-1 w-full" type="text" name="apellido" :value="old('apellido')" required autofocus autocomplete="apellido" />
+            </div>
+
+            <div class="mt-4">
                 <x-jet-label for="email" value="{{ __('Email') }}" />
+                
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="rol" value="{{ __('Rol') }}" />
+                <select id="rol_id" name="">
+                    <option value="1">Administrador</option>
+                    <option value="2">Operador</option>
+                    <option value="1">Director</option>
+                </select>
             </div>
 
             <div class="mt-4">
@@ -48,11 +67,11 @@
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
+                    {{ __('¿Ya registrado?') }}
                 </a>
 
                 <x-jet-button class="ml-4">
-                    {{ __('Register') }}
+                    {{ __('Registrar') }}
                 </x-jet-button>
             </div>
         </form>

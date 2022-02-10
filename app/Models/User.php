@@ -21,16 +21,34 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var string[]
+     * @var array
      */
-    protected $fillable = [
+    
+    const ACTIVO = 1;
+    const INACTIVO = 2;
+
+    public function observation()
+    {
+        return $this->hasMany(Observation::class);
+    }
+
+    public function rol()
+    {
+        return $this->belongsTo(Rol::class);
+    }
+
+     protected $fillable = [
         'name',
+        'apellido',
         'email',
         'password',
     ];
 
+    public function commissions(){
+        return $this->belongsToMany(Commission::class);
+    }
     /**
-     * The attributes that should be hidden for serialization.
+     * The attributes that should be hidden for arrays.
      *
      * @var array
      */
@@ -42,7 +60,7 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast.
+     * The attributes that should be cast to native types.
      *
      * @var array
      */
