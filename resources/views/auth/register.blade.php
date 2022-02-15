@@ -1,6 +1,6 @@
 <x-guest-layout>
     <x-jet-authentication-card>
-        <x-slot name="logo" class="w-8 h-8">
+        <x-slot name="logo" class="w-20">
             <x-jet-authentication-card-logo />
         </x-slot>
 
@@ -24,18 +24,13 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+                <x-jet-label for="cargo" value="{{ __('Cargo') }}" />
+                <x-jet-input id="cargo" class="block mt-1 w-full" type="text" name="cargo" :value="old('cargo')" required autofocus autocomplete="cargo" />
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="rol" value="{{ __('Rol') }}" />
-                <select id="rol_id" name="">
-                    <option value="1">Administrador</option>
-                    <option value="2">Operador</option>
-                    <option value="1">Director</option>
-                </select>
+                <x-jet-label for="email" value="{{ __('Email') }}" />
+                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
             <div class="mt-4">

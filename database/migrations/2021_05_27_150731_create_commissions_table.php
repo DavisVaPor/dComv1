@@ -16,6 +16,7 @@ class CreateCommissionsTable extends Migration
         Schema::create('commissions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->enum('tipo',['ACTIVIDADES','MEDICION','PROMOCION']);
             $table->date('fechainicio');
             $table->date('fechafin')->nullable();
             $table->enum('estado',['CREADA','CONFIRMADA','REALIZADA','ANULADA']);

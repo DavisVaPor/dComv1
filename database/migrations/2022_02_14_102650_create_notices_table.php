@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommissionUbigeeTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateCommissionUbigeeTable extends Migration
      */
     public function up()
     {
-        Schema::create('commission_ubigee', function (Blueprint $table) {
+        Schema::create('notices', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('commission_id')->references('id')->on('commissions');
-            $table->foreignId('ubigee_id')->references('id')->on('ubigees');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +26,6 @@ class CreateCommissionUbigeeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('commission_ubigee');
+        Schema::dropIfExists('notices');
     }
-}
+};

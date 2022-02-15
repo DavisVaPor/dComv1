@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CommissionController;
+use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +25,11 @@ Route::group([],function () {
     Route::get('/notices', function () {return view('frontend.notice.index');})->name('notices');
     //Route::get('/notice/{notice}', function () {return view('frontend.notice.show');})->name('notice');
 });
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard',[LandingPageController::class,'index'])->name('dashboard');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/comision',[CommissionController::class , 'index'] )->name('comision.index');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/comision/{commission}', [CommissionController::class , 'show'])->name('commision.show');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/comision/report/{commission}', [CommissionController::class,'report'])->name('commisionpdf');

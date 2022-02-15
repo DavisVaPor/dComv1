@@ -1,6 +1,6 @@
 <x-guest-layout>
     <x-jet-authentication-card>
-        <x-slot name="logo">
+        <x-slot name="logo" class="w-20">
             <x-jet-authentication-card-logo />
         </x-slot>
 
