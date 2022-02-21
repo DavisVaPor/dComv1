@@ -28,13 +28,13 @@
             @foreach ($commission->objetives as $objetive)
                 <tr class="bg-gray-100 border-b border-gray-200">
                     <td class="font-bold">{{$loop->iteration}}</td>
-                    <td class="px-4 py-3"> 
-                        <a class="uppercase cursor-pointer hover:text-blue-600" wire:click="editObjetive({{ $objetive->id }})">
+                    <td class="w-11/12 px-4 py-3"> 
+                        <a class="cursor-pointer hover:text-blue-600" wire:click="editObjetive({{ $objetive->id }})">
                             {{ $objetive->name }}
                         </a>
                     </td>
                     @if ($commission->estado == 'CREADA')
-                        <td class="px-4 py-3">
+                        <td class="px-4 py-3 w-1/12">
                             <div class="text-center">
                                 <button class="text-red-500 hover:text-gray-600 cursor-pointer"
                                     wire:click="mostrarDel({{ $objetive->id }})" wire:loading.attr="disabled">

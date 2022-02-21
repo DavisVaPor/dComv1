@@ -23,7 +23,7 @@
                                 <div>
                                     <div class="mt-3 text-3xl font-bold leading-8">00{{$commissions->count()}}</div>
 
-                                    <div class="mt-1 text-base text-gray-600">Comisiones - 2021</div>
+                                    <div class="mt-1 text-base text-gray-600">Comisiones - {{date('Y')}}</div>
                                 </div>
                             </div>
                         </div>

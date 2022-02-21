@@ -40,7 +40,8 @@ class CommissionUsers extends Component
 
     public function addUser(User $user)
     {
-        $user->commissions()->attach($this->commission->id);
+        $this->commission->users()->attach($this->selectedUser);
+        //$user->commissions()->attach($this->commission->id);
         $this->modalAdd = false;
         $this->emit('userAttach');
     }

@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Commission;
 use App\Models\Commission;
 use App\Models\Objective;
 use Livewire\Component;
+use Illuminate\Support\Str;
 
 class CommissionObjetives extends Component
 {
@@ -34,6 +35,7 @@ class CommissionObjetives extends Component
 
     public function addObjective()
     {
+        $this->reset('objetive');
         $this->modalAdd = true;
     }
 
@@ -46,11 +48,13 @@ class CommissionObjetives extends Component
     public function saveObjetivo()
     {
         $this->validate();
+        $name =  Str::upper($this->objetive['name']);
         if (isset($this->objetive->id)) {
+            $this->objetive->name =  Str::upper($this->objetive->name);
             $this->objetive->save();
         } else {
-            $objetive = Objective::create([
-                'name' => $this->objetive['name'],
+            Objective::create([
+                'name' =>  $name,
                 'commission_id' => $this->commission->id,
             ]);
         }

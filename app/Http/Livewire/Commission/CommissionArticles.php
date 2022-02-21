@@ -25,7 +25,7 @@ class CommissionArticles extends Component
     }
     public function render()
     {
-        $articles = Article::where('estation_id', '0' )
+        $articles = Article::where('estation_id', '1' )
                     ->where('denominacion','LIKE','%'.$this->search.'%')
                     ->where('nserie','LIKE','%'.$this->searchserie.'%')
                     ->paginate(10);

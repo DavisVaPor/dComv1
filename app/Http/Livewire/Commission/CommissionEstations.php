@@ -29,7 +29,8 @@ class CommissionEstations extends Component
     public function render()
     {
         $estations = Estation::where('name', 'LIKE', '%'.$this->search.'%' )
-                    ->where('ubigeo_id','LIKE','%'.$this->ubigeo.'%')
+                    ->where('ubigeo_id','LIKE',$this->ubigeo.'%')
+                    ->orderBy('name','asc')
                     ->paginate(7);
 
         return view(

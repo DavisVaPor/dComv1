@@ -14,12 +14,12 @@
                 </span>
             </x-jet-button>
         </div>
-
+   
         <div class="flex my-2 items-center justify-end">
             <label for="">Tipo:</label>
-            <select class="rounded-xl mx-2" name="tipoC" id="tipoC" wire:model='tipoC'>
+            <select class="rounded-xl mx-2" name="tipofiltro" id="tipofiltro" wire:model='tipofiltro'>
                 <option seleted value="">Todos</option>
-                <option value="ACTIVIDADES">ACTIVIDADES</option>
+                <option value="MANTENIMIENTO">MANTENIMIENTO</option>
                 <option value="MEDICION">MEDICION</option>
                 <option value="PROMOCION">PROMOCION</option>
             </select>
@@ -33,7 +33,7 @@
             </select>
 
             <label for="">Meses:</label>
-            <select class="rounded-xl mx-2" name="tipo" id="mes" wire:model='mes'>
+            <select class="rounded-xl mx-2" name="" id="mes" wire:model='mes'>
                 <option seleted value="">Todos</option>
                 @foreach ($meses as $item)
                     <option value="{{ $item }}">{{ $item }}</option>
@@ -41,7 +41,7 @@
             </select>
 
             <label for="">Años:</label>
-            <select class="rounded-xl mx-2" name="tipo" id="mes" wire:model='anho'>
+            <select class="rounded-xl mx-2" name="" id="mes" wire:model='anho'>
                 <option seleted value="">Todos</option>
                 <option value="2021">2021</option>
                 <option value="2022">2022</option>
@@ -158,15 +158,16 @@
         <x-slot name="content">
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label class="text-base font-bold border-gray-200 uppercase" for="name"
-                    value="{{ __('Nombre de la comisión') }}" />
+                    value="{{ __('Comision de Servicio') }}" />
                 <textarea wire:model.defer='commission.name' name="commission.name"
                     class="resize-none w-full h-1/6 border rounded-md border-gray-300" id=""></textarea>
                 <x-jet-input-error for="commission.name" class="mt-2" />
             </div>
             <div class="col-span-6 sm:col-span-4 mt-2">
                 <x-jet-label class="text-base font-bold border-gray-200" for="tipo" value="{{ __('Tipo') }}" />
-                <select class="rounded-xl" name="tipo" id="commission.tipo" wire:model='tipo'>
-                    <option value="ACTIVIDADES">ACTIVIDADES</option>
+                <select class="rounded-xl" name="tipo" id="tipo" wire:model='tipo'>
+                    <option value="">Seleccione</option>
+                    <option value="MANTENIMIENTO">MANTENIMIENTO</option>
                     <option value="MEDICION">MEDICION DE RNI</option>
                     <option value="PROMOCION">PROMOCION</option>
                 </select>

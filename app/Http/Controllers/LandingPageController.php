@@ -10,7 +10,8 @@ class LandingPageController extends Controller
 {
     public function index()
     {
-       $commissions = Commission::all();
+       $commissions = Commission::where('anho','LIKE',date('Y'))
+                                ->get();
        $estations = Estation::all();
        $estationDef = Estation::where('operativo','LIKE',0)->get();
 

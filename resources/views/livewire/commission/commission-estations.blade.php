@@ -106,7 +106,7 @@
                             </tr>
                             @foreach ($estations as $estation)
                                 @if (!$commission->estations->contains($estation->id))
-                                    @if ($estation->id != '0')
+                                    @if ($estation->id != '1')
                                         <tr class="bg-gray-100 border-b border-gray-200">
                                             <td class="px-4 py-3">
                                                 <input class="rounded-2xl" wire:model='selectedEstation'

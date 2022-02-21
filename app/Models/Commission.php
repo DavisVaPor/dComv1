@@ -9,6 +9,7 @@ class Commission extends Model
 {
     protected $fillable = [
         'name',
+        'tipo',
         'fechainicio',
         'fechafin',
         'estado',
