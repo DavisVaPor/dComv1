@@ -40,6 +40,7 @@ class ReportActivities extends Component
     public function addModal()
     {
         $this->reset('activity');
+        $this->reset('selectedEstation');
         $this->modalAdd = true;
     }
 
@@ -85,6 +86,7 @@ class ReportActivities extends Component
     public function editActivity(Activity $activity)
     {
         $this->activity = $activity;
+        $this->selectedEstation = $this->activity->estation_id;
         $this->modalAdd = true;
     }
 }

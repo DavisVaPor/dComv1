@@ -76,11 +76,6 @@ class ReportImages extends Component
                 ]);
             }
             
-            // $this->report->images()->create([
-            //     'name' => $this->image['name'],
-            //     'url' => $imagen,
-            //     'estation_id' => $this->selected
-            // ]);
             $this->reset(['image','imagen']);
         }
 

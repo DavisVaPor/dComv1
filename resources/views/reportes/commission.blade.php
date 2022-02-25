@@ -101,7 +101,6 @@
             @endforeach
         </div>
 
-
         <div class="my-8">
             @if ($commission->tipo === 'MANTENIMIENTO')
                 <p class="font-bold underline">Equipos a trasaladar:</p>

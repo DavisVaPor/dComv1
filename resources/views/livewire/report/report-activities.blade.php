@@ -1,5 +1,5 @@
 <div>
-    <div class="flex my-3 justify-between items-center">
+    <div class="flex my-3 justify-between items-center border-b border-gray-300 border-3">
         <h1 class="mr-5 text-lg font-bold text-gray-800">ACTIVIDADES REALIZADAS</h1>
         @if ($report->estado == 'BORRADOR')
             <x-jet-button wire:click="addModal" class="bg-green-500">
@@ -23,7 +23,7 @@
                 <th class="px-4 py-3">Estacion</th>
                 <th class="py-3 text-center">Fecha</th>
                 @if ($report->estado == 'BORRADOR')
-                    <th class="px-4 py-3"></th>
+                    <th class="px-4 py-3 w-1/12"></th>
                 @endif
             </tr>
             @foreach ($report->activities as $activity)
@@ -31,9 +31,9 @@
                     <td class="px-4 mb-auto font-bold text-center">{{ $loop->iteration }}</td>
                     <td class="px-4 py-3 text-sm">{{ $activity->descripcion }}</td>
                     <td class="px-4 py-3">{{ $activity->estation->name }}</td>
-                    <td class="text-sm w-24 text-center">{{ $activity->fechaInicio }}</td>
+                    <td class="text-sm w- text-center">{{ $activity->fechaInicio }}</td>
                     @if ($report->estado == 'BORRADOR')
-                        <td class="px-4 py-3">
+                        <td class="px-4 py-3 w-1/12">
                             <div class="flex justify-between">
                                 <button wire:click="editActivity({{ $activity->id }})"
                                     class="text-blue-500 hover:text-gray-900 cursor-pointer mr-2">
@@ -103,8 +103,6 @@
                     <option value="DIAGNOSTICO">DIAGNOSTICO</option>
                     <option value="MANT. PREVENTIVO">MANTENIMIENTO PREVENTIVO</option>
                     <option value="MANT. CORRECTIVO">MANTENIMIENTO CORRECTIVO</option>
-                    <option value="CAMBIO DE EQUIPO">CAMBIO DE EQUIPO</option>
-                    <option value="PROMOCION">PROMOCION</option>
                 </select>
                 <x-jet-input-error for="activity.tipoActivity" class="mt-2" />
 

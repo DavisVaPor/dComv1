@@ -19,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdn.tailgrids.com/tailgrids-fallback.css" />
 
     @livewireStyles
 
@@ -33,16 +34,21 @@
         <aside class="z-20 flex-shrink-0 hidden w-64 overflow-y-auto bg-gray-800 md:block">
             <div>
                 <div class="text-white">
-                    <div class="flex p-2  bg-gray-800">
+                    <div class="flex p-2 bg-gray-800">
                         <div class="flex-shrink-0 flex items-center">
                             <a href="{{ route('dashboard') }}">
                                 <x-jet-application-mark class="block h-9 w-auto" />
                             </a>
                         </div>
-                        <div class="flex py-3 px-2 items-center">
-                            <p class="text-xl text-green-500 font-semibold">Dir</p>
-                            <p class="text-xl font-semibold">Comunicaciones</p>
-                        </div>
+                        <a href="{{ route('dashboard') }}" class="py-3 px-2 items-center">
+                            <div class="flex">
+                                <p class="text-xl text-green-500 font-semibold">Dir</p>
+                                <p class="text-xl font-semibold">Comunicaciones</p> <br>
+                            </div>
+                            <div>
+                                <p class="text-xl text-green-500 font-semibold text-center -mt-2">Amazonas</p>
+                            </div>
+                        </a>
                     </div>
                     <div class="">
                         <div class="">

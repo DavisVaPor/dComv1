@@ -28,9 +28,9 @@
                 </tr>
                 @foreach ($commission->estations as $estation)
                     <tr class="bg-gray-100 border-b border-gray-200">
-                        <td class="px-4 py-3">{{ $estation->name }}</td>
-                        <td class="px-4 py-3">{{ $estation->ubigeo->provincia }}</td>
-                        <td class="px-4 py-3">{{ $estation->ubigeo->distrito }}</td>
+                        <td class="px-4 py-3 text-center">{{ $estation->name }}</td>
+                        <td class="px-4 py-3 text-center">{{ $estation->ubigeo->provincia }}</td>
+                        <td class="px-4 py-3 text-center">{{ $estation->ubigeo->distrito }}</td>
                         <td class="px-4 py-3">
                             @if ($estation->operativo == '1')
                                 <div

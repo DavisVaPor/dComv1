@@ -18,18 +18,18 @@
     @if ($report->conclusions->isNotEmpty())
         <table class="rounded-t-lg m-5 w-11/12 mx-auto bg-gray-200 text-gray-800">
             <tr class="text-left border-b-2 border-gray-300">
-                <th class="px-4 py-3 w-1/12 text-center">#</th>
+                <th class="py-3 w-1/12 text-center">#</th>
                 <th class="px-4 py-3">Descripcion</th>
                 @if ($report->estado == 'BORRADOR')
-                    <th class="px-4 py-3">Acciones</th>
+                    <th class="px-4 py-3 w-1/12">Acciones</th>
                 @endif
             </tr>
             @foreach ($report->conclusions as $conclusion)
                 <tr class="bg-gray-100 border-b border-gray-200">
-                    <td class="px-4 font-bold text-center">{{ $loop->iteration }}</td>
+                    <td class="font-bold text-center">{{ $loop->iteration }}</td>
                     <td class="px-4 py-3">{{ $conclusion->description }}</td>
                     @if ($report->estado == 'BORRADOR')
-                        <td class="px-4 py-3">
+                        <td class="px-4 py-3 w-1/12">
                             <div class="flex justify-between">
                                 <button wire:click="editConclusion({{ $conclusion->id }})"
                                     class="text-blue-500 hover:text-gray-900 cursor-pointer mr-2">
