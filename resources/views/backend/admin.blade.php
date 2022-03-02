@@ -42,11 +42,11 @@
                         </div>
                         <a href="{{ route('dashboard') }}" class="py-3 px-2 items-center">
                             <div class="flex">
-                                <p class="text-xl text-green-500 font-semibold">Dir</p>
+                                <p class="text-xl text-green-600 font-semibold">Dir</p>
                                 <p class="text-xl font-semibold">Comunicaciones</p> <br>
                             </div>
                             <div>
-                                <p class="text-xl text-green-500 font-semibold text-center -mt-2">Amazonas</p>
+                                <p class="text-xl text-green-600 font-semibold text-center -mt-2">Amazonas</p>
                             </div>
                         </a>
                     </div>
@@ -138,7 +138,7 @@
                             @endif
                             <li class="relative px-1 ">
                                 <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
-                                    href=" #">
+                                    href=" {{ route('estacion.index') }}">
                                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="wifi"
                                         class="h-6 w-6 svg-inline--fa fa-wifi fa-w-20" role="img"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">

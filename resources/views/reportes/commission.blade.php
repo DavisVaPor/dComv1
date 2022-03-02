@@ -13,7 +13,19 @@
         .flex {
             display: flex;
         }
+        footer {
+                position: fixed; 
+                bottom: -60px; 
+                left: 0px; 
+                right: 0px;
+                height: 50px; 
 
+                /** Extra personal styles **/
+                /* background-color: #03a9f4;
+                color: white; */
+                text-align: center;
+                line-height: 35px;
+            }
     </style>
 
     @php
@@ -44,12 +56,12 @@
         </div>
         <div class="flex">
             @if ($commission->tipo === 'MANTENIMIENTO')
-                <p>Tipo: <span class="font-bold">MANTENIEMIENTO DE LOS SISTEMAS DE TELECOMUNICACION</span></p> 
+                <p>Tipo: <span class="font-bold">MANTENIMIENTO DE LOS SISTEMAS DE TELECOMUNICACIÓN</span></p> 
             @else 
                 @if ($commission->tipo === 'MEDICION')
-                <p>Tipo: <span class="font-bold">MEDICION DE RADIACION NO IONIZANTE (RNI)</span></p> 
+                    <p>Tipo: <span class="font-bold">MEDICIÓN DE RADIACIÓN NO IONIZANTE (RNI)</span></p> 
                 @else
-                <p>Tipo: <span class="font-bold">PROMOCION DE LAS TELECOMUNIACIONES</span></p> 
+                    <p>Tipo: <span class="font-bold">PROMOCIÓN DE LAS TELECOMUNIACIONES</span></p> 
                 @endif
             @endif
         </div>
@@ -71,13 +83,13 @@
             @if ($commission->tipo === 'MANTENIMIENTO')
                 <p class="font-bold underline">Estaciones a visitar:</p>
                 @foreach ($commission->estations as $estation)
-                    <p class="ml-16">{{ $estation->name }} - {{ $estation->ubigeo->distrito }},
+                    <p class="ml-16 uppercase">{{ $estation->name }} - {{ $estation->ubigeo->distrito }},
                         {{ $estation->ubigeo->provincia }}</p>
                 @endforeach
             @else
                 <p class="font-bold underline">Lugares a visitar:</p>
                 @foreach ($commission->ubigee as $ubigeo)
-                    <p class="ml-16"> 
+                    <p class="ml-16 uppercase"> 
                         {{ $loop->iteration }} Distrito:{{ $ubigeo->distrito }} - {{ $ubigeo->provincia }}
                     </p>
                 @endforeach
@@ -88,8 +100,7 @@
             <p class="font-bold underline">Personal :</p>
             @foreach ($commission->users as $user)
                 <p class="ml-16">{{ $loop->iteration }}.- {{ $user->name }} {{ $user->apellido }}
-                    <span class="font-bold">Cargo:</span>
-                    {{ $user->cargo }}
+                    <span class="font-bold">- {{ $user->cargo }}</span>
                 </p>
             @endforeach
         </div>
@@ -131,9 +142,8 @@
             @endif
         </div>
     </div>
-    <footer class="text-center font-bold mt-32">
-        <p>Area de Tecnologia de la Informacion</p>
-        <p> Copyright &copy; DRTC-AMAZONAS {{ date('Y') }}</p>
+    <footer class="">
+        <p> DRTC-AMAZONAS &copy;{{ date('Y') }}</p>
     </footer>
 </body>
 

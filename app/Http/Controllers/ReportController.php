@@ -6,10 +6,10 @@ use App\Models\Report;
 
 class ReportController extends Controller
 {
-    public function mostrar()
-    {
-        return view('bandeja.index');
-    }
+    // public function mostrar()
+    // {
+    //     return view('bandeja.index');
+    // }
     
     public function index(){
         return view('backend.report.index');

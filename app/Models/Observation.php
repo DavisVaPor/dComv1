@@ -12,6 +12,7 @@ class Observation extends Model
     protected $fillable = [
         'detalle',
         'atencion',
+        'nivel',
         'user_id',
         'estation_id',
         'observationable_id',

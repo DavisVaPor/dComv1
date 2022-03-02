@@ -35,7 +35,8 @@
                             <div class="text-green-500 text-sm text-center bg-clip-content font-extrabold rounded-xl">
                                 {{ $informe->estado }}
                             </div>
-                        @else @if ($informe->estado == 'REVISADO')
+                        @else
+                            @if ($informe->estado == 'REVISADO')
                                 <div class="text-blue-500 text-sm text-center bg-clip-content font-extrabold rounded-xl">
                                     {{ $informe->estado }}
                                 </div>
@@ -47,9 +48,7 @@
                         @endif
                     @endif
                 </h2>
-
             </div>
-
         </div>
 
 
@@ -57,7 +56,8 @@
             <div class="flex my-3 justify-between border-b border-gray-300 border-3">
                 <h1 class="mr-5 text-lg font-bold text-gray-800">COMISIÓN</h1>
             </div>
-            <a target="_blank" href="{{ route('commision.show', [$informe->commission]) }}" class="text-blue-500 font-semibold underline ml-10">
+            <a target="_blank" href="{{ route('commision.show', [$informe->commission]) }}"
+                class="text-blue-500 font-semibold underline ml-10">
                 #C-{{ $informe->commission->id }}: {{ $informe->commission->name }}
             </a>
             <div class="flex my-3 justify-between border-b border-gray-300 border-3">
@@ -84,7 +84,7 @@
                 </div>
 
                 <div class="justify-content-between">
-                    <table class="table-auto rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
+                    <table class="table-auto rounded-t-lg m-5 w-11/12 mx-auto bg-gray-200 text-gray-800">
                         <tr class="text-left border-b-2 border-gray-300">
                             <th class="px-4 py-3 text-center">Provincia</th>
                             <th class="px-4 py-3 text-center">Distrito</th>
@@ -95,39 +95,40 @@
                                 <td class="px-4 py-3 text-center">{{ $item->distrito }}</td>
                             </tr>
                         @empty
-
                         @endforelse
                     </table>
-            @else
-            <div class="flex my-3 justify-between border-b border-gray-300 border-3">
-                <h1 class="mr-5 text-lg font-bold text-gray-800">ESTACIONES</h1>
-            </div>
+                @else
+                    <div class="flex my-3 justify-between border-b border-gray-300 border-3">
+                        <h1 class="mr-5 text-lg font-bold text-gray-800">ESTACIONES</h1>
+                    </div>
 
-            <div class="justify-content-between">
-                <table class="table-auto rounded-t-lg m-5 mx-auto bg-gray-200 text-gray-800">
-                    <tr class="text-left border-b-2 border-gray-300">
-                        <th class="px-4 py-3 text-center">Estación</th>
-                        <th class="px-4 py-3 text-center">Provincia</th>
-                        <th class="px-4 py-3 text-center">Distrito</th>
-                    </tr>
-                    @forelse ($informe->commission->estations as $item)
-                        <tr class="bg-gray-100 border-b border-gray-200">
-                            <td class="px-4 py-3 text-center font-semibold">{{ $item->name }}</td>
-                            <td class="px-4 py-3 text-center uppercase">{{ $item->ubigeo->provincia }}</td>
-                            <td class="px-4 py-3 text-center uppercase">{{ $item->ubigeo->distrito }}</td>
-                        </tr>
-                    @empty
-
-                    @endforelse
-                </table>
-            @endempty
+                    <div class="justify-content-between">
+                        <table class="table-auto rounded-t-lg m-5 w-11/12 mx-auto bg-gray-200 text-gray-800">
+                            <tr class="text-left border-b-2 border-gray-300">
+                                <th class="py-3 text-center">#</th>
+                                <th class="px-4 py-3 text-center">Estación</th>
+                                <th class="px-4 py-3 text-center">Provincia</th>
+                                <th class="px-4 py-3 text-center">Distrito</th>
+                            </tr>
+                            @forelse ($informe->commission->estations as $item)
+                                <tr class="bg-gray-100 border-b border-gray-200">
+                                    <th class="py-3 text-center">E-{{$item->id}}</th>
+                                    <td class="px-4 py-3 text-center font-semibold text-green-600">{{ $item->name }}</td>
+                                    <td class="px-4 py-3 text-center uppercase">{{ $item->ubigeo->provincia }}</td>
+                                    <td class="px-4 py-3 text-center uppercase">{{ $item->ubigeo->distrito }}</td>
+                                </tr>
+                            @empty
+                            @endforelse
+                        </table>
+                @endempty
         </section>
 
         @if ($informe->tipo == 'MANTENIMIENTO')
             <section>
                 <livewire:report.report-activities :informe="$informe">
             </section>
-        @else
+        @endif
+        @if ($informe->tipo == 'MEDICION')
             <section>
                 <livewire:report.report-measurements :informe="$informe">
             </section>
@@ -146,14 +147,14 @@
         </section>
 
         <section>
-            <h1 class="mr-5 text-lg font-bold text-gray-800">ANEXOS</h1>
+            <h1 class="mr-5 text-lg font-bold text-gray-800 border-gray-300 border-3">ANEXOS</h1>
             <livewire:report.report-images :informe="$informe">
-                @if ($informe->tipo == 'ACTIVIDADES')
+                @if ($informe->tipo == 'MANTENIMIENTO')
                     {{-- <livewire:report-actas :informe="$informe"> --}}
                 @endif
         </section>
 
-        @if ($informe->tipo == 'ACTIVIDADES')
+        @if ($informe->tipo == 'MANTENIMIENTO')
             <div>
                 <style>
                     .tab {
@@ -185,9 +186,9 @@
                 </style>
                 <main class="w-full p-8 mx-auto">
                     <section class="shadow row">
-                        {{-- <livewire:report-systems :informe="$informe"> --}}
+                        <livewire:report.report-systems :informe="$informe">
                     </section>
                 </main>
             </div>
         @endif
-    @endsection
+@endsection

@@ -27,7 +27,7 @@
             </span>
         </x-jet-button>
     </div>
-    <table class="rounded-t-lg m-5 w-11/12 mx-auto bg-gray-500 text-gray-800">
+    <table class="rounded-t-lg m-5 w-full mx-auto bg-gray-500 text-gray-800">
         <tr class="border-b-2 border-gray-300 text-center text-white">
             <th class="w-4/12 px-4 py-3">Asunto</th>            
             <th class="px-4 py-3">Comision</th>

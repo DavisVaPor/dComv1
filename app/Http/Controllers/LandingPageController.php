@@ -20,7 +20,7 @@ class LandingPageController extends Controller
        $estationDef = number_format($estationDef,2);
 
        return view('backend.dashboard',[
-           'commissions' => $commissions,
+            'commissions' => $commissions,
             'estations' => $estations,
             'estationDef' => $estationDef
        ]);

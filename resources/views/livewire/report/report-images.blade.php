@@ -14,17 +14,17 @@
             </x-jet-button>
         @endif
     </div>
-
     @if ($report->images->isNotEmpty())
-        <div class="container">
-            <div class="flex flex-flex-wrap ">
+    <div class="mx-auto px-4 md:px-6 2xl:px-0 py-2 flex justify-center items-center">
+        <div class="flex flex-col jusitfy-start items-start">
+            <div class="mt-4 lg:mt-8 grid grid-cols-2 gap-x-8 gap-y-10 lg:gap-y-0 ">
                 @foreach ($report->images as $image)
-                    <div class="group relative">
-
-                        <img alt="Placeholder" class="block h-48 w-full rounded hover:opacity-50"
-                            src="{{ Storage::url($image->url) }}">
-                        <div class="absolute rounded bg-opacity-0 w-full h-full top-0 flex items-center duration-700 transition justify-end">
-                            <button class="text-red-500 hover:text-gray-900 cursor-pointer"
+                <div class="flex flex-col m-2 w-96 ">
+                    <div class="group relative ">
+                        <img class="hover:bg-opacity-50 shadow-xl rounded-md sm:block lg:" src="{{ Storage::url($image->url) }}"
+                            alt="bag" />
+                        <div class=" absolute rounded bg-opacity-0 w-full  top-0 flex items-center duration-700 transition justify-end">
+                            <button class="text-red-500 bg-white hover:text-gray-900 cursor-pointer"
                                 wire:click="mostrarDel({{ $image->id }})" wire:loading.attr="disabled">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 m-auto" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
@@ -34,31 +34,14 @@
                             </button>
                         </div>
                     </div>
-                    <div class="w-full md:w-1/2 xl:w-1/3 px-4 bg-gray-100 my-2 shadow-xl rounded-lg ">
-                        <div class="bg-white rounded-lg overflow-hidden">
-                            <img src="{{ Storage::url($image->url) }}" alt="image"
-                                class="w-full object-cover rounded-lg rounded-b-none hover:opacity-50" />
-                            <div class="p-6 sm:p-9 md:p-7 xl:p-9 text-right">
-                                <button class="text-red-500 hover:text-gray-900 cursor-pointer"
-                                    wire:click="mostrarDel({{ $image->id }})" wire:loading.attr="disabled">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 m-auto" fill="none"
-                                        viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                </div>
                 @endforeach
             </div>
         </div>
-    @else
-        <div class="text-center border border-gray-100 mt-2">
-            <p class="text-gray-400">.:: Aun no se ha ingresado algun archivo a este informe ::.</p>
-        </div>
+    </div>
     @endif
-{{-- Modal de Añadir --}} <x-jet-dialog-modal wire:model="modalAdd">
+    
+    {{-- Modal de Añadir --}} <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
             <h1 class="font-bold">Añadir foto de evidencia</h1>
         </x-slot>
@@ -152,28 +135,28 @@
                 {{ __('Guardar') }}
             </x-jet-button>
         </x-slot>
-        </x-jet-dialog-modal>
+    </x-jet-dialog-modal>
 
-        {{-- Modal de Eliminar --}}
-        <x-jet-dialog-modal wire:model="modalDel">
-            <x-slot name="title">
-                <h1 class="font-bold">{{ __('Eliminar archivo') }}</h1>
-            </x-slot>
+    {{-- Modal de Eliminar --}}
+    <x-jet-dialog-modal wire:model="modalDel">
+        <x-slot name="title">
+            <h1 class="font-bold">{{ __('Eliminar archivo') }}</h1>
+        </x-slot>
 
-            <x-slot name="content">
-                {{ __('¿Seguro que desea eliminar?') }}
+        <x-slot name="content">
+            {{ __('¿Seguro que desea eliminar?') }}
 
-            </x-slot>
+        </x-slot>
 
-            <x-slot name="footer">
-                <x-jet-secondary-button wire:click="$set('modalDel',false)" wire:loading.attr="disabled">
-                    {{ __('Cancel') }}
-                </x-jet-secondary-button>
+        <x-slot name="footer">
+            <x-jet-secondary-button wire:click="$set('modalDel',false)" wire:loading.attr="disabled">
+                {{ __('Cancel') }}
+            </x-jet-secondary-button>
 
-                <x-jet-button class="ml-2" wire:click="deleteImage({{ $modalDel }})"
-                    wire:loading.attr="disabled">
-                    {{ __('Eliminar') }}
-                </x-jet-button>
-            </x-slot>
-        </x-jet-dialog-modal>
+            <x-jet-button class="ml-2" wire:click="deleteImage({{ $modalDel }})"
+                wire:loading.attr="disabled">
+                {{ __('Eliminar') }}
+            </x-jet-button>
+        </x-slot>
+    </x-jet-dialog-modal>
 </div>

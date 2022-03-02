@@ -30,29 +30,28 @@
                     <td class="px-4 mb-auto font-bold text-center">{{ $loop->iteration }}</td>
                     <td class="px-4 py-3">{{ $observation->detalle }}</td>
                     <td class="px-4 py-3">
-                        @if ($observation->atencion == 'ALTA')
+                        @if ($observation->nivel == 'ALTA')
                             <div
                                 class="text-gray-100  text-sm text-center bg-red-500 bg-clip-content font-bold w-auto rounded-xl">
-                                {{ $observation->atencion }}
+                                {{ $observation->nivel }}
                             </div>
-                        @else @if ($observation->atencion == 'MODERADO')
+                        @else @if ($observation->nivel == 'MODERADO')
                                 <div
                                     class="text-gray-700  text-sm text-center bg-yellow-500 bg-clip-content font-bold w-auto rounded-xl">
-                                    <p class="m-2"> {{ $observation->atencion }}</p>
+                                    <p class="m-2"> {{ $observation->nivel }}</p>
 
                                 </div>
-                            @else @if ($observation->atencion == 'BAJA')
+                            @else @if ($observation->nivel == 'BAJA')
                                     <div
                                         class="text-gray-100  text-sm text-center bg-green-500 bg-clip-content font-bold w-auto rounded-xl">
-                                        {{ $observation->atencion }}
+                                        {{ $observation->nivel }}
                                     </div>
                                 @else
                                     <div
                                         class="text-gray-100  text-sm text-center bg-gray-500 bg-clip-content font-bold w-auto rounded-xl">
-                                        {{ $observation->atencion }}
+                                        {{ $observation->nivel }}
                                     </div>
                                 @endif
-
                             @endif
                         @endif
                     </td>
@@ -104,7 +103,7 @@
 
                 <x-jet-label class="text-base font-bold border-gray-200 mt-2" for="tipo"
                     value="{{ __('Tipo de la actividad') }}" />
-                <select class="rounded-xl" name="tipo" id="tipo" wire:model.defer='observation.atencion'>
+                <select class="rounded-xl" name="tipo" id="tipo" wire:model.defer='observation.nivel'>
                     <option>NIVEL DE PRIORIDAD ...</option>
                     <option value="ALTA">ALTA</option>
                     <option value="MODERADO">MODERADO</option>

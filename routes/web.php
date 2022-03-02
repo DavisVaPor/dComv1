@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CommissionController;
+use App\Http\Controllers\EstationController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
@@ -40,4 +41,16 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/comision/report/{commissi
 Route::middleware(['auth:sanctum', 'verified'])->get('/informe',[ReportController::class , 'index'] )->name('informe.index');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/informe/{informe}',[ReportController::class , 'show'] )->name('informe.show');
+
+//Route::middleware(['auth:sanctum', 'verified'])->get('/informe/report/{informe}',[ReportController::class , 'report'] )->name('informepdf');
+
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/estacion',[EstationController::class , 'index'] )->name('estacion.index');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/estacion/{estation}',[EstationController::class , 'show'] )->name('estacion.show');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/estacion/PDF/{estation}', [EstationControllerPDF::class,'report'])->name('estationpdf');
+
+
+
 

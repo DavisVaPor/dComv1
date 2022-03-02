@@ -23,7 +23,7 @@ class Estation extends Model
         'terreno',
         'ubigeo_id',
     ];
-
+    
     public function ubigeo()
     {
         return $this->belongsTo(Ubigee::class);

@@ -27,7 +27,7 @@ class ReportObservations extends Component
 
     protected $rules = [
         'observation.detalle' => 'required',
-        'observation.atencion' => 'required',
+        'observation.nivel' => 'required',
     ];
 
     public function render()
@@ -37,6 +37,7 @@ class ReportObservations extends Component
 
     public function addModal()
     {
+        $this->reset('observation','selectedEstation');
         $this->modalAdd = true;
     }
 
@@ -54,7 +55,7 @@ class ReportObservations extends Component
         } else {
             $this->report->observations()->create([
                 'detalle' => $this->observation['detalle'],
-                'atencion' => $this->observation['atencion'],
+                'nivel' => $this->observation['nivel'],
                 'user_id' => Auth::user()->id,
                 'estation_id' => $this->selectedEstation,
             ]);
