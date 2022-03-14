@@ -14,7 +14,6 @@
                 <option selected value="{{ $loop->iteration }}">{{ $item }}</option>
             @endforeach
         </select>
-        >
         <select class="rounded-lg mr-6" wire:model='anho' name="" id="">
             <option selected value="">Año</option>
             <option class="font-bold" value="2021">2021</option>

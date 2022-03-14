@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CommissionController;
 use App\Http\Controllers\EstationController;
+use App\Http\Controllers\InventaryController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
@@ -51,6 +52,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/estacion/{estation}',[Est
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/estacion/PDF/{estation}', [EstationControllerPDF::class,'report'])->name('estationpdf');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/inventario',[InventaryController::class , 'index'] )->name('inventory.index');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/inventario/{article}',[InventaryController::class , 'show'] )->name('article.show');
 
 

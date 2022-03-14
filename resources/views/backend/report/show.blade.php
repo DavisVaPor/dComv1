@@ -6,14 +6,14 @@
 
 
         <div class=" mt-2 font-extrabold text-gray-600">
-            <h2 class="text-xl  text-center">REG INF {{ $informe->id }}-{{ $informe->asunto }}</h2>
+            <h2 class="text-xl  text-center">INF {{ $informe->id }}-{{ $informe->asunto }}</h2>
             <div class="flex justify-between items-center">
                 <h2 class="font-bold flex justify-end items-center">
                     <p>Fecha: {{ $informe->fechaCreacion }}</p>
                 </h2>
                 <h2 class="mr-4">
                     @if ($informe->tipo === 'MANTENIMIENTO')
-                        <p>Tipo: <span class="font-bold underline ">MANTENIEMIENTO DE LOS SISTEMAS DE TELECOMUNICACIÓN</span>
+                        <p>Tipo: <span class="font-bold underline ">MANTENIEMIENTO DE LOS SISTEMAS DE COMUNICACIONES</span>
                         </p>
                     @else
                         @if ($informe->tipo === 'MEDICION')

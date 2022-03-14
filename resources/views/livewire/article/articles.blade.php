@@ -6,9 +6,7 @@
             <select class="rounded-lg mx-2" wire:model='estation' name="" id="">
                 <option value="">Todos</option>
                 @foreach ($estations as $estacion)
-                    @if ($estacion->id != '7')
-                        <option value="{{ $estacion->id }}">{{ $estacion->name }}</option>
-                    @endif
+                    <option value="{{ $estacion->id }}">{{ $estacion->name }}</option>
                 @endforeach
             </select>
         </div>
