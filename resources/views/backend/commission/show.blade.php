@@ -21,7 +21,7 @@
                 <p>Tipo: <span class=" ">MANTENIEMIENTO DE LOS SISTEMAS DE TELECOMUNICACIÓN</span>
                 </p>
             @else
-                @if ($informe->tipo === 'MEDICION')
+                @if ($commission->tipo === 'MEDICION')
                     <p>Tipo: <span class="">MEDICION DE RADIACION NO IONIZANTE (RNI)</span></p>
                 @else
                     <p>Tipo: <span class="">PROMOCION DE LAS TELECOMUNIACIONES</span></p>

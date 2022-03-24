@@ -9,7 +9,7 @@ use Illuminate\Support\Str;
 
 class Commissions extends Component
 {
-    public $meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+    public $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
 
     use WithPagination;
     public $modalAdd = false;
@@ -20,58 +20,47 @@ class Commissions extends Component
     public $tipofiltro;
     public $tipo = '';
     public $mes, $anho;
+    public $fechainicio, $fechafin, $periodo;
 
     protected $rules = [
         'commission.name' => 'required',
         'tipo' => 'required',
-        'commission.fechainicio' => 'required',
-        'commission.fechafin' => 'required',
     ];
-
-    protected $listeners = [];
 
     public function render()
     {
-        $commissions = Commission::where('name','LIKE','%'.$this->search.'%')
-                        ->where('estado','LIKE','%'.$this->estado.'%')
-                        ->where('tipo','LIKE','%'.$this->tipofiltro.'%')
-                        ->where('mes','LIKE','%'.$this->mes.'%')
-                        ->where('anho','LIKE','%'.$this->anho.'%')
-                        ->latest('id')
-                        ->paginate(10);
+        $commissions = Commission::where('name', 'LIKE', '%' . $this->search . '%')
+            ->where('estado', 'LIKE', '%' . $this->estado . '%')
+            ->where('tipo', 'LIKE', '%' . $this->tipofiltro . '%')
+            ->where('mes', 'LIKE', '%' . $this->mes . '%')
+            ->where('anho', 'LIKE', '%' . $this->anho . '%')
+            ->latest('id')
+            ->paginate(10);
         return view('livewire.commission.commissions', [
             'commissions' => $commissions,
         ]);
-   }
+    }
 
     public function addCommission()
     {
-        $this->reset('commission','tipo');
+        $this->reset('commission', 'tipo', 'fechainicio', 'fechafin');
         $this->modalAdd = true;
-    }
-
-    public function delCommission($id)
-    {
-        $this->modalDel = $id;
-    }
-
-    public function getDato(String $dato)
-    {
-        $mesconver = Str::between($dato,'-','-');
-        $anhoconver = Str::before($dato,'-');
-        $diaconver = Str::after($dato,$anhoconver.'-'.$mesconver.'-');
-
-        return $diaconver.'-'.$mesconver.'-'.$anhoconver;
     }
 
     public function saveCommission()
     {
-        $this->validate();
-        $mesconver = Str::between($this->commission['fechainicio'],'-','-');
+         $this->validate();
+         
+        $day = strtotime($this->fechafin) - strtotime($this->fechainicio);
+        $years = floor($day / (365 * 60 * 60 * 24));
+        $months = floor(($day - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
+        $day = floor(($day - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
 
-
-        if (!isset($this->commission['fechafin'])) {
-            $this->commission['fechafin'] = NULL;
+        $this->periodo = $day;
+       
+        $mesconver = Str::between($this->fechainicio, '-', '-');
+        if (!isset($this->fechafin)) {
+            $this->fechafin = NULL;
         }
         if (isset($this->commission->id)) {
             $this->commission->name = Str::upper($this->commission->name);
@@ -81,21 +70,23 @@ class Commissions extends Component
             Commission::create([
                 'name' => Str::upper($this->commission['name']),
                 'tipo' => $this->tipo,
-                'fechainicio' => $this->commission['fechainicio'],
-                'fechafin' => $this->commission['fechafin'],
+                'fechainicio' => $this->fechainicio,
+                'fechafin' => $this->fechafin,
+                'periodo' => $this->periodo,
                 'estado' => 'CREADA',
                 'anho' =>  date('Y'),
-                'mes' => $this->meses[date($mesconver)-1], 
+                'mes' => $this->meses[date($mesconver) - 1],
             ]);
-        }        
-        $this->reset('tipo');
-        $this->reset('commission');
-        
+        }
         $this->modalAdd = false;
         $ultimo = Commission::latest('id')->first();
-        return redirect()->route('commision.show',$ultimo->id);
-    }
 
+        return redirect()->route('commision.show', $ultimo->id);
+    }
+    public function delCommission($id)
+    {
+        $this->modalDel = $id;
+    }
     public function deleteCommission(Commission $commission)
     {
         $commission->delete();

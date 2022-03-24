@@ -107,15 +107,15 @@
                             @foreach ($estations as $estation)
                                 @if (!$commission->estations->contains($estation->id))
                                     @if ($estation->id != '1')
-                                        <tr class="bg-gray-100 border-b border-gray-200">
+                                        <tr class="bg-gray-100 border-b border-gray-200 text-sm">
                                             <td class="px-4 py-3">
                                                 <input class="rounded-2xl" wire:model='selectedEstation'
-                                                    value="{{ $estation->id }}" type="radio">
+                                                    value="{{ $estation->id }}" type="radio">    
                                             </td>
                                             <td class="px-4 py-3">{{ $estation->name }}</td>
                                             <td class="px-4 py-3">{{ $estation->ubigeo->provincia }}</td>
                                             <td class="px-4 py-3">{{ $estation->ubigeo->distrito }}</td>
-                                        </tr>                              
+                                        </tr>                        
                                     @endif
                                 @endif
                             @endforeach
@@ -123,6 +123,18 @@
                         {{ $estations->links() }}
                     </div>
                 </div>
+{{-- 
+                <div class="flex flex-col">
+                    <label for="">Grouped Estations</label>
+                    @foreach ($estations as $estation)
+                        @if (!$commission->estations->contains($estation->id))
+                        <div class="flex items-center">
+                            <input wire:model="estationes" value="{{$estation->id}}" type="checkbox"> - {{$estation->name}}
+                        </div>
+                        @endif
+                    @endforeach
+                </div>
+                Seleccionaste: {{var_export($estationes)}} --}}
             </div>
         </x-slot>
 

@@ -54,7 +54,7 @@
             <th class="px-2">Cod</th>
             <th class="w-1/3 px-4 py-3">Asunto</th>
             <th class="py-3 w-24">Inicio</th>
-            <th class="py-3 w-24">Fin</th>
+            <th class="py-3 w-24">Periodo</th>
             <th class="py-3">Estado</th>
             <th class="py-3"></th>
         </tr>
@@ -69,13 +69,8 @@
                         {{ $commission->name }}
                     </a>
                 </td>
-                @if ($commission->fechafin === $commission->fechainicio)
-                    <td colspan="2" class="text-sm text-center w-24 text-blue-600">{{ $commission->fechainicio }}
-                    </td>
-                @else
-                    <td class="text-sm text-center w-24 text-blue-600">{{ $commission->fechainicio}}</td>
-                    <td class="text-sm text-center w-24 text-blue-600">{{ $commission->fechafin }}</td>
-                @endif
+                <td class="text-sm text-center w-24 text-blue-600">{{ $commission->fechainicio}}</td>
+                <td class="text-sm text-center w-24 text-blue-600">{{ $commission->periodo}}</td>
                 <td class="m-auto">
                     @if ($commission->estado == 'CREADA')
                         <div
@@ -180,23 +175,21 @@
                 <div class="col-span-6 sm:col-span-4 mt-4">
                     <div class="flex items-center">
                         <x-jet-label class="text-base font-bold border-gray-200 uppercase mr-4" for="fecha"
-                            value="{{ __('Inicio') }}" />
+                            value="{{ __('DEL') }}" />
                         <x-jet-input id="fechainicio" type="date" class="mt-1 block w-44 font-semibold"
-                            wire:model.defer='commission.fechainicio' />
+                            wire:model='fechainicio' />
                     </div>
-                    <x-jet-input-error for="commission.fechainicio" class="mt-2" />
+                    <x-jet-input-error for="fechainicio" class="mt-2" />
                 </div>
-                <p class="mt-4">AL</p>
                 <div class="col-span-6 sm:col-span-4 mt-4">
                     <div class="flex items-center">
                         <x-jet-label class="text-base font-bold border-gray-200 uppercase mr-4" for="fecha"
-                            value="{{ __('Fin') }}" />
+                            value="{{ __('AL') }}" />
                         <x-jet-input id="fechafin" type="date" class="mt-1 block w-44 font-semibold"
-                            wire:model.defer='commission.fechafin' />
+                            wire:model='fechafin' />
                     </div>
-                    <x-jet-input-error for="commission.fechafin" class="mt-2" />
+                    <x-jet-input-error for="fechafin" class="mt-2" />
                 </div>
-            </div>
         </x-slot>
 
         <x-slot name="footer">
@@ -218,7 +211,6 @@
 
         <x-slot name="content">
             {{ __('¿Seguro que desea eliminar?') }}
-
         </x-slot>
 
         <x-slot name="footer">

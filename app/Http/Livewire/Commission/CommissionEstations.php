@@ -14,6 +14,7 @@ class CommissionEstations extends Component
     public $search = '';
     public $ubigeo = '';
     public $selectedEstation;
+    public $estationes = [];
 
     public $modalAdd = false;
     public $modalDel = false;
@@ -50,7 +51,10 @@ class CommissionEstations extends Component
     {
         $estation->commissions()->attach($this->commission->id);
         $this->modalAdd = false;
+
         $this->emit('estationAttach');
+
+
     } 
 
     public function delEstacion(Estation $estation)
