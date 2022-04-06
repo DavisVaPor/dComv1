@@ -56,4 +56,9 @@ class Article extends Model
     {
         return $this->hasMany(EquipamentMaintenance::class);
     }
+
+    public function installation()
+    {
+        return $this->hasMany(InstallationLog::class);
+    }
 }

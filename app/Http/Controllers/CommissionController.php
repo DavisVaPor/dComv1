@@ -19,6 +19,6 @@ class CommissionController extends Controller
     {
         $pdf = \PDF::loadView('reportes.commission',compact('commission'));
         //return view('commissionPDF',compact('commission'));
-        return $pdf->download($commission->id.'.pdf');
+        return $pdf->download($commission->name.'.pdf');
     }
 }

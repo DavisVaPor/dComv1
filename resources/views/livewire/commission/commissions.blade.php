@@ -147,7 +147,11 @@
     {{-- Modal de Añadir --}}
     <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
-            <h1 class="font-bold uppercase text-gray-500">Crear Comision de Servicio</h1>
+            @if (isset($modalAdd))
+                <h1 class="font-bold text-gray-500">Editar Comision de Servicio</h1>
+            @else
+                <h1 class="font-bold text-gray-500">Crear Comision de Servicio</h1>
+            @endif
         </x-slot>
 
         <x-slot name="content">
@@ -171,7 +175,6 @@
             <x-jet-label class="text-base font-bold border-gray-200 uppercase mt-4" for="fecha"
                 value="{{ __('Fecha de Comisión') }}" />
             <div class="flex justify-between items-center">
-
                 <div class="col-span-6 sm:col-span-4 mt-4">
                     <div class="flex items-center">
                         <x-jet-label class="text-base font-bold border-gray-200 uppercase mr-4" for="fecha"
@@ -190,6 +193,7 @@
                     </div>
                     <x-jet-input-error for="fechafin" class="mt-2" />
                 </div>
+            </div>
         </x-slot>
 
         <x-slot name="footer">
@@ -206,11 +210,12 @@
     {{-- Modal de Eliminar --}}
     <x-jet-dialog-modal wire:model="modalDel">
         <x-slot name="title">
-            <h1 class="font-bold">{{ __('Eliminar Commision') }}</h1>
+            <h1 class="font-bold">{{ __('Eliminar Comision') }}</h1>
         </x-slot>
 
         <x-slot name="content">
             {{ __('¿Seguro que desea eliminar?') }}
+
         </x-slot>
 
         <x-slot name="footer">
@@ -218,8 +223,7 @@
                 {{ __('Cancel') }}
             </x-jet-secondary-button>
 
-            <x-jet-button class="ml-2" wire:click="deleteCommission({{ $modalDel }})"
-                wire:loading.attr="disabled">
+            <x-jet-button class="ml-2" wire:click="deleteCommission({{ $modalDel }})" wire:loading.attr="disabled">
                 {{ __('Eliminar') }}
             </x-jet-button>
         </x-slot>

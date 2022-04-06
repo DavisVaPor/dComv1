@@ -3,27 +3,35 @@
 namespace App\Http\Livewire\Report;
 
 use App\Models\Article;
+use App\Models\Commission;
 use App\Models\Estation;
+use App\Models\Report;
 use App\Models\System;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ReportArticles extends Component
-{   
+{   use WithPagination;
     public $selectedArticle = '';
     public $obbArticle = '';
     public $estation;
-    public $sistemas;
+    public $sistema;
     public $search = '';
     public $modalEdit = false;
-    public $article;
+    public $articulo;
     public $estadoOld = '';
+    public $commission;
+
  
     protected $rules = [
-        'article.estado' => 'required',
+        'articulo.estado' => 'required',
         'obbArticle' => 'string',
     ]; 
-    
+
+    protected $listeners = ['ArtAdd' => 'render',
+                            'ArtEdit' => 'render',];
+
     public function mount(Estation $estation)
     {
         $this->estation = $estation;
@@ -34,28 +42,35 @@ class ReportArticles extends Component
         $systems = System::all();
         $articles = Article::where('estation_id',$this->estation->id)
                             ->where('denominacion','LIKE', '%'.$this->search.'%')
-                            ->get();
+                            ->where('system_id','LIKE', '%'.$this->sistema)
+                            ->paginate(5);
         return view('livewire.report.report-articles',[
             'systems' => $systems,
             'articles' => $articles,
         ]);
     }
 
-    public function addModal(Article $article)
+    public function addModal($art)
     {
-        $this->article = $article;
-        $this->estadoOld = ''.$article->estado;
+        $this->articulo = Article::findOrFail($art);
+        $this->estadoOld = ''. $this->articulo->estado;
         $this->modalEdit = true;
     }
+
     public function updateArticle(){
         $this->validate();
-        if (isset($this->article->id)) {
-            $this->article->save();
+        if (isset($this->articulo->id)) {
+            $this->articulo->save();
         }
         if (!empty($this->obbArticle)) {
-            $this->article->manintenance()->create([
+            if ($this->estadoOld === $this->articulo->estado ) {
+                $cambios = ''.$this->articulo->estado;
+            } else {
+                $cambios = $this->estadoOld. ' X ' . $this->articulo->estado;
+            }
+            $this->articulo->manintenance()->create([
                 'descripcion' => $this->obbArticle,
-                'cambios' =>  $this->estadoOld. ' X ' . $this->article->estado,
+                'cambios' => $cambios,  
                 'user_id' => Auth::user()->id,
              ]);
         }
@@ -63,5 +78,6 @@ class ReportArticles extends Component
         $this->estadoOld = '';
         $this->modalEdit = false;
         $this->emit('ArtEdit');
+        $this->reset('articulo');
     }
 }

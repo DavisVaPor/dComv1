@@ -23,8 +23,10 @@ class Commissions extends Component
     public $fechainicio, $fechafin, $periodo;
 
     protected $rules = [
-        'commission.name' => 'required',
+        'commission.name' => 'required | min:35 |max:255',
         'tipo' => 'required',
+        'fechainicio' => 'required',
+        'fechafin' => 'required',
     ];
 
     public function render()
@@ -59,12 +61,21 @@ class Commissions extends Component
         $this->periodo = $day;
        
         $mesconver = Str::between($this->fechainicio, '-', '-');
+        if ($this->fechafin == $this->fechainicio){
+            $this->periodo = 1;
+        }
         if (!isset($this->fechafin)) {
             $this->fechafin = NULL;
         }
         if (isset($this->commission->id)) {
             $this->commission->name = Str::upper($this->commission->name);
             $this->commission->tipo = $this->tipo;
+            $this->commission->fechainicio = $this->fechainicio;
+            $this->commission->fechafin = $this->fechafin;
+            if ($this->fechafin == $this->fechainicio){
+                $this->periodo = 1;
+            }
+            $this->commission->periodo = $this->periodo;
             $this->commission->save();
         } else {
             Commission::create([
@@ -97,6 +108,8 @@ class Commissions extends Component
     {
         $this->commission = $commission;
         $this->tipo = $commission->tipo;
+        $this->fechainicio = $commission->fechainicio;
+        $this->fechafin =  $commission->fechafin;
         $this->modalAdd = true;
     }
 }

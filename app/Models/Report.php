@@ -56,4 +56,9 @@ class Report extends Model
     public function promotions(){
         return $this->hasMany(Promotion::class);
     }
+
+    public function installation()
+    {
+        return $this->hasMany(InstallationLog::class);
+    }
 }

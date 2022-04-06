@@ -21,11 +21,7 @@ class Ubigee extends Model
     public function promotions(){
         return $this->hasMany(Promotion::class);
     }
-
-    public function ubigeo(){
-        return $this->hasMany(Ubigee::class);
-    }
-
+    
     public function commissions()
     {
         return $this->belongsToMany(Commission::class);

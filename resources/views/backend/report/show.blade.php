@@ -147,7 +147,6 @@
         </section>
 
         <section>
-            <h1 class="mr-5 text-lg font-bold text-gray-800 border-gray-300 border-3">ANEXOS</h1>
             <livewire:report.report-images :informe="$informe">
                 @if ($informe->tipo == 'MANTENIMIENTO')
                     {{-- <livewire:report-actas :informe="$informe"> --}}
@@ -190,5 +189,11 @@
                     </section>
                 </main>
             </div>
+        @endif
+
+        @if($informe->installation->isNotEmpty())
+            <section>
+                <livewire:report.install-equipament :informe="$informe">
+            </section>
         @endif
 @endsection

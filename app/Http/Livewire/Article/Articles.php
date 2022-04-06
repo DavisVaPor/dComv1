@@ -61,13 +61,14 @@ class Articles extends Component
         if (isset($this->article->id)) {
             $this->article->save();
         } else {
-            $articleAdd = Article::create([
+            Article::create([
                 'codPatrimonial' => $this->article['codPatrimonial'],
                 'denominacion' => $this->article['denominacion'],
                 'cantidad' => $this->article['cantidad'],
                 'marca' => $this->article['marca'],
                 'modelo' => $this->article['modelo'],
                 'category_id' => $this->article['category_id'],
+                'estation_id' => 1,
                 'color' => $this->article['color'],
                 'nserie' => $this->article['nserie'],
                 'estado' => $this->article['estado'],
@@ -75,8 +76,6 @@ class Articles extends Component
         }
 
         $this->reset('article');
-
-
         $this->modalAdd = false;
     }
 
