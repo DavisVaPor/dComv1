@@ -57,8 +57,21 @@ class Report extends Model
         return $this->hasMany(Promotion::class);
     }
 
-    public function installation()
+    public function downlog()
     {
-        return $this->hasMany(InstallationLog::class);
+        return $this->hasMany(DownLog::class);
+    }
+
+    public function requirements(){
+        return $this->hasMany(Requirement::class);
+    }
+
+    public function maintenances(){
+        return $this->hasMany(EquipamentMaintenance::class);
+    }
+
+    public function movimient()
+    {
+        return $this->hasMany(Movements::class);
     }
 }

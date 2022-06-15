@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>..Intra-Net DirComunicaciones..</title>
+    <title>.:: Intranet DirComunicaciones ::.</title>
 
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="images/antena-parabolica.svg" type="image/png">
@@ -31,10 +31,10 @@
 <body>
     <div class="flex h-screen bg-gray-800 " :class="{ 'overflow-hidden': isSideMenuOpen }">
         <!-- Desktop sidebar -->
-        <aside class="z-20 flex-shrink-0 hidden w-64 overflow-y-auto bg-gray-800 md:block">
+        <aside class="z-20 flex-shrink-0 ml-2 hidden w-64 overflow-y-auto bg-gray-800 md:block">
             <div>
                 <div class="text-white">
-                    <div class="flex p-2 bg-gray-800">
+                    <div class="flex p-2 bg-gray-800 ">
                         <div class="flex-shrink-0 flex items-center">
                             <a href="{{ route('dashboard') }}">
                                 <x-jet-application-mark class="block h-9 w-auto" />
@@ -51,17 +51,20 @@
                         </a>
                     </div>
                     <div class="">
-                        <div class="">
-                            <div class="text-center">
+                        <div class="w-full flex justify-center items-center mb-4">
+                            <abbr title="Perfil de Usuario">
                                 <a href="{{ route('profile.show') }}">
-                                    <img class="ml-24 hidden h-16 w-16 rounded-full sm:block object-cover border-2 border-green-300 hover:border-yellow-500"
+                                    <img class="hidden h-10 w-10 rounded-full sm:block object-cover border-2 border-green-300 hover:border-yellow-500"
                                         src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
                                 </a>
+                            </abbr>
+                            <div>
+                                <p class="font-bold text-xs  text-gray-200 text-center uppercase ">
+                                    {{ Auth::user()->apellido }}
+                                </p>
+                                <p class="font-bold text-xs text-gray-400 text-center ">{{ Auth::user()->name }}</p>
+                                <p class="font-bold text-xs text-blue-400 text-center ">(Online)</p>
                             </div>
-                            <p class="font-bold text-base  text-gray-200 pt-1 text-center uppercase ">
-                                {{ Auth::user()->apellido }}
-                            </p>
-                            <p class="font-bold text-base text-gray-400 text-center ">{{ Auth::user()->name }}</p>
                         </div>
                     </div>
                     <div>
@@ -104,7 +107,7 @@
                                             d="M501.1 395.7L384 278.6c-23.1-23.1-57.6-27.6-85.4-13.9L192 158.1V96L64 0 0 64l96 128h62.1l106.6 106.6c-13.6 27.8-9.2 62.3 13.9 85.4l117.1 117.1c14.6 14.6 38.2 14.6 52.7 0l52.7-52.7c14.5-14.6 14.5-38.2 0-52.7zM331.7 225c28.3 0 54.9 11 74.9 31l19.4 19.4c15.8-6.9 30.8-16.5 43.8-29.5 37.1-37.1 49.7-89.3 37.9-136.7-2.2-9-13.5-12.1-20.1-5.5l-74.4 74.4-67.9-11.3L334 98.9l74.4-74.4c6.6-6.6 3.4-17.9-5.7-20.2-47.4-11.7-99.6.9-136.6 37.9-28.5 28.5-41.9 66.1-41.2 103.6l82.1 82.1c8.1-1.9 16.5-2.9 24.7-2.9zm-103.9 82l-56.7-56.7L18.7 402.8c-25 25-25 65.5 0 90.5s65.5 25 90.5 0l123.6-123.6c-7.6-19.9-9.9-41.6-5-62.7zM64 472c-13.2 0-24-10.8-24-24 0-13.3 10.7-24 24-24s24 10.7 24 24c0 13.2-10.7 24-24 24z">
                                         </path>
                                     </svg>
-                                    <span class="ml-4 text-sm">ACTIVIDADES</span>
+                                    <span class="ml-4 text-sm">MANTENIMIENTOS</span>
                                 </a>
                             </li>
                             <li class="relative px-1 ">
@@ -123,25 +126,16 @@
                             <li class="relative px-1 ">
                                 <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
                                     href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clip-rule="evenodd"></path>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20"
+                                        fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"
+                                            clip-rule="evenodd"></path>
                                     </svg>
                                     <span class="ml-4 text-sm">PROMOCIONES</span>
                                 </a>
                             </li>
-                            <li class="relative px-1 ">
-                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
-                                    href="#">
-                                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="eye"
-                                        class="h-6 w-6 svg-inline--fa fa-eye fa-w-18" role="img"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
-                                        <path fill="currentColor"
-                                            d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z">
-                                        </path>
-                                    </svg>
-                                    <span class="ml-4 text-sm">OBSERVACIONES</span>
-                                </a>
-                            </li>
+                           
                             @if (Auth::user()->rol->name == 'Director(a)')
                                 <li class="relative px-1 ">
                                     <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
@@ -157,6 +151,7 @@
                                     </a>
                                 </li>
                             @endif
+
                             <li class="relative px-1 ">
                                 <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
                                     href=" {{ route('estacion.index') }}">
@@ -170,6 +165,8 @@
                                     <span class="ml-4 text-sm">ESTACIONES</span>
                                 </a>
                             </li>
+
+                            
                             <li class="relative px-1 ">
                                 <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
                                     href="{{ route('inventory.index') }}">
@@ -180,9 +177,33 @@
                                             d="M560 288h-80v96l-32-21.3-32 21.3v-96h-80c-8.8 0-16 7.2-16 16v192c0 8.8 7.2 16 16 16h224c8.8 0 16-7.2 16-16V304c0-8.8-7.2-16-16-16zm-384-64h224c8.8 0 16-7.2 16-16V16c0-8.8-7.2-16-16-16h-80v96l-32-21.3L256 96V0h-80c-8.8 0-16 7.2-16 16v192c0 8.8 7.2 16 16 16zm64 64h-80v96l-32-21.3L96 384v-96H16c-8.8 0-16 7.2-16 16v192c0 8.8 7.2 16 16 16h224c8.8 0 16-7.2 16-16V304c0-8.8-7.2-16-16-16z">
                                         </path>
                                     </svg>
-                                    <span class="ml-4 text-sm">INVENTARIO</span>
+                                    <span class="ml-4 text-sm">INVENTARIO DE EQUIPOS</span>
                                 </a>
                             </li>
+                            <li class="relative px-1 ">
+                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
+                                    href="#">
+                                    <svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path fill="currentColor" d="M502.6 182.6l-45.25-45.25C451.4 131.4 443.3 128 434.8 128H384V80C384 53.5 362.5 32 336 32h-160C149.5 32 128 53.5 128 80V128H77.25c-8.5 0-16.62 3.375-22.62 9.375L9.375 182.6C3.375 188.6 0 196.8 0 205.3V304h128v-32C128 263.1 135.1 256 144 256h32C184.9 256 192 263.1 192 272v32h128v-32C320 263.1 327.1 256 336 256h32C376.9 256 384 263.1 384 272v32h128V205.3C512 196.8 508.6 188.6 502.6 182.6zM336 128h-160V80h160V128zM384 368c0 8.875-7.125 16-16 16h-32c-8.875 0-16-7.125-16-16v-32H192v32C192 376.9 184.9 384 176 384h-32C135.1 384 128 376.9 128 368v-32H0V448c0 17.62 14.38 32 32 32h448c17.62 0 32-14.38 32-32v-112h-128V368z"/>
+                                    </svg>
+                                    <span class="ml-4 text-sm">TALLER DE COMUNICACIONES</span>
+                                </a>
+                            </li>
+                          
+                            <li class="relative px-1 ">
+                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
+                                    href="#">
+                                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="eye"
+                                        class="h-6 w-6 svg-inline--fa fa-eye fa-w-18" role="img"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                        <path fill="currentColor"
+                                            d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z">
+                                        </path>
+                                    </svg>
+                                    <span class="ml-4 text-sm">OBSERVACIONES</span>
+                                </a>
+                            </li>
+                            
                             <li class="relative px-1 ">
                                 <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
                                     href=" #">

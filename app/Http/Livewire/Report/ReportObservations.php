@@ -2,24 +2,24 @@
 
 namespace App\Http\Livewire\Report;
 
-use App\Models\Report;
+use App\Models\Estation;
 use App\Models\Observation;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class ReportObservations extends Component
 {
-    public $report;
+    public $informe;
+    public $estation;
     public $observation;
-    public $selectedEstation;
 
     public $modalAdd = false;
     public $modalDel = false;
     
 
-    public function mount(Report $informe)
+    public function mount(Estation $estation)
     {
-        $this->report = $informe;
+        $this->estation = $estation;
     }
 
     protected $listeners = ['observationAdd' => 'render',
@@ -37,14 +37,8 @@ class ReportObservations extends Component
 
     public function addModal()
     {
-        $this->reset('observation','selectedEstation');
-        $this->modalAdd = true;
-    }
-
-    public function delObservation($id)
-    {
         $this->reset('observation');
-        $this->modalDel = $id;
+        $this->modalAdd = true;
     }
 
     public function saveObservation()
@@ -53,11 +47,11 @@ class ReportObservations extends Component
         if (isset($this->observation->id)) {
             $this->observation->save();
         } else {
-            $this->report->observations()->create([
+            $this->informe->observations()->create([
                 'detalle' => $this->observation['detalle'],
                 'nivel' => $this->observation['nivel'],
                 'user_id' => Auth::user()->id,
-                'estation_id' => $this->selectedEstation,
+                'estation_id' => $this->estation->id,
             ]);
         }
         $this->modalAdd = false;

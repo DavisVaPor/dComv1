@@ -14,7 +14,6 @@ class Image extends Model
     protected $fillable = [
         'name',
         'url',
-        'estation_id',
         'imageable_id',
         'imageable_type'
     ];
@@ -22,9 +21,5 @@ class Image extends Model
     public function imageable()
     {
         return $this->morphTo();
-    }
-    
-    public function estation(){
-        return $this->belongsTo(Estation::class);
     }
 }

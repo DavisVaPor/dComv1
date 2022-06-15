@@ -11,7 +11,7 @@
 
         <select class="rounded-xl ml-3" name="tipo" id="tipo" wire:model='tipo'>
             <option seleted value="">Tipo</option>
-            <option value="ACTIVIDADES">Actividades</option>
+            <option value="MANTENIMIENTO">MANTENIMIENTO</option>
             <option value="MEDICION">Medicion</option>
             <option value="PROMOCION">Promocion</option>
         </select>
@@ -27,8 +27,9 @@
             </span>
         </x-jet-button>
     </div>
-    <table class="rounded-t-lg m-5 w-full mx-auto bg-gray-500 text-gray-800">
+    <table class="rounded-t-lg m-1 w-full mx-auto bg-gray-500 text-gray-800">
         <tr class="border-b-2 border-gray-300 text-center text-white">
+            <th class="px-2 py-3 text-sm">Informe</th>            
             <th class="w-3/12 px-4 py-3">Asunto</th>            
             <th class="px-4 py-3">Comision</th>
             <th class="px-4 py-3 w-28">Fecha</th>
@@ -39,15 +40,22 @@
         @if ($reports->isNotEmpty() )
             @foreach ($reports as $report)
             <tr class="bg-gray-100 border-b border-gray-300 py-1 hover:bg-green-100">
+                <td class="text-xs px-2 text-center uppercase">
+                    <a href="{{ route('informe.show', [$report]) }}" class="font-semibold hover:text-blue-600">
+                        INF-{{ $report->id }}
+                    </a>
+                </td> 
                 <td class="w-4/12 text-sm px-2 text-left uppercase">
                     <a href="{{ route('informe.show', [$report]) }}" class="font-semibold hover:text-blue-600">
                         {{ $report->asunto }}
                     </a>
                 </td>               
                 <td class="text-sm text-gray-600">
-                    <a href="{{ route('commision.show', [$report->commission]) }}">
-                        C-{{$report->commission->id}}:{{ Str::limit($report->commission->name, 30, '...')  }}
-                    </a>
+                    <abbr title="{{$report->commission->name}}">
+                        <a href="{{ route('commision.show', [$report->commission]) }}">
+                            C-{{$report->commission->id}}:{{ Str::limit($report->commission->name, 10, '...')  }}
+                        </a>
+                    </abbr>
                 </td>
                 <td class="text-xs text-center w-28 text-gray-400">{{ $report->fechaCreacion }}</td>
                 <td class="px-2 text-left">

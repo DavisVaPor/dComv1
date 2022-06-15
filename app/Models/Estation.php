@@ -56,7 +56,7 @@ class Estation extends Model
 
     public function images()
     {
-        return $this->hasMany(Image::class);
+        return $this->morphMany(Image::class, 'imageable');
     }
 
     public function actas()
@@ -67,5 +67,19 @@ class Estation extends Model
     public function alerts()
     {
         return $this->hasMany(Alert::class);
+    }
+    
+    public function downlog()
+    {
+        return $this->hasMany(DownLog::class);
+    }
+
+    public function requeriments(){
+        return $this->hasMany(Requirement::class);
+    }
+
+    public function movimient()
+    {
+        return $this->hasMany(Movements::class);
     }
 }

@@ -18,9 +18,9 @@
     </div>
     <div class="justify-content-between">
         @if ($commission->estations->isNotEmpty())
-            <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
+            <table class="rounded-t-lg m-2 w-full mx-auto bg-gray-200 text-gray-800">
                 <tr class="text-left border-b-2 border-gray-300">
-                    <th class="px-4 py-3 text-center">Nombre</th>
+                    <th class="px-4 py-3 text-center">Localidad</th>
                     <th class="px-4 py-3 text-center">Provincia</th>
                     <th class="px-4 py-3 text-center">Distrito</th>
                     <th class="px-4 py-3 text-center">Estado</th>

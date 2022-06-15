@@ -17,21 +17,21 @@
         @endif
     </div>
     @if ($commission->objetives->isNotEmpty())
-        <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
+        <table class="rounded-t-lg m-5 w-full mx-auto bg-gray-200 text-gray-800">
             <tr class="text-left border-b-2 border-gray-300">
-                <th class=""></th>
-                <th class="px-4 py-3">Descripcion</th>
+                <th class="px-4 py-3">Descripción</th>
                 @if ($commission->estado == 'CREADA')
                     <th class="px-4 py-3 text-right"></th>
                 @endif
             </tr>
             @foreach ($commission->objetives as $objetive)
                 <tr class="bg-gray-100 border-b border-gray-200">
-                    <td class="font-bold">{{$loop->iteration}}</td>
                     <td class="w-11/12 px-4 py-3"> 
-                        <a class="cursor-pointer hover:text-blue-600" wire:click="editObjetive({{ $objetive->id }})">
-                            {{ $objetive->name }}
-                        </a>
+                        <li>
+                            <a class="cursor-pointer hover:text-blue-600" wire:click="editObjetive({{ $objetive->id }})">
+                                {{ $objetive->name }}
+                            </a>
+                        </li>
                     </td>
                     @if ($commission->estado == 'CREADA')
                         <td class="px-4 py-3 w-1/12">

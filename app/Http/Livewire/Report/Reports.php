@@ -17,6 +17,7 @@ class Reports extends Component
     public $modalDel = false;
     public $search = '';
     public $report;
+    public $tipo;
     public $selectedCommission;
     public $estado;
 
@@ -30,6 +31,7 @@ class Reports extends Component
     {
         $reports = Report::where('user_id',Auth::user()->id)
                 ->where('asunto','LIKE','%'.$this->search.'%')
+                ->where('tipo','LIKE','%'.$this->tipo)
                 ->where('estado','LIKE','%'.$this->estado.'%')
                 ->latest('id')->paginate(10);
         $users = User::with('commissions')

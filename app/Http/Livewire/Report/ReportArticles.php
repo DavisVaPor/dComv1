@@ -3,17 +3,15 @@
 namespace App\Http\Livewire\Report;
 
 use App\Models\Article;
-use App\Models\Commission;
 use App\Models\Estation;
-use App\Models\Report;
 use App\Models\System;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Illuminate\Http\Request;
 
 class ReportArticles extends Component
 {   use WithPagination;
-    public $selectedArticle = '';
     public $obbArticle = '';
     public $estation;
     public $sistema;
@@ -21,16 +19,18 @@ class ReportArticles extends Component
     public $modalEdit = false;
     public $articulo;
     public $estadoOld = '';
-    public $commission;
-
+    public $informe;
  
     protected $rules = [
         'articulo.estado' => 'required',
+        'articulo.tipo' => 'required',
         'obbArticle' => 'string',
     ]; 
 
     protected $listeners = ['ArtAdd' => 'render',
-                            'ArtEdit' => 'render',];
+                            'ArtEdit' => 'render',
+                            'EquipoInstall' => 'render',
+                            'EquipoRetiro' => 'render'];
 
     public function mount(Estation $estation)
     {
@@ -71,7 +71,9 @@ class ReportArticles extends Component
             $this->articulo->manintenance()->create([
                 'descripcion' => $this->obbArticle,
                 'cambios' => $cambios,  
+                'tipo' => $this->article['tipo'],  
                 'user_id' => Auth::user()->id,
+                'report_id' => $this->informe->id,
              ]);
         }
         $this->obbArticle = '';

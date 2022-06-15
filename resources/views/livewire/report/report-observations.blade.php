@@ -1,8 +1,8 @@
-<div class="mt-5">
-    <div class="flex my-3 justify-between border-b border-gray-300 border-3">
-        <h1 class="mr-5 text-lg font-bold text-gray-800">OBSERVACIONES</h1>
-        @if ($report->estado == 'BORRADOR')
-            <x-jet-button wire:click="addModal" class="bg-green-500">
+<div>
+    <h1 class="mr-5 text-lg font-bold text-blue-800 text-center">REGISTRO DE OBSERVACIONES</h1>
+    <div class="flex justify-end my-2 items-center">
+        @if ($informe->estado == 'BORRADOR')
+            <x-jet-button wire:click="addModal" class="bg-blue-500 justify-end">
                 Añadir
                 <span class="w-6 h-6 ml-2">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -15,17 +15,17 @@
         @endif
     </div>
 
-    @if ($report->observations->isNotEmpty())
+    @if ($informe->observations->isNotEmpty())
         <table class="rounded-t-lg m-5 w-11/12 mx-auto bg-gray-200 text-gray-800">
             <tr class="text-left border-b-2 border-gray-300">
                 <th class="px-4 py-3 w-1/12 text-center">#</th>
                 <th class="px-4 py-3 w-8/12">Descripcion</th>
                 <th class="px-4 py-3  text-center">Prioridad</th>
-                @if ($report->estado == 'BORRADOR')
+                @if ($informe->estado == 'BORRADOR')
                     <th class="px-4 py-3">Acciones</th>
                 @endif
             </tr>
-            @foreach ($report->observations as $observation)
+            @foreach ($informe->observations as $observation)
                 <tr class="bg-gray-100 border-b border-gray-200">
                     <td class="px-4 mb-auto font-bold text-center">{{ $loop->iteration }}</td>
                     <td class="px-4 py-3">{{ $observation->detalle }}</td>
@@ -55,7 +55,7 @@
                             @endif
                         @endif
                     </td>
-                    @if ($report->estado == 'BORRADOR')
+                    @if ($informe->estado == 'BORRADOR')
                         <td class="px-4 py-3">
                             <div class="flex justify-between">
                                 <button wire:click="editObservation({{ $observation->id }})"
@@ -82,21 +82,20 @@
         </table>
     @else
         <div class="text-center border border-gray-100">
-            <p class="text-gray-400">.:: Aun no se ha ingresado alguna observacion::.</p>
+            <p class="text-gray-400">.::  Sin registro de observaciones ::.</p>
         </div>
     @endif
 
     {{-- Modal de Añadir --}}
     <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
-            <h1 class="font-bold">Añadir una obeservacion al Informe</h1>
+            <h1 class="font-bold uppercase">Registro de una observación</h1>
         </x-slot>
 
         <x-slot name="content">
             <div class="col-span-6 sm:col-span-4 bg-gray-50 p-2 border rounded-xl">
-
                 <x-jet-label class="text-base font-bold border-gray-200" for="name"
-                    value="{{ __('Descripcion de la obeservation') }}" />
+                    value="{{ __('Descripcion de la obeservacion') }}" />
                 <textarea id="name" wire:model.defer='observation.detalle'
                     class="resize-none w-full h-1/4 border rounded-md"></textarea>
                 <x-jet-input-error for="observation.detalle" class="mt-2" />
@@ -112,29 +111,6 @@
                 </select>
                 <x-jet-input-error for="observation.atencion" class="mt-2" />
             </div>
-            <x-jet-label class="text-base font-bold border-gray-200 mt-2" for="article.estado"
-            value="{{ __('Estacion donde se realizo la actividad') }}" />
-            <table class="rounded-t-lg m-5 w-11/12 mx-auto bg-gray-200 text-gray-800">
-                <tr class="text-left border-b-2 border-gray-300">
-                    <th class="font-bold px-4 py-3"></th>
-                    <th class="px-4 py-3">Nombre</th>
-                    <th class="px-4 py-3">Provincia</th>
-                    <th class="px-4 py-3">Distrito</th>
-                </tr>
-                @foreach ($report->commission->estations as $estation)
-                    <tr class="bg-gray-100 border-b border-gray-200">
-                        <td class="px-4 py-3">
-                            <input class="rounded-2xl" wire:model='selectedEstation' value="{{ $estation->id }}"
-                                type="radio">
-                        </td>
-                        <td class="px-4 py-3">{{ $estation->name }}</td>
-                        <td class="px-4 py-3">{{ $estation->ubigeo->provincia }}</td>
-                        <td class="px-4 py-3">{{ $estation->ubigeo->distrito }}</td>
-                    </tr>
-                @endforeach
-            </table>
-            <x-jet-input-error for="selectedEstation" class="mt-2" />
-
         </x-slot>
 
         <x-slot name="footer">

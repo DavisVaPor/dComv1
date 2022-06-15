@@ -36,7 +36,10 @@
             <p class="text-sm text-gray-600  text-right font-bold">Fin: {{ $commission->fechafin }}</p>
         </div>
     </div>
-
+    
+    <section>
+        <livewire:commission.commission-objetives :commission="$commission">
+    </section>
 
     @if ($commission->tipo === 'MANTENIMIENTO')
         <section>
@@ -52,9 +55,7 @@
         <livewire:commission.commission-users :commission="$commission">
     </section>
 
-    <section>
-        <livewire:commission.commission-objetives :commission="$commission">
-    </section>
+    
 
     @if ($commission->tipo === 'MANTENIMIENTO')
         <section>

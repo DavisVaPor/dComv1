@@ -212,14 +212,14 @@
                             <div>
                                 <div class="flex mb-2 border-b border-gray-600">
                                     <div class="w-3/12">
-                                        <span class="text-base text-gray-900 block uppercase">Alamcen de</span>
+                                        <span class="text-base text-gray-900 block uppercase">Almacen de</span>
                                     </div>
                                     <div class="w-1/12">
                                         <span class="text-base text-gray-900 block">:</span>
                                     </div>
                                     <div class="w-9/12">
                                         <span class="text-base text-gray-900 block font-bold uppercase">
-                                            {{ $item->estation->name }}
+                                            E:{{ $item->estation->id }}  {{ $item->estation->name }}
                                         </span>
                                     </div>
                                 </div>

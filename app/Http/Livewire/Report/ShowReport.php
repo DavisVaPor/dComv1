@@ -14,7 +14,6 @@ class ShowReport extends Component
     public $modalPen = false;
     public $modalRev = false;
 
-
     public function mount(Report $informe)
     {
         $this->report = $informe;

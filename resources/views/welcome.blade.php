@@ -223,8 +223,8 @@
                             <p class="text-white">
                                 Area de Informatica &copy; {{ date('Y') }}
                             </p>
-                            <p class="text-white">
-                                Direccion de Transportes y Comunicaciones Amazonas
+                            <p class="text-white font-bold">
+                                Direccion Regional de Transportes y Comunicaciones Amazonas
                             </p>
                         </div>
                     </div>

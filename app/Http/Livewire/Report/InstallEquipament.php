@@ -5,7 +5,6 @@ namespace App\Http\Livewire\Report;
 use App\Models\InstallationLog;
 use App\Models\Report;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 class InstallEquipament extends Component
 {   

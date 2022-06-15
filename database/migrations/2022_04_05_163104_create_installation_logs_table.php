@@ -18,6 +18,8 @@ return new class extends Migration
             $table->date('fecha_instalacion');
             $table->foreignId('article_id')->references('id')->on('articles');
             $table->foreignId('estation_id')->references('id')->on('estations');
+            $table->foreignId('report_id')->references('id')->on('reports');
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

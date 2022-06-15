@@ -41,7 +41,8 @@
     </div>
     @endif
     
-    {{-- Modal de Añadir --}} <x-jet-dialog-modal wire:model="modalAdd">
+    {{-- Modal de Añadir --}} 
+    <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
             <h1 class="font-bold">Añadir foto de evidencia</h1>
         </x-slot>

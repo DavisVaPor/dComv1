@@ -254,7 +254,7 @@
                             <img src="images/gestion.png" alt="Logo">
                         </div> <!-- single client -->
                     </div>
-                    <p class="text">Dirección de Transportes y Comunicaciones - Amazonas</p>
+                    <p class="text-blue-800 font-bold text-lg">Dirección Regional de Transportes y Comunicaciones - Amazonas</p>
                 </div> <!-- section title -->
             </div>
         </div> <!-- row -->

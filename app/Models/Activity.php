@@ -25,4 +25,10 @@ class Activity extends Model
     public function estation(){
         return $this->belongsTo(Estation::class);
     }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
+
 }

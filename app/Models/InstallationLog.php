@@ -26,6 +26,7 @@ class InstallationLog extends Model
         return $this->belongsTo(Estation::class);
     }
 
+
     public function report()
     {
         return $this->belongsTo(Report::class);

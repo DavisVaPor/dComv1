@@ -10,8 +10,8 @@ use App\Models\Estation;
 
 class ReportActivities extends Component
 {
-    public $report; 
-    public $estation; 
+    public $informe;
+    public $estation;
     public $activity;
     public $selectedEstation;
 
@@ -25,12 +25,14 @@ class ReportActivities extends Component
         'activity.fechaFin' => 'required',
     ];
 
-    protected $listeners = ['activityAdd' => 'render',
-                            'activitySup' => 'render',];
+    protected $listeners = [
+        'activityAdd' => 'render',
+        'activitySup' => 'render',
+    ];
 
-    public function mount(Report $informe)
+    public function mount(Estation $estation)
     {
-        $this->report = $informe;
+        $this->estation = $estation;
     }
 
     public function render()
@@ -40,14 +42,7 @@ class ReportActivities extends Component
     public function addModal()
     {
         $this->reset('activity');
-        $this->reset('selectedEstation');
         $this->modalAdd = true;
-    }
-
-    public function delActivity($id)
-    {
-        $this->reset('activity');
-        $this->modalDel = $id;
     }
 
     public function saveActivity()
@@ -56,12 +51,10 @@ class ReportActivities extends Component
         if (isset($this->activity->id)) {
             $this->activity->save();
         } else {
-            $estation_name = Estation::where('id',$this->selectedEstation)->first();
-            $activity = Activity::create([
-                'descripcion' => $this->activity['descripcion'].'-'.'('.$estation_name->name.')',
+            $this->informe->activities()->create([
+                'descripcion' => $this->activity['descripcion'],
                 'tipoActivity' => $this->activity['tipoActivity'],
-                'report_id' => $this->report->id,
-                'estation_id' => $this->selectedEstation,
+                'estation_id' => $this->estation->id,
                 'fechaInicio' => $this->activity['fechaInicio'],
                 'fechaFin' => $this->activity['fechaFin'],
             ]);

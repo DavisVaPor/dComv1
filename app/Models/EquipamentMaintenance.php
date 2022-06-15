@@ -13,7 +13,8 @@ class EquipamentMaintenance extends Model
         'article_id',
         'descripcion',
         'cambios',
-        'user_id'
+        'user_id',
+        'report_id'
     ];
 
     public function article()

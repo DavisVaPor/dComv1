@@ -14,7 +14,9 @@ class Measurement extends Model
         'latitud',
         'longitud',
         'rni',
+        'maps',
         'fecha',
+        'imagen',
         'ubigee_id',
         'report_id',
     ];
@@ -27,4 +29,10 @@ class Measurement extends Model
     {
         return $this->belongsTo(Ubigee::class);
     }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
+
 }

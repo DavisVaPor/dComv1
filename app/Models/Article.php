@@ -57,8 +57,8 @@ class Article extends Model
         return $this->hasMany(EquipamentMaintenance::class);
     }
 
-    public function installation()
+    public function movimient()
     {
-        return $this->hasMany(InstallationLog::class);
+        return $this->hasMany(Movements::class);
     }
 }

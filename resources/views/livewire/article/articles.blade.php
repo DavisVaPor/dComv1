@@ -55,8 +55,11 @@
                     </th>
                     <th class="py-2 border-r cursor-pointer text-sm font-bold text-gray-500 text-center">
                         <div class="flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path
+                                    d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z">
+                                </path>
                             </svg>
                         </div>
                     </th>
@@ -66,7 +69,10 @@
                 @foreach ($articles as $article)
                     <tr class="bg-gray-100 text-center border-b text-sm text-gray-600">
                         <td class="py-2 border-r uppercase text-left pl-3">
-                            {{ $article->denominacion }}
+                            <a href="{{ route('article.show', [$article]) }}">
+                                {{ $article->denominacion }}
+                            </a>
+
                         </td>
                         <td class="py-2 border-r">{{ Str::limit($article->category->name, 20, '...') }}</td>
                         <td class="py-2 border-r uppercase">{{ $article->modelo }}</td>
@@ -81,7 +87,7 @@
                         <td class="py-2 border-r">
                             <a href="{{ route('estacion.show', $article->estation->id) }}">
                                 @if ($article->estation)
-                                {{ $article->estation->name }}
+                                    {{ $article->estation->name }}
                                 @else
                                     @if ($article->estation_id == '0')
                                         DRTC-A
@@ -89,21 +95,23 @@
                                 @endif
                             </a>
                         </td>
-                        <td class="flex">
-                            <button wire:click="edit({{ $article->id }})"
-                                class="text-blue-500 hover:text-blue-900 cursor-pointer mr-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 m-auto" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                </svg>
-                            </button>
+                        <td class="flex justify-center items-center">
+                            @if ($article->estation->id === '1')
+                                <button wire:click="edit({{ $article->id }})"
+                                    class="text-blue-500 hover:text-blue-900 cursor-pointer mr-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 m-auto" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                    </svg>
+                                </button>
+                            @endif
+
                             <a href="{{ route('article.show', [$article]) }}"
-                                class="text-yellow-500 hover:text-yellow-900 cursor-pointer">
-                                <svg class="w-6 h-6 m-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                class="text-blue-500 hover:text-gray-900 cursor-pointer items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-6 h-6 m-auto">
                                     <path fill="currentColor"
-                                        d="M288 144a110.94 110.94 0 0 0-31.24 5 55.4 55.4 0 0 1 7.24 27 56 56 0 0 1-56 56 55.4 55.4 0 0 1-27-7.24A111.71 111.71 0 1 0 288 144zm284.52 97.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400c-98.65 0-189.09-55-237.93-144C98.91 167 189.34 112 288 112s189.09 55 237.93 144C477.1 345 386.66 400 288 400z">
-                                    </path>
+                                        d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 128c17.67 0 32 14.33 32 32c0 17.67-14.33 32-32 32S224 177.7 224 160C224 142.3 238.3 128 256 128zM296 384h-80C202.8 384 192 373.3 192 360s10.75-24 24-24h16v-64H224c-13.25 0-24-10.75-24-24S210.8 224 224 224h32c13.25 0 24 10.75 24 24v88h16c13.25 0 24 10.75 24 24S309.3 384 296 384z" />
                                 </svg>
                             </a>
                         </td>
@@ -124,8 +132,8 @@
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label class="text-base font-bold border-gray-200" for="codPatrimonial"
                     value="{{ __('Codigo Patrimonial') }}" />
-                <x-jet-input id="name" type="text" class="mt-1 block w-full font-semibold"
-                    wire:model.defer='article.codPatrimonial' />
+                <x-jet-input id="name"  type="number" class="mt-1 block w-full font-semibold"
+                    wire:model.defer='article.codPatrimonial' maxlength="999999999999" />
                 <x-jet-input-error for="article.codPatrimonial" class="mt-2" />
             </div>
 
@@ -196,8 +204,8 @@
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label class="text-base font-bold border-gray-200" for="category_id"
                     value="{{ __('Categoria del Equipo') }}" />
-                <select class="rounded-lg text-sm" wire:model='article.category_id' >
-                    <option value="" >Catergorias de Bienes</option>
+                <select class="rounded-lg text-sm" wire:model='article.category_id'>
+                    <option value="">Catergorias de Bienes</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach

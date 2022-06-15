@@ -36,8 +36,6 @@
                             <p class="font-bold text-xs">Aprobar</p>
                         </x-jet-button>
                         @endif
-                        
-
                     @endif
                 @endif
             </div>

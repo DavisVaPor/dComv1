@@ -18,7 +18,7 @@
     </div>
     <div class="justify-content-between">
         @if ($commission->articles->isNotEmpty())
-            <table class="rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
+            <table class="rounded-t-lg m-2 w-full mx-auto bg-gray-200 text-gray-800">
                 <tr class="text-left">
                     <th class="px-4 py-3">Nombre</th>
                     <th class="px-4 py-3">Modelo</th>
@@ -75,9 +75,9 @@
 
                     <div class="flex flex-col">
                         <div class="flex-grow overflow-auto">
-                            <table class="rounded-t-lg m-5 w-11/12 mx-auto bg-gray-200 text-gray-800">
+                            <table class="rounded-t-lg m-5 w-full mx-auto bg-gray-200 text-gray-800">
                                 <tr class="text-left border-b-2 border-gray-300">
-                                    <th class="font-bold px-4 py-3"></th>
+                                    <th class=""></th>
                                     <th class="px-4 py-3">Nombre</th>
                                     <th class="px-4 py-3">Modelo</th>
                                     <th class="px-4 py-3">Serie</th>
@@ -86,8 +86,8 @@
                                 @foreach ($articles as $article)
                                     @if (!$commission->articles->contains($article->id))
                                         <tr class="bg-gray-100 border-b border-gray-200">
-                                            <td class="px-4 py-3">
-                                                <input class="rounded-2xl" wire:model='selectedArticle'
+                                            <td class="">
+                                                <input class="rounded-2xl ml-2" wire:model='selectedArticle'
                                                     value="{{ $article->id }}" type="radio">
                                             </td>
                                             <td class="px-4 py-3">{{ $article->denominacion }}</td>

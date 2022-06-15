@@ -135,6 +135,7 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div x-data="{
                                     openTab: 1,
                                     activeClass: 'text-blue-700 border bg-gray-100 rounded-lg font-bold',
@@ -144,7 +145,7 @@
                             <li @click="openTab = 1" class="mr-1 cursor-pointer">
 
                                 <a :class="openTab === 1 ? activeClass : inactive"
-                                    class="bg-white inline-block py-2 px-4 flex items-center ">
+                                    class="bg-white py-2 px-4 flex items-center ">
                                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="boxes"
                                         class="h-6 w-6 svg-inline--fa fa-boxes fa-w-18 mr-2" role="img"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
