@@ -13,7 +13,7 @@ class LandingPageController extends Controller
        $commissions = Commission::where('anho','LIKE',date('Y'))
                                 ->get();
        $estations = Estation::all();
-       $estationDef = Estation::where('operativo','LIKE',0)->get();
+       $estationDef = Estation::where('estado','LIKE','INOPERATIVO')->get();
 
        $estationDef = 100 * ($estationDef->count()/$estations->count());
 

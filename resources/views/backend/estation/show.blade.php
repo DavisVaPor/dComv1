@@ -24,7 +24,7 @@
             <h2 class="text-center  text-xl">{{ $estation->name }}</h2>
         </div>
         <div class="tab-content mb-2">
-            <div class="pb-5 text-gray-500">
+            <div class="pb-2 text-gray-500">
                 <div class="bg-white rounded-lg w-full mb-2 p-4 shadow">
                     <div>
                         <div class="flex mb-2 border-b border-gray-600">
@@ -83,7 +83,7 @@
                                 <span class="text-base text-gray-900 block">:</span>
                             </div>
                             <div class="w-9/12">
-                                <span class="text-base text-gray-900 block font-bold">
+                                <span class="text-base text-gray-900 block font-bold uppercase">
                                     @if ($estation->altitud)
                                         {{ $estation->altitud }} m.s.n.m.
                                     @else
@@ -117,7 +117,7 @@
                         </div>
                         <div class="flex mb-2 border-b border-gray-600 items-center">
                             <div class="w-3/12">
-                                <span class="text-base text-gray-900 block">Gooble Maps</span>
+                                <span class="text-base text-gray-900 block">Google Maps</span>
                             </div>
                             <div class="w-1/12">
                                 <span class="text-base text-gray-900 block">:</span>
@@ -143,7 +143,6 @@
                                 }">
                         <ul class="list-reset flex mt-4">
                             <li @click="openTab = 1" class="mr-1 cursor-pointer">
-
                                 <a :class="openTab === 1 ? activeClass : inactive"
                                     class="bg-white py-2 px-4 flex items-center ">
                                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="boxes"
@@ -158,7 +157,7 @@
                             </li>
                             <li @click="openTab = 2" class="mr-1 cursor-pointer">
                                 <a :class="openTab === 2 ? activeClass : inactive"
-                                    class="bg-white inline-block py-2 px-4 flex items-center">
+                                    class="bg-white py-2 px-4 flex items-center">
                                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="briefcase"
                                         class="h-4 w-4 svg-inline--fa fa-briefcase fa-w-16 mr-2" role="img"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -171,7 +170,7 @@
                             </li>
                             <li @click="openTab = 3" class="mr-1 cursor-pointer">
                                 <a :class="openTab === 3 ? activeClass : inactive"
-                                    class="bg-white inline-block py-2 px-4 flex items-center">
+                                    class="bg-white py-2 px-4 flex items-center">
                                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="eye"
                                         class="h-4 w-4 svg-inline--fa fa-eye fa-w-18 mr-2" role="img"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -197,7 +196,6 @@
                             @if ($estation->id === 0)
                             @else
                                 <div class="w-full mt-2">
-
                                     <h2 class="text-center text-blue-700 text-lg underline">
                                         COMISIONES REALIZADAS A LA ESTACION
                                     </h2>

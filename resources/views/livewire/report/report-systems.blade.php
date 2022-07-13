@@ -22,7 +22,7 @@
                         </div>
                     </header>
                     <div class="tab-content mb-2">
-                        <div class=" pb-5 text-gray-500">
+                        <div class=" pb-2 text-gray-500">
                             <div class=" rounded-lg w-full mt-4 p-2 shadow">
                                 <div>
                                     <div class="flex justify-between mb-2 border-b border-gray-600 items-center">

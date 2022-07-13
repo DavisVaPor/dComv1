@@ -78,7 +78,7 @@ class Commissions extends Component
             $this->commission->periodo = $this->periodo;
             $this->commission->save();
         } else {
-            Commission::create([
+            $comi  = Commission::create([
                 'name' => Str::upper($this->commission['name']),
                 'tipo' => $this->tipo,
                 'fechainicio' => $this->fechainicio,
@@ -90,9 +90,8 @@ class Commissions extends Component
             ]);
         }
         $this->modalAdd = false;
-        $ultimo = Commission::latest('id')->first();
 
-        return redirect()->route('commision.show', $ultimo->id);
+        return redirect()->route('commision.show', $comi->id);
     }
     public function delCommission($id)
     {

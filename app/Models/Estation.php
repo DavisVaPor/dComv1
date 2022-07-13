@@ -9,8 +9,9 @@ class Estation extends Model
 {
     use HasFactory;
 
+    const INOPERATIVO = 0;
     const OPERATIVO = 1;
-    const INOPERATIVO = 2;
+
 
     protected $fillable = [
         'name',

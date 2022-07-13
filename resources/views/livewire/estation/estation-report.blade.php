@@ -2,14 +2,8 @@
     <div class="flex my-3 items-center">
         <input wire:model='search' class="form-control rounded-lg mr-sm-2 w-4/6 m-auto mr-6" type="search"
             placeholder="Búsqueda" aria-label="Search">
-        <select class="rounded-lg mr-6" wire:model='anho' name="" id="">
-            <option selected value="">Tipo</option>
-            <option class="font-bold" value="MANTENIMIENTO">MANTENIMIENTO</option>
-            <option class="font-bold" value="MEDICION">MEDICION</option>
-            <option class="font-bold" value="PROMOCION">PROMOCION</option>
-        </select>
         <select class="rounded-lg mr-6" wire:model='mes' name="" id="">
-            <option selected value="">Meses</option>
+            <option selected value="">Mes</option>
             @foreach ($mes as $item)
                 <option selected value="{{ $loop->iteration }}">{{ $item }}</option>
             @endforeach
@@ -31,8 +25,8 @@
 
     <table class="table-auto rounded-t-lg m-5 w-full mx-auto bg-gray-200 text-gray-800">
         <tr class="text-center border-b-2 border-gray-300">
-            <th class="w-4/6 px-4 py-3">Comision</th>
-            <th class="px-4 py-3">Tipo</th>
+            <th class="w-4/6 px-4 py-3">Comisión</th>
+            <th class="px-4 py-3">Actividades Realizadas</th>
             <th class="px-4 py-3">Estado</th>
         </tr>
         @forelse ($commissions as $item)
@@ -42,12 +36,12 @@
                         {{ $item->name }}
                     </a>
                 </td>
-                <td class="px-4 py-3">
-                    <span class="text-sm text-gray-900 block uppercase">
-                        {{ $item->tipo }}
-                    </span>
+                <td class="px-4 py-3 text-center ">
+                    @foreach ($item->reports as $report)
+                    {{$report->activities->count()}} Actividades
+                    @endforeach
                 </td>
-                <td class="px-4 py-3">
+                <td class="px-4 py-3 text-center">
                     @if ($item->estado === 'CONFIRMADA' || $item->estado === 'REALIZADA')
                         <span class="text-green-600 font-bold">{{ $item->estado }}</span>
                     @else

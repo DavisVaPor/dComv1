@@ -146,11 +146,7 @@
     {{-- Modal de Añadir --}}
     <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
-            @if (isset($modalAdd))
-                <h1 class="font-bold text-gray-500">Editar Comision de Servicio</h1>
-            @else
-                <h1 class="font-bold text-gray-500">Crear Comision de Servicio</h1>
-            @endif
+            <h1 class="font-bold text-gray-500 uppercase"> Registro de Comision de Servicio</h1>
         </x-slot>
 
         <x-slot name="content">

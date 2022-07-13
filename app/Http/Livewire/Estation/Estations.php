@@ -12,6 +12,7 @@ class Estations extends Component
     use WithPagination;
     public $estation;
     public $provincia;
+    public $paginate = 15;
     public $estado;
     public $provinciaSearch;
     public $distritoSearch;
@@ -28,7 +29,6 @@ class Estations extends Component
         'estation.latitud' => 'required',
         'estation.longitud' => 'required',
         'estation.altitud' => 'required',
-        'estation.operativo' => 'required',
         'estation.urlgooglearth' => 'required',
         'estation.tipo' => 'required',
         'estation.terreno' => 'required',
@@ -40,9 +40,9 @@ class Estations extends Component
         $estations = Estation::where('name','LIKE','%'.$this->search.'%')
                     ->where('ubigeo_id','LIKE',$this->provinciaSearch.'%')
                     ->where('tipo','LIKE',$this->tipo.'%')
-                    ->where('operativo','LIKE','%'.$this->estado.'%')
+                    ->where('estado','LIKE','%'.$this->estado.'%')
                     ->orderBy('name','asc')
-                    ->latest('id')->paginate(6);
+                    ->latest('id')->paginate($this->paginate);
         
         $ubigees = Ubigee::where('provincia',$this->provincia )->get();
         return view('livewire.estation.estations',[
@@ -67,7 +67,6 @@ class Estations extends Component
                 'latitud' => $this->estation['latitud'],
                 'longitud' => $this->estation['longitud'],
                 'altitud' => $this->estation['altitud'],
-                'operativo' => $this->estation['operativo'],
                 'urlgooglearth' => $this->estation['urlgooglearth'],
                 'tipo' => $this->estation['tipo'],
                 'terreno' => $this->estation['terreno'],

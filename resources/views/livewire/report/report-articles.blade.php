@@ -147,24 +147,25 @@
                 <div class="col-span-6 sm:col-span-4 bg-gray-50 p-2 border rounded-xl">
                     <div class="flex justify-between items-center">
                         <div>
-                            <x-jet-label class="text-base font-bold border-gray-200 mt-2" for="articulo.tipo"
+                            <x-jet-label class="text-base font-bold border-gray-200 mt-2" for="tipo"
                                 value="{{ __('Tipo') }}" />
-                            <select class="rounded-xl" name="tipo" id="tipo" wire:model.defer='articulo.tipo'>
+                            <select class="rounded-xl" name="tipo" id="tipo" wire:model.defer='tipo'>
+                                <option value="">Servicio</option>
                                 <option value="DIAGNOSTICO">DIAGNOSTICO</option>
                                 <option value="PREVENTIVO">PREVENTIVO</option>
                                 <option value="CORRECTIVO">CORRECTIVO</option>
                             </select>
-                            <x-jet-input-error for="articulo.tipo" class="mt-2" />
+                            <x-jet-input-error for="tipo" class="mt-2" />
                         </div>
                         <div>
-                            <x-jet-label class="text-base font-bold border-gray-200 mt-2" for="article.estado"
+                            <x-jet-label class="text-base font-bold border-gray-200 mt-2" for="estado"
                                 value="{{ __('Estado') }}" />
-                            <select class="rounded-xl" name="tipo" id="tipo" wire:model.defer='articulo.estado'>
+                            <select class="rounded-xl" name="estado" id="estado" wire:model.defer='estado'>
                                 <option value="BUENO">BUENO</option>
                                 <option value="REGULAR">REGULAR</option>
                                 <option value="MALO">MALO</option>
                             </select>
-                            <x-jet-input-error for="articulo.estado" class="mt-2" />
+                            <x-jet-input-error for="estado" class="mt-2" />
                         </div>
                         <div>
                             <x-jet-label class="text-base font-bold border-gray-200" for="article.estado"

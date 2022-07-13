@@ -124,10 +124,17 @@
     {{-- Modal de Añadir --}}
     <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
-            <h1 class="font-bold uppercase">Crear Informe</h1>
+            
+            <div class="flex justify-between items-center">
+                <h1 class="font-bold uppercase underline">Registrar Informe</h1>
+                <div class="col-span-6 sm:col-span-4 mt-2 flex">
+                    <input type="date" name="" value="{{date('Y-m-d')}}" id="" class="rounded-xl block font-bold">
+                </div>
+            </div>
         </x-slot>
 
         <x-slot name="content">
+            
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label class="text-base font-bold border-gray-200" for="name"
                     value="{{ __('Asunto del Informe') }}" />
@@ -137,37 +144,23 @@
                 <x-jet-input-error for="report.asunto" class="mt-2" />
             </div>
 
-            <div class="flex justify-between">
-
-                <div class="col-span-6 sm:col-span-4 mt-2">
-                    <x-jet-label class="text-base font-bold border-gray-200" for="fecha" value="{{ __('Fecha') }}" />
-                    <x-jet-input id="fechaCreacion" type="date" class="mt-1 rounded-xl block font-semibold"
-                        wire:model.defer='report.fechaCreacion'/>
-                    <x-jet-input-error for="report.fechaCreacion" class="mt-2" />
-                </div>
-            </div>
-            <div class="col-span-6 sm:col-span-4 mt-2">
-                <x-jet-label class="text-base font-bold border-gray-200" for="name"
-                    value="{{ __('Comision de Servicio Confirmadas') }}" />
-                <table class="rounded-t-lg m-5 w-11/12 mx-auto bg-gray-200 text-gray-800">
+            
+            <div class="col-span-6 sm:col-span-4" >
+                <table class="rounded-t-lg m-5 mx-auto text-gray-800 border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative">
                     <tr class="text-left border-b-2 border-gray-300">
-                        <th colspan="2" class="font-bold px-4 py-3">Asuntos</th>
+                        <th colspan="2" class="font-bold px-4 py-3">COMISIONES CONFIRMADAS</th>
                     </tr>
-                    @foreach ($users as $item)
-                        @foreach ($item->commissions as $commission)
-                            @if ($commission->estado === 'CONFIRMADA' )
-                            <tr class="bg-gray-100 border-b border-gray-200">
-                                <td class="px-4 py-3">
-                                    <input class="rounded-2xl" wire:model='selectedCommission'
-                                        value="{{ $commission->id}}" type="radio">
-                                </td>
-                                <td class="px-4 py-3">{{ $commission->name }}</td>
-                            </tr>
-                            @endif
-                        @endforeach    
+                    @foreach ($commissions as $item)
+                        <tr class="bg-gray-100 border-b border-gray-200">
+                            <td class="px-2">
+                                <input class="rounded-2xl" wire:model='selectedCommission'
+                                    value="{{ $item->id}}" type="radio">
+                            </td>
+                            <td class="px-2">#{{ $item->id }}-{{ $item->name }}</td>
+                        </tr>
                     @endforeach
                 </table>
-                {{ $users->links() }}
+                {{ $commissions->links() }}
                 <x-jet-input-error for="selectedCommission" class="mt-2" />
             </div>
         </x-slot>

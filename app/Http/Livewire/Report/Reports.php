@@ -20,27 +20,31 @@ class Reports extends Component
     public $tipo;
     public $selectedCommission;
     public $estado;
+    public $fechactual;
 
     protected $rules = [
         'report.asunto' => 'required|min:20',
         'selectedCommission' => 'required',
-        'report.fechaCreacion' => 'required'
     ];
 
     public function render()
     {
         $reports = Report::where('user_id',Auth::user()->id)
-                ->where('asunto','LIKE','%'.$this->search.'%')
-                ->where('tipo','LIKE','%'.$this->tipo)
-                ->where('estado','LIKE','%'.$this->estado.'%')
-                ->latest('id')->paginate(10);
-        $users = User::with('commissions')
-                    ->where('id',Auth::user()->id)
-                    ->paginate(4);
+                    ->where('asunto','LIKE','%'.$this->search.'%')
+                    ->where('tipo','LIKE','%'.$this->tipo)
+                    ->where('estado','LIKE','%'.$this->estado.'%')
+                    ->latest('id')->paginate(10);
+
+        $this->fechactual = date('Y-m-d');
+        $commissions = User::find(Auth::user()->id)
+                    ->commissions()
+                    ->where('estado','CONFIRMADA')
+                    ->orderBy('id','desc')
+                    ->paginate(10);
 
         return view('livewire.report.reports',[
             'reports' => $reports,
-            'users' => $users,
+            'commissions' => $commissions,
         ]);
     }
 
@@ -63,7 +67,7 @@ class Reports extends Component
             Report::create([
                 'asunto' => Str::upper($this->report['asunto']),
                 'tipo' => $tipo,
-                'fechaCreacion' => $this->report['fechaCreacion'],
+                'fechaCreacion' => $this->fechactual,
                 'user_id' => Auth::user()->id,
                 'estado' => 'BORRADOR',
                 'commission_id' => $this->selectedCommission,

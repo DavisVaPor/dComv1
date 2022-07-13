@@ -8,7 +8,6 @@ use App\Models\System;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Illuminate\Http\Request;
 
 class ReportArticles extends Component
 {   use WithPagination;
@@ -20,10 +19,12 @@ class ReportArticles extends Component
     public $articulo;
     public $estadoOld = '';
     public $informe;
+    public $estado;
+    public $tipo;
  
     protected $rules = [
-        'articulo.estado' => 'required',
-        'articulo.tipo' => 'required',
+        'estado' => 'required',
+        'tipo' => 'required',
         'obbArticle' => 'string',
     ]; 
 
@@ -53,33 +54,33 @@ class ReportArticles extends Component
     public function addModal($art)
     {
         $this->articulo = Article::findOrFail($art);
+        $this->estado =  $this->articulo->estado;
         $this->estadoOld = ''. $this->articulo->estado;
         $this->modalEdit = true;
     }
 
     public function updateArticle(){
         $this->validate();
-        if (isset($this->articulo->id)) {
-            $this->articulo->save();
-        }
         if (!empty($this->obbArticle)) {
             if ($this->estadoOld === $this->articulo->estado ) {
-                $cambios = ''.$this->articulo->estado;
+                $cambios = ''.$this->estado;
             } else {
-                $cambios = $this->estadoOld. ' X ' . $this->articulo->estado;
+                $cambios = $this->estadoOld. ' X ' . $this->estado;
             }
             $this->articulo->manintenance()->create([
                 'descripcion' => $this->obbArticle,
                 'cambios' => $cambios,  
-                'tipo' => $this->article['tipo'],  
+                'tipo' => $this->articulo['tipo'],  
                 'user_id' => Auth::user()->id,
                 'report_id' => $this->informe->id,
              ]);
+             $this->articulo->estado = $this->estado;
+             $this->articulo->save();
         }
         $this->obbArticle = '';
         $this->estadoOld = '';
         $this->modalEdit = false;
         $this->emit('ArtEdit');
-        $this->reset('articulo');
+        $this->reset('articulo','tipo','estado');
     }
 }

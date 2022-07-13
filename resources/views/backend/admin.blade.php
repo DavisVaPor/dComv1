@@ -63,7 +63,6 @@
                                     {{ Auth::user()->apellido }}
                                 </p>
                                 <p class="font-bold text-xs text-gray-400 text-center ">{{ Auth::user()->name }}</p>
-                                <p class="font-bold text-xs text-blue-400 text-center ">(Online)</p>
                             </div>
                         </div>
                     </div>
@@ -278,7 +277,7 @@
 
             <main class="">
 
-                <div class="grid mb-4 pb-10 px-8 mx-4 h-full rounded-3xl bg-gray-100 border-4 border-green-400">
+                <div class="grid mb-2 pb-6 px-8 mx-4 h-full rounded-3xl bg-gray-100 border-4 border-green-400">
 
                     @yield('main')
 
