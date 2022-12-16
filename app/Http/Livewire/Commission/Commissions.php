@@ -51,22 +51,32 @@ class Commissions extends Component
 
     public function saveCommission()
     {
-         $this->validate();
+        $this->validate();
          
         $day = strtotime($this->fechafin) - strtotime($this->fechainicio);
         $years = floor($day / (365 * 60 * 60 * 24));
         $months = floor(($day - $years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
         $day = floor(($day - $years * 365 * 60 * 60 * 24 - $months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
 
+        $ultimo = Commission::latest()->first();
+
+        if($ultimo->anho == date('Y')){
+            $num = $ultimo->numero;
+        }else {
+            $num = 0;
+        }
+        
         $this->periodo = $day;
        
         $mesconver = Str::between($this->fechainicio, '-', '-');
+        
         if ($this->fechafin == $this->fechainicio){
             $this->periodo = 1;
         }
         if (!isset($this->fechafin)) {
             $this->fechafin = NULL;
         }
+
         if (isset($this->commission->id)) {
             $this->commission->name = Str::upper($this->commission->name);
             $this->commission->tipo = $this->tipo;
@@ -80,6 +90,7 @@ class Commissions extends Component
         } else {
             $comi  = Commission::create([
                 'name' => Str::upper($this->commission['name']),
+                'numero' => $num + 1,
                 'tipo' => $this->tipo,
                 'fechainicio' => $this->fechainicio,
                 'fechafin' => $this->fechafin,

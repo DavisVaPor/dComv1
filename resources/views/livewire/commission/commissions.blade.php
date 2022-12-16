@@ -152,7 +152,7 @@
         <x-slot name="content">
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label class="text-base font-bold border-gray-200 uppercase" for="name"
-                    value="{{ __('Comision de Servicio') }}" />
+                    value="{{ __('Asunto') }}" />
                 <textarea wire:model.defer='commission.name' name="commission.name"
                     class="resize-none w-full h-1/6 border rounded-md border-gray-300" id=""></textarea>
                 <x-jet-input-error for="commission.name" class="mt-2" />

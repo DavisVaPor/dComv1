@@ -4,7 +4,7 @@
             placeholder="Búsqueda" aria-label="Search">
         <div class="">
             <select class="rounded-lg mx-2" wire:model='estation' name="" id="">
-                <option value="">Todos</option>
+                <option value="{{$estation}}">Todos</option>
                 @foreach ($estations as $estacion)
                     <option value="{{ $estacion->id }}">{{ $estacion->name }}</option>
                 @endforeach

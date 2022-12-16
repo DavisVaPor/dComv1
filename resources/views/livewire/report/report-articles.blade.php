@@ -83,6 +83,8 @@
         {{ $articles->links() }}
     @endempty
 
+
+    {{-- //Se debe de pasar a otro archivo --}}
     @isset($informe->maintenances)
     <h2 class="mb-2 font-bold text-lg text-blue-500 uppercase"> Reparaciones a Equipos Realizadas</h2>
     <div class=" text-gray-500">
@@ -103,22 +105,22 @@
                         </path>
                     </svg>
                 </th>
-            </tr>
+            </tr> 
+            @forelse($informe->maintenances as $item)
             <tr class="bg-gray-100 border-b border-gray-200">
-                @forelse($informe->maintenances as $item)
                     <td class="px-4 py-2 mb-auto font-bold text-center">{{ $loop->iteration }}</td>
                     <td class="py-2 w-6/12 text-left">{{ $item->descripcion }}</td>
                     <td class="py-2 text-center">{{ $item->tipo }}</td>
                     <td class="py-2">{{ $item->cambios }}</td>
                     <td class="py-2">{{ Str::limit($item->created_at, 9, '') }}</td>
                     <td class="py-2"></td>
-                @empty
+            </tr>
+            @empty
                 <tr class="bg-gray-100 border-b border-gray-200">
                     <td colspan="5" class="px-4 mb-auto font-bold text-center mt-2"> No registro de
                         cambios</td>
                 </tr>
-                @endforelse
-            </tr>
+            @endforelse
         </table>
     </div>
     @endisset

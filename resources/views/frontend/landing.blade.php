@@ -183,45 +183,62 @@
 
 <!--====== PRICING PART START ======-->
 
-<section id="institucion" class="bg-gray-100 pricing-area py-20">
+<section id="institucion" class="bg-gray-100 pricing-area py-10">
     <div class="container">
         <div class="justify-center row">
             <div class="w-full mx-4 lg:w-1/2">
-                <div class="pb-10 text-center section-title">
+                <div class="pb-6 text-center section-title">
                     <h3 class="title text-blue-600">Información Institucional</h3>
                     <p class="text">Conoce más a la Dirección de Comunicaciones de Amazonas</p>
                 </div> <!-- section title -->
             </div>
         </div> <!-- row -->
         <div class="justify-center row">
-            <div class="w-full sm:w-3/4 md:w-3/4 lg:w-1/3">
+            <div class="w-full mx-60">
+                <div class="">
+                    <div class="mb-6 pricing-list">
+                        <ul>
+                            <li class="text-center shadow-lg"></i> Órgano de línea de la Dirección Regional de Transportes y Comunicaciones, es el ente que promueve, ejecuta,
+                                dirige y controla los planes y políticas en materia de comunicaciones en la región Amazonas, de conformidad con las políticas nacionales
+                                y los planes sectoriales.
+                            </li>
+                        </ul>
+                    </div>
+                </div> 
+            </div>
+
+            <div class="w-full sm:w-3/4 md:w-3/4 lg:w-1/2">
                 <div class="single-pricing">
                     <div class="text-center pricing-header">
                         <h5 class="sub-title">Funciones</h5>
                     </div>
-                    <div class="mb-8 pricing-list">
+                    <div class="mb-20 pricing-list">
                         <ul>
                             <li><i class="lni lni-checkmark-circle"></i> Formular y administrar los planes y políticas de telecomunicaciones de la región</li>
+                            <li><i class="lni lni-checkmark-circle"></i> Promoción y Regulación de los servicios de Telecomunicaciones</li>
+                            <li><i class="lni lni-checkmark-circle"></i> Control y Supervisión del espectro radioeléctrico</li>
+                            <li><i class="lni lni-checkmark-circle"></i> Mediciones de radiaciones No Ionizantes a las antenas de los servicios de la Telecomunicación</li>
                             <li><i class="lni lni-checkmark-circle"></i> Promover y ejecutar los proyectos regionales de telecomunicaciones</li>
                             <li><i class="lni lni-checkmark-circle"></i> Fomentar y fortalecer el desarrollo de medios de comunicaciones regional.</li>
-                            <li><i class="lni lni-checkmark-circle"></i> Realizar mantenimientos de las estaciones de TV y FM instaladas en la region Amazonas</li>
+                            <li><i class="lni lni-checkmark-circle"></i> Mantenimiento de la infraestructura de telecomunicación rurales en la Region Amazonas</li>
+                            <li><i class="lni lni-checkmark-circle"></i> Difusión de la normativa vigente en materia de telecomunicaciones</li>
                         </ul>
                     </div>
                     {{-- <div class="text-center pricing-btn">
                         <a class="main-btn" href="javascript:void(0)">Ver mas</a>
                     </div> --}}
                     <div class="bottom-shape">
-                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 112.35"><defs><style>.color-1{fill:#2bdbdc;isolation:isolate;}.cls-1{opacity:0.1;}.cls-2{opacity:0.2;}.cls-3{opacity:0.4;}.cls-4{opacity:0.6;}</style></defs><title>bottom-part1</title><g id="bottom-part"><g id="Group_747" data-name="Group 747"><path id="Path_294" data-name="Path 294" class="cls-1 color-1" d="M0,24.21c120-55.74,214.32,2.57,267,0S349.18,7.4,349.18,7.4V82.35H0Z" transform="translate(0 0)"/><path id="Path_297" data-name="Path 297" class="cls-2 color-1" d="M350,34.21c-120-55.74-214.32,2.57-267,0S.82,17.4.82,17.4V92.35H350Z" transform="translate(0 0)"/><path id="Path_296" data-name="Path 296" class="cls-3 color-1" d="M0,44.21c120-55.74,214.32,2.57,267,0S349.18,27.4,349.18,27.4v74.95H0Z" transform="translate(0 0)"/><path id="Path_295" data-name="Path 295" class="cls-4 color-1" d="M349.17,54.21c-120-55.74-214.32,2.57-267,0S0,37.4,0,37.4v74.95H349.17Z" transform="translate(0 0)"/></g></g></svg>
+                        <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 112.35"><defs><style>.color-1{fill:#2bdbdc;isolation:isolate;}.cls-1{opacity:0.1;}.cls-2{opacity:0.2;}.cls-3{opacity:0.4;}.cls-4{opacity:0.6;}</style></defs><g id="bottom-part"><g id="Group_747" data-name="Group 747"><path id="Path_294" data-name="Path 294" class="cls-1 color-1" d="M0,24.21c120-55.74,214.32,2.57,267,0S349.18,7.4,349.18,7.4V82.35H0Z" transform="translate(0 0)"/><path id="Path_297" data-name="Path 297" class="cls-2 color-1" d="M350,34.21c-120-55.74-214.32,2.57-267,0S.82,17.4.82,17.4V92.35H350Z" transform="translate(0 0)"/><path id="Path_296" data-name="Path 296" class="cls-3 color-1" d="M0,44.21c120-55.74,214.32,2.57,267,0S349.18,27.4,349.18,27.4v74.95H0Z" transform="translate(0 0)"/><path id="Path_295" data-name="Path 295" class="cls-4 color-1" d="M349.17,54.21c-120-55.74-214.32,2.57-267,0S0,37.4,0,37.4v74.95H349.17Z" transform="translate(0 0)"/></g></g></svg>
                     </div>
                 </div> <!-- single pricing -->
             </div>
 
-            <div class="w-full sm:w-3/4 md:w-3/4 lg:w-1/3">
+            <div class="w-full sm:w-3/4 md:w-3/4 lg:w-1/2">
                 <div class="single-pricing">
                     <div class="text-center pricing-header">
                         <h5 class="sub-title">Objetivos</h5>
                     </div>
-                    <div class="mb-8 pricing-list">
+                    <div class="mb-72 pricing-list">
                         <ul>
                             <li><i class="lni lni-checkmark-circle"></i> Promover, ejecutar, y evaluar con eficiencia las actividades de mantenimiento y supervisión de la infraestructura de telecomunicaciones</li>                         
                             <li><i class="lni lni-checkmark-circle"></i> Generar valor agregado para las diversas actividades económicas y sociales de la región Amazonas</li>
@@ -302,7 +319,4 @@
     </div> <!-- container -->
 </section>
 
-<!--====== CONTACT PART ENDS ======-->
-
-<!--====== FOOTER PART START ======-->
 @endsection

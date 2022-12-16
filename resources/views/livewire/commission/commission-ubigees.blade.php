@@ -20,17 +20,15 @@
         @isset($commission->ubigee)
         <table class="table-auto rounded-t-lg m-5 w-5/6 mx-auto bg-gray-200 text-gray-800">
             <tr class="text-left border-b-2 border-gray-300">
-                <th class="px-4 py-3 text-center">Departamento</th>
                 <th class="px-4 py-3 text-center">Provincia</th>
                 <th class="px-4 py-3 text-center">Distrito</th>
                 <th class="px-4 py-3"></th>
             </tr>
             @forelse ($ubigee as $item)
                 <tr class="bg-gray-100 border-b border-gray-200">
-                    <td class="px-4 py-3 text-center">{{ $item->departamento }}</td>
-                    <td class="px-4 py-3 text-center">{{ $item->provincia }}</td>
-                    <td class="px-4 py-3 text-center">{{ $item->distrito }}</td>
-                    <td class="px-4 py-3 text-center">
+                    <td class="px-4 py-2 text-center">{{ $item->provincia }}</td>
+                    <td class="px-4 py-2 text-center">{{ $item->distrito }}</td>
+                    <td class="px-4 py-2 text-center">
                         @if ($commission->estado === 'CREADA')
                         <div class="text-center">
                             <button wire:click="mostrarDel({{ $item->id }})"
@@ -51,7 +49,6 @@
             </tr>
             @endforelse
         </table>
-        {{ $ubigee->links() }}
         @endisset
 
         @empty($commission->ubigee)

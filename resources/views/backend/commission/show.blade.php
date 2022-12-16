@@ -10,7 +10,8 @@
         </div>
     </div>
     <div class="text-center items-center text-xl mt-6 w-full font-extrabold text-green-600 uppercase">
-        <h1>{{ $commission->name }}</h1>
+        <h1>DCOM-{{ $commission->numero }} - {{ $commission->anho }}</h1>
+        <h3>{{ $commission->name }}</h1>
     </div>
     <div class="flex justify-between mt-4">
         <div class="mx-4">

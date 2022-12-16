@@ -37,14 +37,14 @@
             <p>Hora : {{ date('h:i:s') }}</p>
         </div>
         <header>
-            <p class="text-base font-bold">Gobierno Regional Amazonas</p>
-            <p class="text-sm font-bold">Dirección Regional de Transportes y Comunicaciones</p>
-            <p class="text-sm font-bold">Dirección de Comunicaciones</p>
+            <div>
+                <img class="w-64" src="images/DRTC.png" alt="">
+            </div>
         </header>
 
     </div>
     <div style="float: right; font-size: 12px;">
-        <p>reg. C{{ $commission->id }}-{{ $commission->anho }}</p> 
+        <p>reg. DCOM-{{ $commission->numero }}-{{ $commission->anho }}</p> 
     </div>
        
     <p class="text-center text-2xl font-bold mt-6">
@@ -150,7 +150,8 @@
         </div>
     </div>
     <footer class="">
-        <p class="text-xs"> Direccion Regional de Transportes y Comunicaciones Amazonas &copy; {{ date('Y') }}</p>
+        <p class="text-xs"> Direccion de Comunicaciones Amazonas &copy; {{ date('Y') }}</p>
+        <p class="text-xs"> Direccion Regional de Transportes y Comunicaciones Amazonas</p>
     </footer>
 </body>
 

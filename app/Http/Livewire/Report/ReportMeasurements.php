@@ -7,6 +7,7 @@ use App\Models\Report;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use Illuminate\Support\Str;
 
 class ReportMeasurements extends Component
 {
@@ -68,10 +69,10 @@ class ReportMeasurements extends Component
             $imagen = $this->imagen->store('RNI'.'/'.$this->report->id);
 
             Measurement::create([
-                'ubicacion' => $this->measurement['ubicacion'],
+                'ubicacion' => Str::upper($this->measurement['ubicacion']),
                 'latitud' => $this->latitud,
                 'longitud' => $this->longitud,
-                'maps' => 'https://www.google.com/maps/place/'.$this->latitud.'+'.$this->longitud,
+                'maps' => 'https://www.google.com/maps/place/'.$this->latitud.' '.$this->longitud,
                 'rni' => $this->measurement['rni'],
                 'fecha' => $this->measurement['fecha'],
                 'imagen' => $imagen,

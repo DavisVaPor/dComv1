@@ -35,7 +35,7 @@ class CommissionUbigees extends Component
 
         $ubigee = Commission::find($this->commission->id)
                     ->ubigee()
-                    ->paginate(3);
+                    ->get();
         
         return view('livewire.commission.commission-ubigees',[
             'ubigees' => $ubigees,

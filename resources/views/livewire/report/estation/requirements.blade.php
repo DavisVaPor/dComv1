@@ -111,7 +111,7 @@
             <x-jet-input-error for="requirement.cantidad" class="mt-2" />
 
             <x-jet-label class="text-base font-bold border-gray-200" for="requirement.descripcion"
-                value="{{ __('Descripcion') }}" />
+                value="{{ __('Especificaciones Tecnicas del Equipo') }}" />
             <textarea id="descripcion" wire:model.defer='requirement.descripcion'
                 class="resize-none w-full h-1/4 border rounded-md"></textarea>
             <x-jet-input-error for="requirement.descripcion" class="mt-2" />

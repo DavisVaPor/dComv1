@@ -50,7 +50,8 @@ class Requirements extends Component
             ->paginate(25);
 
         $requirements =  Requirement::where('report_id', $this->informe->id)
-            ->paginate(5);
+                        ->where('estation_id', $this->estation->id) 
+                        ->paginate(5);
 
         return view('livewire.report.estation.requirements', [
             'equipos' => $equipos,
@@ -75,6 +76,8 @@ class Requirements extends Component
     {
         $this->equiponame = Catalog::findorFail($this->equipoSelect);
         $this->submodalAdd = false;
+
+
     }
 
     public function registrarRq()

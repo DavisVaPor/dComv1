@@ -13,7 +13,8 @@ class Articles extends Component
     use WithPagination;
     public $search = '';
     public $searchserie = '';
-    public $estation = '';
+    public $estation;
+    public $all = '*';
     public $modalAdd = false;
     public $article;
 
@@ -35,7 +36,7 @@ class Articles extends Component
     {
         $articles = Article::where('denominacion','LIKE','%'.$this->search.'%')
                     ->where('nserie','LIKE','%'.$this->searchserie.'%')
-                    ->where('estation_id','LIKE','%'.$this->estation.'%')
+                    ->where('estation_id','LIKE',$this->estation)
                     ->latest('denominacion')
                     ->paginate(13);
 

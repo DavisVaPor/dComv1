@@ -14,29 +14,31 @@
             </x-jet-button>
         @endif
     </div>
-    <table class="rounded-t-lg m-5 w-full mx-auto bg-gray-200 text-gray-800">
+    <table class="rounded-t-lg my-2 w-full mx-auto bg-gray-200 text-gray-800">
         <tr class="text-left border-b-2 border-gray-300">
+            <th class="px-2 py-3 text-center">Ubigeo</th>
             <th class="px-2 py-3 text-center">Distrito</th>
             <th class="px-2 py-3 text-center">Ubicación</th>
-            <th class="px-2 py-3">Latitud</th>
-            <th class="px-2 py-3">Longitud</th>
-            <th class="px-2 py-3">Radiación</th>
+            <th class="px-2 py-3 text-center">Latitud</th>
+            <th class="px-2 py-3 text-center">Longitud</th>
+            <th class="px-2 py-3 text-center">Radiación</th>
             <th class="px-2 py-3 text-center">Fecha</th>
             @if ($report->estado == 'BORRADOR')
                 <th class="px-2 py-3">Acciones</th>
             @endif
         </tr>
         @forelse ($report->measurements as $measurement)
-            <tr class="bg-gray-100 border-b border-gray-200">
-                <td class="px-2">{{ $measurement->ubigee->id }}:{{ $measurement->ubigee->distrito }}</td>
-                <td class="px-2">
+            <tr class="bg-gray-100 border-b border-gray-200 text-sm">
+                <td class="px-2">{{ $measurement->ubigee->id }}</td>
+                <td class="px-2">{{ $measurement->ubigee->distrito }}</td>
+                <td class="px-2 hover:text-blue-700 hover:font-extrabold">
                     <a target="_blank" href="{{ $measurement->maps }}">
                         {{ $measurement->ubicacion }}
                     </a>
                 </td>
-                <td class="px-2 text-center">{{ $measurement->latitud }}</td>
-                <td class="px-2 text-center">{{ $measurement->longitud }}</td>
-                <td class="px-2 text-center font-bold">{{ $measurement->rni }} %</td>
+                <td class="px-2 text-center text-sm w-28">{{ $measurement->latitud }}</td>
+                <td class="px-2 text-center text-sm w-28">{{ $measurement->longitud }}</td>
+                <td class="px-2 text-center text-green-600  font-bold">{{ $measurement->rni }} %</td>
                 <td class="text-sm px-2 w-24">{{ $measurement->fecha }}</td>
                 @if ($report->estado == 'BORRADOR')
                     <td class="px-2">
@@ -74,8 +76,8 @@
                 @endif
             </tr>
         @empty
-            <tr class="bg-gray-100 border-b border-gray-200">
-                <td colspan="6"> No hay registro</td>
+            <tr class="bg-gray-100 border-b border-gray-200 text-center">
+                <td colspan="7" class="py-2"> No hay registro</td>
             </tr>
         @endforelse
     </table>
@@ -102,13 +104,13 @@
                 <x-jet-input-error for="ubigeo" class="mt-2" />
 
                 <x-jet-label class="text-base font-bold border-gray-200 mt-2" for="name"
-                    value="{{ __('DIRECCIÓN O REFERENCIA') }}" />
+                    value="{{ __('REFERENCIA DE LA TOMA DE MEDIDA') }}" />
                 <textarea id="name" wire:model.defer='measurement.ubicacion'
                     class="resize-none w-full h-20 border rounded-md"></textarea>
                 <x-jet-input-error for="measurement.ubicacion" class="mt-2" />
 
                 <h1 class="text-base font-bold border-gray-200 text-gray-800 mt-2">COORDENADAS</h1>
-                <div class="flex justify-between">
+                <div class="flex justify-between text-sm">
                     <div>
                         <x-jet-label class="text-base border-gray-200 font-semibold" for="name"
                             value="{{ __('LATITUD') }}" />
@@ -222,16 +224,16 @@
         </x-slot>
     </x-jet-dialog-modal>
 
-    {{-- Modal de Ver Acta --}}
+    {{-- Modal de Ver Evidencia --}}
     <x-jet-dialog-modal wire:model="modalImagen">
         <x-slot name="title">
             <h1 class="uppercase">Evidencia Medicion de RNI</h1>
         </x-slot>
 
         <x-slot name="content">
-            <div class="max-w-2xl mx-auto">
+            <div class="max-w-2xl ">
     
-                <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700">
+                <div class="bg-white m-auto shadow-md border border-gray-200 rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700">
                     <a href="#">
                         <img class="rounded-t-lg" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="">
                     </a>
