@@ -114,6 +114,7 @@
                     <div>
                         <x-jet-label class="text-base border-gray-200 font-semibold" for="name"
                             value="{{ __('LATITUD') }}" />
+                            <p></p>
                         <div class="flex items-center text-xs">
                             <x-jet-input id="Latitud" type="number" class="w-16 mt-1 rounded-xl block"
                                 wire:model='latgra' />
@@ -148,9 +149,6 @@
                         <x-jet-input-error for="lonseg" class="" />
                     </div>
                 </div>
-                <a target="_blank"
-                    href="https://www.google.com/maps/place/{{ $this->latitud }}+{{ $this->longitud }}"> Maps</a>
-
                 <div class="flex justify-between">
                     <div>
                         <x-jet-label class="text-base font-bold border-gray-200 mt-2" for="name"
@@ -174,10 +172,12 @@
                             <path
                                 d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                         </svg>
-                        <input type='file' class="" wire:model='imagen' accept="image/*">
+                        <input type='file' class="" wire:model='measurement.imagen' accept="image/*">
                     </label>
-                    <x-jet-input-error for="imagen" class="mt-2" />
+                    <x-jet-input-error for="measurement.imagen" class="mt-2" />
                 </div>
+      
+                
 
                 <div wire:loading wire:target="imagen" class="bg-green-300 border-l-4 border-red-300 p-4 m-auto"
                     role="alert">
@@ -231,17 +231,27 @@
         </x-slot>
 
         <x-slot name="content">
-            <div class="max-w-2xl ">
+            <div class="w-100 ">
     
-                <div class="bg-white m-auto shadow-md border border-gray-200 rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700">
-                    <a href="#">
+                <div class=" m-auto shadow-md border  rounded-lg max-w-sm bg-gray-800">
+                    <div class="flex justify-end">
+                       
+                    </div>
+                    
+                    <div href="#">
                         <img class="rounded-t-lg" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="">
-                    </a>
+                    </div>
                     <div class="p-5">
-                        <a href="#">
-                            <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-                        </a>
-                        <p class="font-normal text-gray-700 mb-3 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
+                        <p href="#">
+                            <h5 class="text-gray-900 font-bold text-lg tracking-tight mb-2 dark:text-white">Medicion de RNI Colegio San Nicolas</h5>
+                        </p>
+                        <li class="">Medicion</li>
+                        <li class=""></li>
+                        <li class=""></li>
+                        <li class=""></li>
+                        <li class=""></li>
+                        <li class=""></li>
+                        <p class="font-normal text-gray-700 mb-3 dark:text-gray-400"></p>
                     </div>
                 </div>
             </div>

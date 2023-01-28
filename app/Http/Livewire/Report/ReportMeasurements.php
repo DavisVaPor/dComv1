@@ -37,6 +37,7 @@ class ReportMeasurements extends Component
         'ubigeo' => 'required',
         'measurement.rni' => 'required',
         'measurement.fecha' => 'required',
+        'measurement.imagen' => 'required | image',
     ];
 
     protected $listeners = ['measurementAdd' => 'render',
@@ -48,6 +49,7 @@ class ReportMeasurements extends Component
     }
     public function render()
     {
+        
         $this->latitud = $this->latgra.'°'.$this->latmin."'".$this->latseg.'"'.' S';
         $this->longitud = $this->longra.'°'.$this->lonmin."'".$this->lonseg.'"'.' W';
 
@@ -56,7 +58,7 @@ class ReportMeasurements extends Component
 
     public function addModal()
     {
-        $this->reset('measurement','ubigeo','latgra','latmin','latseg','longra','lonmin','lonseg','imagen');
+        $this->reset('measurement','ubigeo','latgra','latmin','latseg','longra','lonmin','lonseg');
         $this->modalAdd = true;
     }
 
@@ -66,7 +68,10 @@ class ReportMeasurements extends Component
         if (isset($this->measurement->id)) {
             $this->measurement->save();
         } else {
-            $imagen = $this->imagen->store('RNI'.'/'.$this->report->id);
+            $lat = $this->latgra.$this->latmin.$this->latseg;
+            $log = $this->longra.$this->lonmin.$this->lonseg;
+
+            $imagen = $this->measurement['imagen']->storeAs('RNI'.'/'.$this->report->id,'UBI'.$lat.$log);
 
             Measurement::create([
                 'ubicacion' => Str::upper($this->measurement['ubicacion']),
@@ -105,6 +110,9 @@ class ReportMeasurements extends Component
     public function edit(Measurement $measurement)
     {
         $this->measurement = $measurement;
+        $this->latitud = $this->latgra.'°'.$this->latmin."'".$this->latseg.'"'.' S';
+        $this->longitud = $this->longra.'°'.$this->lonmin."'".$this->lonseg.'"'.' W';
+        $this->ubigeo = $this->measurement->ubigee->id;
         $this->modalAdd = true;
     }
     public function openModalImage()
