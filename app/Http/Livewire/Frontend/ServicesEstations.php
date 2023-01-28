@@ -16,6 +16,10 @@ class ServicesEstations extends Component
     public $distritoSearch;
     public $tipo;
     public $ubigeo;
+    public $estado;
+    public $sistema;
+
+    
 
     public $search = '';
     public function render()
@@ -23,6 +27,8 @@ class ServicesEstations extends Component
         $estations = Estation::where('name','LIKE','%'.$this->search.'%')
                     ->where('ubigeo_id','LIKE',$this->provinciaSearch.'%')
                     ->where('tipo','LIKE',$this->tipo.'%')
+                    ->where('estado','LIKE',$this->estado.'%')
+                    ->where('sistema','LIKE',$this->sistema.'%')
                     ->orderBy('name','asc')
                     ->latest('id')->paginate(12);
 

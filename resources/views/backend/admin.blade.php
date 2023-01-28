@@ -70,7 +70,7 @@
                         <ul class="leading-10 ml-2">
                             <p class="ml-2 border-green-500 border-b-2 mb-1 text-sm text-gray-50 opacity-80">Operaciones
                             </p>
-                            <li class="relative px-1 ">
+                            <li class="relative px-1">
                                 <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
                                     href="{{ route('comision.index') }}">
                                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="briefcase"
@@ -83,7 +83,7 @@
                                     <span class="ml-4 text-sm">COMISIONES</span>
                                 </a>
                             </li>
-                            <li class="relative px-1 ">
+                            <li class="relative px-1">
                                 <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
                                     href="{{ route('informe.index') }}">
                                     <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="file"
@@ -277,7 +277,7 @@
 
             <main class="">
 
-                <div class="grid mb-2 pb-6 px-8 mx-4 h-full rounded-3xl bg-gray-100 border-4 border-green-400">
+                <div class="grid mb-2 text-sm pb-6 px-8 mx-4 h-full rounded-3xl bg-gray-100 border-4 border-green-400">
 
                     @yield('main')
 

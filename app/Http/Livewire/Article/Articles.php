@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Article;
 
+use App\Http\Livewire\Estation\Estations;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Estation;
@@ -29,6 +30,7 @@ class Articles extends Component
         'article.nserie' => 'required',
         'article.estado' => 'required',
         'article.category_id' => 'required',
+        'article.estacion' => 'required',
     ];
 
 
@@ -41,12 +43,15 @@ class Articles extends Component
                     ->paginate(13);
 
         $estations = Estation::all();
+        $estaciones = Estation::all();
 
         $categories = Category::all();
+
         return view('livewire.article.articles',[
             'articles' => $articles,
             'categories' => $categories,
             'estations' => $estations,
+            'estaciones' => $estaciones,
         ]);
     }
 
@@ -69,10 +74,10 @@ class Articles extends Component
                 'marca' => $this->article['marca'],
                 'modelo' => $this->article['modelo'],
                 'category_id' => $this->article['category_id'],
-                'estation_id' => 1,
                 'color' => $this->article['color'],
                 'nserie' => $this->article['nserie'],
                 'estado' => $this->article['estado'],
+                'estation_id'=> $this->article['estacion_id'],
             ]);
         }
 

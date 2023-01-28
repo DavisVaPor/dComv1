@@ -116,7 +116,7 @@
     <!--====== HEADER PART ENDS ======-->
 
     <!--====== SERVICES PART START ======-->
-    <div class="">
+    <div>
 
         @yield('content')
 
@@ -126,23 +126,23 @@
     <section class="py-8 bg-gray-800 client-logo-area">
         <div class="container">
             <div class="flex justify-center items-center row">
-                <a href="https://www.gob.pe/regionamazonas" target='_blank' class="w-full m-2 md:w-1/4">
+                <a href="https://www.gob.pe/regionamazonas" target='_blank' class="w-48 m-2">
                     <div class="flex justify-center single-client">
                         <img src="images/amazonass.png" alt="Logo">
                     </div> <!-- single client -->
                 </a>
                 
-                <div class="w-full md:w-1/4">
+                <div class="w-48 m-2">
                     <div class="flex justify-center single-client">
                         <img src="images/DRTC.png" alt="Logo">
                     </div> <!-- single client -->
                 </div>
-                <div class="w-full md:w-1/4">
+                <div class="w-48 m-2">
                     <div class="flex justify-center single-client">
-                        <img src="images/LOGO_DIRCOM.PNG" alt="Logo">
+                        <img src="images/LOGO_DIRCOM.png" alt="Logo">
                     </div> <!-- single client -->
                 </div>
-                <a href="https://www.gob.pe/mtc" target='_blank' class="w-full md:w-1/4">
+                <a href="https://www.gob.pe/mtc" target='_blank' class="w-48 m-2">
                     <div class="flex justify-center single-client">
                         <img src="images/mtc.png" alt="Logo">
                     </div> <!-- single client -->
@@ -155,7 +155,7 @@
     <footer id="footer" class="bg-gray-800 footer-area">
     
 
-        <div class="bg-gray-900 footer-copyright">
+        <div class="footer-copyright">
             <div class="container">
                 <div class="row">
                     <div class="w-full">

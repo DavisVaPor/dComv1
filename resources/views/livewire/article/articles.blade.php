@@ -4,7 +4,7 @@
             placeholder="Búsqueda" aria-label="Search">
         <div class="">
             <select class="rounded-lg mx-2" wire:model='estation' name="" id="">
-                <option value="{{$estation}}">Todos</option>
+                <option value="{{ $estation }}">Todos</option>
                 @foreach ($estations as $estacion)
                     <option value="{{ $estacion->id }}">{{ $estacion->name }}</option>
                 @endforeach
@@ -129,70 +129,62 @@
         </x-slot>
 
         <x-slot name="content">
-            <div class="col-span-6 sm:col-span-4">
-                <x-jet-label class="text-base font-bold border-gray-200" for="codPatrimonial"
-                    value="{{ __('Codigo Patrimonial') }}" />
-                <x-jet-input id="name"  type="number" class="mt-1 block w-full font-semibold"
-                    wire:model.defer='article.codPatrimonial' maxlength="999999999999" />
-                <x-jet-input-error for="article.codPatrimonial" class="mt-2" />
+            <div class="flex justify-end items-center col-span-6 sm:col-span-4">
+                <x-jet-label class="text-base mr-2 font-bold border-gray-200" for="codPatrimonial"
+                    value="{{ __('Cod. Patrimonial') }}" />
+                <x-jet-input id="name" type="number" class="text-sm block w-full font-semibold"
+                    wire:model.defer='article.codPatrimonial' />
             </div>
+            <x-jet-input-error for="article.codPatrimonial" class="mt-1" />
 
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label class="text-base font-bold border-gray-200" for="denominacion"
-                    value="{{ __('Denominacion') }}" />
-                <x-jet-input id="name" type="text" class="mt-1 block w-full font-semibold"
+                    value="{{ __('Denominación') }}" />
+                <x-jet-input id="name" type="text" class="text-sm block w-full font-semibold"
                     wire:model.defer='article.denominacion' />
-                <x-jet-input-error for="article.denominacion" class="mt-2" />
+                <x-jet-input-error for="article.denominacion" class="mt-1" />
             </div>
 
-            <div class="flex mt-2 justify-star">
+            <div class="flex mt-2 justify-between">
                 <div class="col-span-6 sm:col-span-4">
-                    <x-jet-label class="text-base font-bold border-gray-200" for="cantidad"
-                        value="{{ __('Cantidad') }}" />
-                    <x-jet-input id="name" type="number" class="mt-1 block w-full font-semibold"
-                        wire:model.defer='article.cantidad' />
-                    <x-jet-input-error for="article.cantidad" class="mt-2" />
-                </div>
-
-                <div class="col-span-6 sm:col-span-4 ml-16">
-                    <x-jet-label class="text-base font-bold border-gray-200" for="marca" value="{{ __('Marca') }}" />
-                    <x-jet-input id="name" type="text" class="mt-1 block w-full font-semibold"
+                    <x-jet-label class="text-base font-bold border-gray-200" for="marca"
+                        value="{{ __('Marca') }}" />
+                    <x-jet-input id="name" type="text" class="text-sm block w-full font-semibold"
                         wire:model.defer='article.marca' />
                     <x-jet-input-error for="article.marca" class="mt-2" />
                 </div>
-            </div>
 
-            <div class="flex justify-star mt-2">
                 <div class="col-span-6 sm:col-span-4">
                     <x-jet-label class="text-base font-bold border-gray-200" for="modelo"
                         value="{{ __('Modelo') }}" />
-                    <x-jet-input id="name" type="text" class="mt-1 block w-full font-semibold"
+                    <x-jet-input id="name" type="text" class="text-sm block w-full font-semibold"
                         wire:model.defer='article.modelo' />
                     <x-jet-input-error for="article.modelo" class="mt-2" />
                 </div>
 
-                <div class="col-span-6 sm:col-span-4 ml-16">
-                    <x-jet-label class="text-base font-bold border-gray-200" for="color" value="{{ __('Color') }}" />
-                    <x-jet-input id="name" type="text" class="mt-1 block w-full font-semibold"
+                <div class="col-span-6 sm:col-span-4">
+                    <x-jet-label class="text-base font-bold border-gray-200" for="color"
+                        value="{{ __('Color') }}" />
+                    <x-jet-input id="name" type="text" class="text-sm block w-full font-semibold"
                         wire:model.defer='article.color' />
                     <x-jet-input-error for="article.color" class="mt-2" />
                 </div>
-            </div>
 
+            </div>
             <div class="flex mt-2">
-                <div class="col-span-6 sm:col-span-4">
+                <div class="w-2/3">
                     <x-jet-label class="text-base font-bold border-gray-200" for="nserie"
                         value="{{ __('Numero de Serie') }}" />
-                    <x-jet-input id="name" type="text" class="mt-1 block w-full font-semibold"
+                    <x-jet-input id="name" type="text" class="text-sm  block w-full font-semibold"
                         wire:model.defer='article.nserie' />
                     <x-jet-input-error for="article.nserie" class="mt-2" />
                 </div>
 
-                <div class="col-span-6 sm:col-span-4 ml-16">
+                <div class="ml-8 w-1/3">
                     <x-jet-label class="text-base font-bold border-gray-200" for="estado"
-                        value="{{ __('Estado del Equipo') }}" />
-                    <select class="rounded-lg mt-1 font-semibold" wire:model.defer='article.estado'>
-                        <option value="">OPCIONES</option>
+                        value="{{ __('Estado') }}" />
+                    <select class="rounded-lg text-sm font-semibold" wire:model.defer='article.estado'>
+                        <option>Estados</option>
                         <option value="BUENO" selected>BUENO</option>
                         <option value="REGULAR">REGULAR</option>
                         <option value="MALO">MALO</option>
@@ -201,10 +193,10 @@
                 </div>
             </div>
 
-            <div class="col-span-6 sm:col-span-4">
+            <div class="mt-2 col-span-6 sm:col-span-4">
                 <x-jet-label class="text-base font-bold border-gray-200" for="category_id"
-                    value="{{ __('Categoria del Equipo') }}" />
-                <select class="rounded-lg text-sm" wire:model='article.category_id'>
+                    value="{{ __('Categoria') }}" />
+                <select class="rounded-lg text-xs" wire:model='article.category_id'>
                     <option value="">Catergorias de Bienes</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -212,6 +204,27 @@
                 </select>
                 <x-jet-input-error for="article.category_id" class="mt-2" />
             </div>
+
+            <div class="mt-2 flex items-center col-span-6 sm:col-span-4">
+                <x-jet-label class="text-base font-bold border-gray-200" for="estacion"
+                    value="{{ __('Ubicacion del Equipo') }}" />
+                <select class="rounded-lg text-sm ml-2" wire:model='article.estacion'>
+                    <option value="">Estaciones</option>
+                    @foreach ($estaciones as $estacion)
+                        <option value="{{ $estacion->id }}">{{ $estacion->name }}</option>
+                    @endforeach
+                </select>
+                <abbr title="Buscar estación">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-800 h-10 w-10" viewBox="0 0 20 20"
+                        fill="currentColor">
+                        <path d="M9 9a2 2 0 114 0 2 2 0 01-4 0z"></path>
+                        <path fill-rule="evenodd"
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a4 4 0 00-3.446 6.032l-2.261 2.26a1 1 0 101.414 1.415l2.261-2.261A4 4 0 1011 5z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </abbr>
+            </div>
+            <x-jet-input-error for="article.estacion" class="mt-2 " />
         </x-slot>
 
         <x-slot name="footer">

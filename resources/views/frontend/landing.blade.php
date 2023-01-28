@@ -90,7 +90,7 @@
         </div> <!-- row -->
     </div> <!-- container -->
     <div class="services-image">
-        <div class="rounded-md bg-blue-600 p-2">
+        <div class="rounded-md p-2 border-2 shadow-sm">
             <div class="w-full">
                 <img class="rounded-md shadow-md" src="images/services.jpg" alt="Services">
             </div>
