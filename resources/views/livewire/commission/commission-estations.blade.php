@@ -79,9 +79,8 @@
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label class="text-base font-bold border-gray-200" for="name"
                     value="{{ __('Busqueda de Estacion') }}" />
-                <div class="flex my-2 ml-10">
-                    <br>
-                    <input wire:model='search' class="form-control m-auto rounded-xl w-5/6" type="search"
+                <div class="flex my-2">
+                    <input wire:model='searchEstation' class="form-control m-auto rounded-xl w-full" type="search"
                         placeholder="Búsqueda" aria-label="Search">
                     <select wire:model='ubigeo' class="rounded-xl ml-2" name="" id="">
                         <option value="">Todas las Provincia</option>
@@ -99,22 +98,22 @@
                     <div class="flex-grow overflow-auto">
                         <table class="rounded-t-lg my-2 w-full mx-auto bg-gray-200 text-gray-800">
                             <tr class="text-left border-b-2 border-gray-300">
-                                <th class="font-bold px-4 py-3"></th>
-                                <th class="font-bold px-4 py-3 text-center">Nombre</th>
-                                <th class="font-bold px-4 py-3 text-center">Provincia</th>
-                                <th class="font-bold px-4 py-3 text-center">Distrito</th>
+                                <th class="font-bold px-2 py-1"></th>
+                                <th class="font-bold px-2 py-1 ">Estacion</th>
+                                <th class="font-bold px-2 py-1 text-center">Provincia</th>
+                                <th class="font-bold px-2 py-1 text-center">Distrito</th>
                             </tr>
                             @foreach ($estations as $estation)
                                 @if (!$commission->estations->contains($estation->id))
                                     @if ($estation->id != '1')
-                                        <tr class="bg-gray-100 border-b border-gray-200 text-sm">
-                                            <td class="px-4 py-3">
+                                        <tr class="bg-gray-100 border-b border-gray-200 text-sm hover:bg-blue-900">
+                                            <td class="px-1">
                                                 <input class="rounded-2xl" wire:model='selectedEstation'
                                                     value="{{ $estation->id }}" type="radio">    
                                             </td>
-                                            <td class="px-4 py-3">{{ $estation->name }}</td>
-                                            <td class="px-4 py-3">{{ $estation->ubigeo->provincia }}</td>
-                                            <td class="px-4 py-3">{{ $estation->ubigeo->distrito }}</td>
+                                            <td class="px-2 py-1">{{ $estation->name }}</td>
+                                            <td class="px-2 py-1">{{ $estation->ubigeo->provincia }}</td>
+                                            <td class="px-2 py-1">{{ $estation->ubigeo->distrito }}</td>
                                         </tr>                        
                                     @endif
                                 @endif

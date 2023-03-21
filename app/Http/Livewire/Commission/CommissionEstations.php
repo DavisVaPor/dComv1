@@ -11,7 +11,7 @@ class CommissionEstations extends Component
 {
     use WithPagination;
     public $commission;
-    public $search = '';
+    public $searchEstation = '';
     public $ubigeo = '';
     public $selectedEstation;
     public $estationes = [];
@@ -26,13 +26,18 @@ class CommissionEstations extends Component
 
     protected $listeners = ['estationAttach' => 'render',
                             'estationDetach' => 'render',];
-                            
+    
+    public function updatingsearchEstation()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
-        $estations = Estation::where('name', 'LIKE', '%'.$this->search.'%' )
+        $estations = Estation::where('name', 'LIKE',$this->searchEstation.'%' )
                     ->where('ubigeo_id','LIKE',$this->ubigeo.'%')
                     ->orderBy('name','asc')
-                    ->paginate(7);
+                    ->paginate(15);
 
         return view(
             'livewire.commission.commission-estations',
@@ -44,7 +49,9 @@ class CommissionEstations extends Component
 
     public function addEstacioCommission()
     {
+        $this->reset('searchEstation');
         $this->modalAdd = true;
+        
     }
 
     public function addEstacion(Estation $estation)
@@ -53,8 +60,6 @@ class CommissionEstations extends Component
         $this->modalAdd = false;
 
         $this->emit('estationAttach');
-
-
     } 
 
     public function delEstacion(Estation $estation)

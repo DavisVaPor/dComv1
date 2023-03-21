@@ -46,7 +46,7 @@
                                 <div>
                                     <div class="mt-3 text-3xl font-bold leading-8">{{$estations->count()}}</div>
 
-                                    <div class="mt-1 text-base text-gray-600">Estaciones CPACC</div>
+                                    <div class="mt-1 text-base text-gray-600">Estaciones VHF - HF</div>
                                 </div>
                             </div>
                         </div>

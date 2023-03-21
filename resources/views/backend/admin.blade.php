@@ -96,6 +96,8 @@
                                     <span class="ml-4 text-sm">INFORMES</span>
                                 </a>
                             </li>
+                            <p class="ml-2 border-green-500 border-b-2 mb-1 text-sm text-gray-50 opacity-80">Actividades Realizadas
+                            </p>
                             <li class="relative px-1 ">
                                 <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
                                     href="#">

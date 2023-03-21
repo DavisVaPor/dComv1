@@ -20,7 +20,7 @@ class ShowCommission extends Component
     protected $listeners = ['commissionPen' => 'reloadpage',
                             'commissionConfi' => 'regresar',
                             'commissionAnu' => 'regresar'];
-    
+
     public function render()
     {
         return view('livewire.commission.show-commission');
@@ -71,8 +71,6 @@ class ShowCommission extends Component
         $this->emit('commissionPen');
 
         $this->modalPen = false;
-
-
     }
 
     public function mostrarAnu()
@@ -91,6 +89,5 @@ class ShowCommission extends Component
         $this->emit('commissionAnu');
 
         $this->modalAnu = true;
-
     }
 }

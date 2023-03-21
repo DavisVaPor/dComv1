@@ -5,6 +5,8 @@ use App\Http\Controllers\EstationController;
 use App\Http\Controllers\InventaryController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\MantenimientController;
+use App\Http\Controllers\MedicionesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,5 +57,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/estacion/PDF/{estation}',
 Route::middleware(['auth:sanctum', 'verified'])->get('/inventario',[InventaryController::class , 'index'] )->name('inventory.index');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/inventario/{article}',[InventaryController::class , 'show'] )->name('article.show');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/mantenimientos',[MantenimientController::class , 'index'] )->name('mantenimient.index');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/mediciones',[MedicionesController::class , 'index'] )->name('mediciones.index');
 
 
