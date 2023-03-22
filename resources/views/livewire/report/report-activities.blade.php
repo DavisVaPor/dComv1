@@ -15,10 +15,8 @@
         @endif
     </div>
 
-    
-
     @if ($estation->activities->isNotEmpty())
-        <table class="rounded-t-lg m-5 w-11/12 mx-auto bg-gray-200 text-gray-800">
+        <table class="rounded-t-lg m-5 w-full mx-auto bg-gray-200 text-gray-800">
             <tr class="text-left border-b-2 border-gray-300">
                 <th class="px-2 text-center">#</th>
                 <th class="px-4 py-3">Descripcion</th>
@@ -38,7 +36,7 @@
             
             @foreach ($estation->activities as $activity)
                 <tr class="bg-gray-100 border-b border-gray-200">
-                    <td class="px-2 font-bold text-center">{{ $loop->iteration }}</td>
+                    <td class="px-2 font-bold text-xs text-center">{{ $loop->iteration }}</td>
                     <td class="px-4 py-3 text-sm">{{ $activity->descripcion }}</td>
                     <td class="px-4 py-3 text-sm text-center">{{ $activity->tipoActivity }}</td>
                     <td class="text-sm text-center w-24">{{ $activity->fechaInicio }}</td>
@@ -46,7 +44,7 @@
                         <td class="px-4 py-3 w-1/12">
                             <div class="flex justify-between">
                                 @livewire('report.activities.images', ['activity' => $activity, 'informe' => $informe], key($activity->id))
-
+                               
                                 <button wire:click="editActivity({{ $activity->id }})"
                                     class="text-blue-500 hover:text-gray-900 cursor-pointer mr-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 m-auto" fill="none"

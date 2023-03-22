@@ -121,13 +121,13 @@
                                 <div x-data="{
                                     openTab: 1,
                                     activeClass: 'text-blue-700 border bg-gray-100 rounded-lg font-bold',
-                                    inactive: 'bg-white inline-block py-2 px-4 font-semibold'
+                                    inactive: 'bg-gray-100 inline-block py-2 px-4 font-semibold'
                                 }">
                                     <ul class="list-reset flex mt-4">
                                         <li @click="openTab = 1" class="mr-1 cursor-pointer">
 
                                             <a :class="openTab === 1 ? activeClass : inactive"
-                                                class="bg-white py-2 px-2 flex items-center ">
+                                                class="bg-gray-100 py-2 px-2 flex items-center ">
                                                 <svg aria-hidden="true" focusable="false" data-prefix="fas"
                                                     data-icon="boxes"
                                                     class="h-6 w-6 svg-inline--fa fa-boxes fa-w-18 mr-2" role="img"
@@ -142,7 +142,7 @@
 
                                         <li @click="openTab = 3" class="mr-1 cursor-pointer">
                                             <a :class="openTab === 3 ? activeClass : inactive"
-                                                class="bg-white py-2 px-2 flex items-center">
+                                                class="bg-gray-100 py-2 px-2 flex items-center">
                                                 <svg aria-hidden="true" focusable="false" data-prefix="fas"
                                                     data-icon="tools" class="h-4 w-4 svg-inline--fa fa-eye fa-w-18 mr-2"
                                                     role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -156,7 +156,7 @@
 
                                         <li @click="openTab = 4" class="mr-1 cursor-pointer">
                                             <a :class="openTab === 4 ? activeClass : inactive"
-                                                class="bg-white py-2 px-2 flex items-center">
+                                                class="bg-gray-100 py-2 px-2 flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
                                                     class="h-4 w-4 svg-inline--fa fa-eye fa-w-18 mr-2">
                                                     <path fill="currentColor"
@@ -168,7 +168,7 @@
 
                                         <li @click="openTab = 5" class="mr-1 cursor-pointer">
                                             <a :class="openTab === 5 ? activeClass : inactive"
-                                                class="bg-white py-2 px-2 flex items-center">
+                                                class="bg-gray-100 py-2 px-2 flex items-center">
                                                 <svg aria-hidden="true" focusable="false" data-prefix="fas"
                                                     data-icon="eye" class="h-4 w-4 svg-inline--fa fa-eye fa-w-18 mr-2"
                                                     role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -182,7 +182,7 @@
 
                                         <li @click="openTab = 6" class="mr-1 cursor-pointer">
                                             <a :class="openTab === 6 ? activeClass : inactive"
-                                                class="bg-white py-2 px-2 flex items-center ">
+                                                class="bg-gray-100 py-2 px-2 flex items-center ">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-4 w-4 mr-2">
                                                     <path fill="currentColor"
                                                         d="M449.9 39.96l-48.5 48.53C362.5 53.19 311.4 32 256 32C161.5 32 78.59 92.34 49.58 182.2c-5.438 16.81 3.797 34.88 20.61 40.28c16.97 5.5 34.86-3.812 40.3-20.59C130.9 138.5 189.4 96 256 96c37.96 0 73 14.18 100.2 37.8L311.1 178C295.1 194.8 306.8 223.4 330.4 224h146.9C487.7 223.7 496 215.3 496 204.9V59.04C496 34.99 466.9 22.95 449.9 39.96zM441.8 289.6c-16.94-5.438-34.88 3.812-40.3 20.59C381.1 373.5 322.6 416 256 416c-37.96 0-73-14.18-100.2-37.8L200 334C216.9 317.2 205.2 288.6 181.6 288H34.66C24.32 288.3 16 296.7 16 307.1v145.9c0 24.04 29.07 36.08 46.07 19.07l48.5-48.53C149.5 458.8 200.6 480 255.1 480c94.45 0 177.4-60.34 206.4-150.2C467.9 313 458.6 294.1 441.8 289.6z" />
@@ -192,26 +192,25 @@
                                             </a>
                                         </li>
 
-                                        {{-- <li @click="openTab = 7" class="mr-1 cursor-pointer">
-                                            <a :class="openTab === 7 ? activeClass : inactive"
-                                                class="bg-white py-2 px-2 flex items-center">
-                                                <svg class="h-4 w-4 mr-2" xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 512 512">
-                                                    <path fill="currentColor"
-                                                        d="M502.6 182.6l-45.25-45.25C451.4 131.4 443.3 128 434.8 128H384V80C384 53.5 362.5 32 336 32h-160C149.5 32 128 53.5 128 80V128H77.25c-8.5 0-16.62 3.375-22.62 9.375L9.375 182.6C3.375 188.6 0 196.8 0 205.3V304h128v-32C128 263.1 135.1 256 144 256h32C184.9 256 192 263.1 192 272v32h128v-32C320 263.1 327.1 256 336 256h32C376.9 256 384 263.1 384 272v32h128V205.3C512 196.8 508.6 188.6 502.6 182.6zM336 128h-160V80h160V128zM384 368c0 8.875-7.125 16-16 16h-32c-8.875 0-16-7.125-16-16v-32H192v32C192 376.9 184.9 384 176 384h-32C135.1 384 128 376.9 128 368v-32H0V448c0 17.62 14.38 32 32 32h448c17.62 0 32-14.38 32-32v-112h-128V368z" />
-                                                </svg>
-                                                <span class="text-sm">Reparaciones</span>
-                                            </a>
-                                        </li> --}}
-
                                         <li @click="openTab = 7" class="mr-1 cursor-pointer">
                                             <a :class="openTab === 7 ? activeClass : inactive"
-                                                class="bg-white py-2 px-2 flex items-center">
+                                                class="bg-gray-100 py-2 px-2 flex items-center">
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-6 h-6 mr-2">
                                                     <path fill="currentColor"
                                                         d="M447.1 32h-384C28.64 32-.0091 60.65-.0091 96v320c0 35.35 28.65 64 63.1 64h384c35.35 0 64-28.65 64-64V96C511.1 60.65 483.3 32 447.1 32zM111.1 96c26.51 0 48 21.49 48 48S138.5 192 111.1 192s-48-21.49-48-48S85.48 96 111.1 96zM446.1 407.6C443.3 412.8 437.9 416 432 416H82.01c-6.021 0-11.53-3.379-14.26-8.75c-2.73-5.367-2.215-11.81 1.334-16.68l70-96C142.1 290.4 146.9 288 152 288s9.916 2.441 12.93 6.574l32.46 44.51l93.3-139.1C293.7 194.7 298.7 192 304 192s10.35 2.672 13.31 7.125l128 192C448.6 396 448.9 402.3 446.1 407.6z" />
                                                 </svg>
                                                 <span class="text-xs">Galeria</span>
+                                            </a>
+                                        </li>
+
+                                        <li @click="openTab = 8" class="mr-1 cursor-pointer">
+                                            <a :class="openTab === 8 ? activeClass : inactive"
+                                                class="bg-gray-100 py-2 px-2 flex items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                    <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                                </svg>
+                                                <span class="text-sm">Actas</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -236,12 +235,11 @@
                                         @livewire('report.estation.moviments', ['estation' => $estation,'informe' =>
                                         $informe], key($estation->id))
                                     </div>
-                                    {{-- <div x-show="openTab === 7">
-                                        @livewire('report.article.reparations', ['estation' => $estation,'informe' =>
-                                        $informe], key($estation->id))
-                                    </div> --}}
-
                                     <div x-show="openTab === 7">
+                                        @livewire('report.estation.images', ['estation' => $estation,'informe' =>
+                                        $informe], key($estation->id))
+                                    </div>
+                                    <div x-show="openTab === 8">
                                         @livewire('report.estation.images', ['estation' => $estation,'informe' =>
                                         $informe], key($estation->id))
                                     </div>

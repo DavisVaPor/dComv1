@@ -7,6 +7,7 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\MantenimientController;
 use App\Http\Controllers\MedicionesController;
+use App\Http\Controllers\PromotionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,8 +59,9 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/inventario',[InventaryCon
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/inventario/{article}',[InventaryController::class , 'show'] )->name('article.show');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/mantenimientos',[MantenimientController::class , 'index'] )->name('mantenimient.index');
+Route::middleware(['auth:sanctum', 'verified'])->get('/mantenimiento',[MantenimientController::class , 'index'] )->name('mantenimient.index');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/mediciones',[MedicionesController::class , 'index'] )->name('mediciones.index');
+Route::middleware(['auth:sanctum', 'verified'])->get('/medicion',[MedicionesController::class , 'index'] )->name('mediciones.index');
 
+Route::middleware(['auth:sanctum', 'verified'])->get('/promocion',[PromotionController::class , 'index'] )->name('promotion.index');
 

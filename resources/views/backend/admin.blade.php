@@ -40,7 +40,7 @@
                                 <x-jet-application-mark class="block h-9 w-auto" />
                             </a>
                         </div>
-                        <a href="{{ route('dashboard') }}" class="py-3 px-2 items-center">
+                        <a href="{{ route('dashboard') }}" class="py-2 px-2 items-center">
                             <div class="flex">
                                 <p class="text-xl text-green-600 font-semibold">Dir</p>
                                 <p class="text-xl font-semibold">Comunicaciones</p> <br>
@@ -51,7 +51,7 @@
                         </a>
                     </div>
                     <div class="">
-                        <div class="w-full flex justify-center items-center mb-4">
+                        <div class="w-full flex justify-center items-center mb-2">
                             <abbr title="Perfil de Usuario">
                                 <a href="{{ route('profile.show') }}">
                                     <img class="hidden h-10 w-10 rounded-full sm:block object-cover border-2 border-green-300 hover:border-yellow-500"
@@ -96,47 +96,7 @@
                                     <span class="ml-4 text-sm">INFORMES</span>
                                 </a>
                             </li>
-                            <p class="ml-2 border-green-500 border-b-2 mb-1 text-sm text-gray-50 opacity-80">Actividades Realizadas
-                            </p>
-                            <li class="relative px-1 ">
-                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
-                                    href="#">
-                                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="tools"
-                                        class="svg-inline--fa fa-tools fa-w-16 h-7 w-7" role="img"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                                        <path fill="currentColor"
-                                            d="M501.1 395.7L384 278.6c-23.1-23.1-57.6-27.6-85.4-13.9L192 158.1V96L64 0 0 64l96 128h62.1l106.6 106.6c-13.6 27.8-9.2 62.3 13.9 85.4l117.1 117.1c14.6 14.6 38.2 14.6 52.7 0l52.7-52.7c14.5-14.6 14.5-38.2 0-52.7zM331.7 225c28.3 0 54.9 11 74.9 31l19.4 19.4c15.8-6.9 30.8-16.5 43.8-29.5 37.1-37.1 49.7-89.3 37.9-136.7-2.2-9-13.5-12.1-20.1-5.5l-74.4 74.4-67.9-11.3L334 98.9l74.4-74.4c6.6-6.6 3.4-17.9-5.7-20.2-47.4-11.7-99.6.9-136.6 37.9-28.5 28.5-41.9 66.1-41.2 103.6l82.1 82.1c8.1-1.9 16.5-2.9 24.7-2.9zm-103.9 82l-56.7-56.7L18.7 402.8c-25 25-25 65.5 0 90.5s65.5 25 90.5 0l123.6-123.6c-7.6-19.9-9.9-41.6-5-62.7zM64 472c-13.2 0-24-10.8-24-24 0-13.3 10.7-24 24-24s24 10.7 24 24c0 13.2-10.7 24-24 24z">
-                                        </path>
-                                    </svg>
-                                    <span class="ml-4 text-sm">MANTENIMIENTOS</span>
-                                </a>
-                            </li>
-                            <li class="relative px-1 ">
-                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
-                                    href="#">
-                                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="radiation"
-                                        class="svg-inline--fa fa-radiation fa-w-16 h-7 w-7 " role="img"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
-                                        <path fill="currentColor"
-                                            d="M328.2 255.8h151.6c9.1 0 16.8-7.7 16.2-16.8-5.1-75.8-44.4-142.2-102.5-184.2-7.4-5.3-17.9-2.9-22.7 4.8L290.4 188c22.6 14.3 37.8 39.2 37.8 67.8zm-37.8 67.7c-12.3 7.7-26.8 12.4-42.4 12.4-15.6 0-30-4.7-42.4-12.4L125.2 452c-4.8 7.7-2.4 18.1 5.6 22.4C165.7 493.2 205.6 504 248 504s82.3-10.8 117.2-29.6c8-4.3 10.4-14.8 5.6-22.4l-80.4-128.5zM248 303.8c26.5 0 48-21.5 48-48s-21.5-48-48-48-48 21.5-48 48 21.5 48 48 48zm-231.8-48h151.6c0-28.6 15.2-53.5 37.8-67.7L125.2 59.7c-4.8-7.7-15.3-10.2-22.7-4.8C44.4 96.9 5.1 163.3 0 239.1c-.6 9 7.1 16.7 16.2 16.7z">
-                                        </path>
-                                    </svg>
-                                    <span class="ml-4 text-sm">MEDICIONES RNI</span>
-                                </a>
-                            </li>
-                            <li class="relative px-1 ">
-                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
-                                    href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                            d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    <span class="ml-4 text-sm">PROMOCIONES</span>
-                                </a>
-                            </li>
-                           
+
                             @if (Auth::user()->rol->name == 'Director(a)')
                                 <li class="relative px-1 ">
                                     <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
@@ -153,6 +113,49 @@
                                 </li>
                             @endif
 
+                            <p class="ml-2 border-green-500 border-b-2 mb-1 text-sm text-gray-50 opacity-80">Actividades Realizadas
+                            </p>
+                            <li class="relative px-1 ">
+                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
+                                    href={{ route('mantenimient.index') }}>
+                                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="tools"
+                                        class="svg-inline--fa fa-tools fa-w-16 h-7 w-7" role="img"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                        <path fill="currentColor"
+                                            d="M501.1 395.7L384 278.6c-23.1-23.1-57.6-27.6-85.4-13.9L192 158.1V96L64 0 0 64l96 128h62.1l106.6 106.6c-13.6 27.8-9.2 62.3 13.9 85.4l117.1 117.1c14.6 14.6 38.2 14.6 52.7 0l52.7-52.7c14.5-14.6 14.5-38.2 0-52.7zM331.7 225c28.3 0 54.9 11 74.9 31l19.4 19.4c15.8-6.9 30.8-16.5 43.8-29.5 37.1-37.1 49.7-89.3 37.9-136.7-2.2-9-13.5-12.1-20.1-5.5l-74.4 74.4-67.9-11.3L334 98.9l74.4-74.4c6.6-6.6 3.4-17.9-5.7-20.2-47.4-11.7-99.6.9-136.6 37.9-28.5 28.5-41.9 66.1-41.2 103.6l82.1 82.1c8.1-1.9 16.5-2.9 24.7-2.9zm-103.9 82l-56.7-56.7L18.7 402.8c-25 25-25 65.5 0 90.5s65.5 25 90.5 0l123.6-123.6c-7.6-19.9-9.9-41.6-5-62.7zM64 472c-13.2 0-24-10.8-24-24 0-13.3 10.7-24 24-24s24 10.7 24 24c0 13.2-10.7 24-24 24z">
+                                        </path>
+                                    </svg>
+                                    <span class="ml-4 text-sm">MANTENIMIENTOS</span>
+                                </a>
+                            </li>
+                            <li class="relative px-1 ">
+                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
+                                    href="{{ route('mediciones.index')}}">
+                                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="radiation"
+                                        class="svg-inline--fa fa-radiation fa-w-16 h-7 w-7 " role="img"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                                        <path fill="currentColor"
+                                            d="M328.2 255.8h151.6c9.1 0 16.8-7.7 16.2-16.8-5.1-75.8-44.4-142.2-102.5-184.2-7.4-5.3-17.9-2.9-22.7 4.8L290.4 188c22.6 14.3 37.8 39.2 37.8 67.8zm-37.8 67.7c-12.3 7.7-26.8 12.4-42.4 12.4-15.6 0-30-4.7-42.4-12.4L125.2 452c-4.8 7.7-2.4 18.1 5.6 22.4C165.7 493.2 205.6 504 248 504s82.3-10.8 117.2-29.6c8-4.3 10.4-14.8 5.6-22.4l-80.4-128.5zM248 303.8c26.5 0 48-21.5 48-48s-21.5-48-48-48-48 21.5-48 48 21.5 48 48 48zm-231.8-48h151.6c0-28.6 15.2-53.5 37.8-67.7L125.2 59.7c-4.8-7.7-15.3-10.2-22.7-4.8C44.4 96.9 5.1 163.3 0 239.1c-.6 9 7.1 16.7 16.2 16.7z">
+                                        </path>
+                                    </svg>
+                                    <span class="ml-4 text-sm">MEDICIONES RNI</span>
+                                </a>
+                            </li>
+                            <li class="relative px-1 ">
+                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
+                                    href="{{ route('promotion.index') }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 20 20"
+                                        fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="ml-4 text-sm">PROMOCIONES</span>
+                                </a>
+                            </li>
+                           
+                            <p class="ml-2 border-green-500 border-b-2 mb-1 text-sm text-gray-50 opacity-80">Patrimonio
+                            </p>
                             <li class="relative px-1 ">
                                 <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
                                     href=" {{ route('estacion.index') }}">
@@ -191,6 +194,8 @@
                                 </a>
                             </li>
                           
+                            <p class="ml-2 border-green-500 border-b-2 mb-1 text-sm text-gray-50 opacity-80">Otros
+                            </p>
                             <li class="relative px-1 ">
                                 <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
                                     href="#">
@@ -202,6 +207,15 @@
                                         </path>
                                     </svg>
                                     <span class="ml-4 text-sm">OBSERVACIONES</span>
+                                </a>
+                            </li>
+                            <li class="relative px-1 ">
+                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
+                                    href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="ml-4 text-sm">SINIESTRO</span>
                                 </a>
                             </li>
                             

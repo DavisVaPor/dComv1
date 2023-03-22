@@ -49,13 +49,11 @@
                 @foreach ($reports as $report)
                     <tr class="bg-gray-100 border-b border-gray-300 py-1 hover:bg-green-100">
                         <td class="text-xs px-2 text-center uppercase">
-                            <a href="{{ route('informe.show', [$report]) }}" class="font-semibold hover:text-blue-600">
-                                {{ $report->id }}
-                            </a>
+                            {{ $loop->iteration }}
                         </td>
                         <td class="w-4/12 text-sm px-2 text-left uppercase">
                             <a href="{{ route('informe.show', [$report]) }}" class="font-semibold hover:text-blue-600">
-                                {{ $report->asunto }}
+                                {{ $report->id }} - {{ $report->asunto }}
                             </a>
                         </td>
                         <td class="text-sm text-gray-600 text-center">
