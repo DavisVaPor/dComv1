@@ -64,7 +64,7 @@ class Reports extends Component
             $this->report->commission_id =  $this->selectedCommission;
             $this->report->save();
         } else {
-            Report::create([
+            $newreport = Report::create([
                 'asunto' => Str::upper($this->report['asunto']),
                 'tipo' => $tipo,
                 'fechaCreacion' => $this->fechactual,
@@ -75,6 +75,7 @@ class Reports extends Component
         }
         $this->modalAdd = false;
         $this->reset('report','selectedCommission');
+        return redirect()->route('informe.show', $newreport->id);
     }
 
     public function delReport($id)

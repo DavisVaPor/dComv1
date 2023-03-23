@@ -76,8 +76,6 @@ class Requirements extends Component
     {
         $this->equiponame = Catalog::findorFail($this->equipoSelect);
         $this->submodalAdd = false;
-
-
     }
 
     public function registrarRq()

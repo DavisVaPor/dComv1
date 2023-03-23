@@ -76,7 +76,7 @@
     {{-- Modal de Añadir --}}
     <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
-            <h1 class="font-bold uppercase">Registro de una requerimiento</h1>
+            <h1 class="font-bold uppercase">Registro de Requerimiento</h1>
         </x-slot>
 
         <x-slot name="content">
@@ -205,13 +205,15 @@
     {{-- Modal de Info --}}
     <x-jet-dialog-modal wire:model="modalInfo">
         <x-slot name="title">
-            <h1 class="font-bold">{{ __('Detalle del Equipo ') }}</h1>
+            <h1 class="font-bold">{{ __('Especificaciones Tecnicas del Equipo ') }}</h1>
         </x-slot>
 
         <x-slot name="content">
-            @if ($requirement)
+
+        {{-- {{ $requirement->equipment->name }} --}}
+            {{-- @if ($requirement)
                 {{ $requirement->equipment->name }}
-            @endif
+            @endif --}}
 
             <x-jet-label class="text-base font-bold border-gray-200" for="requirement.descripcion"
                 value="{{ __('Descripcion') }}" />

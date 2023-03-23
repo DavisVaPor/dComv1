@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BandejaReportController;
 use App\Http\Controllers\CommissionController;
 use App\Http\Controllers\EstationController;
 use App\Http\Controllers\InventaryController;
@@ -8,6 +9,8 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\MantenimientController;
 use App\Http\Controllers\MedicionesController;
 use App\Http\Controllers\PromotionController;
+use App\Http\Controllers\RequerimientController;
+use App\Http\Controllers\TallerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -64,4 +67,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/mantenimiento',[Mantenimi
 Route::middleware(['auth:sanctum', 'verified'])->get('/medicion',[MedicionesController::class , 'index'] )->name('mediciones.index');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/promocion',[PromotionController::class , 'index'] )->name('promotion.index');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/requerimiento',[RequerimientController::class , 'index'] )->name('requerimient.index');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/bandeja',[BandejaReportController::class , 'index'] )->name('bandeja.index');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/taller',[TallerController::class , 'index'] )->name('taller.index');
+
+
 

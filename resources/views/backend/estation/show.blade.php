@@ -181,6 +181,56 @@
                                     <span>Observaciones</span>
                                 </a>
                             </li>
+                            <li @click="openTab = 4" class="mr-1 cursor-pointer">
+                                <a :class="openTab === 4 ? activeClass : inactive"
+                                    class="bg-white py-2 px-2 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"
+                                        class="h-4 w-4 svg-inline--fa fa-eye fa-w-18 mr-2">
+                                        <path fill="currentColor"
+                                            d="M96 0C107.5 0 117.4 8.19 119.6 19.51L121.1 32H541.8C562.1 32 578.3 52.25 572.6 72.66L518.6 264.7C514.7 278.5 502.1 288 487.8 288H170.7L179.9 336H488C501.3 336 512 346.7 512 360C512 373.3 501.3 384 488 384H159.1C148.5 384 138.6 375.8 136.4 364.5L76.14 48H24C10.75 48 0 37.25 0 24C0 10.75 10.75 0 24 0H96zM128 464C128 437.5 149.5 416 176 416C202.5 416 224 437.5 224 464C224 490.5 202.5 512 176 512C149.5 512 128 490.5 128 464zM512 464C512 490.5 490.5 512 464 512C437.5 512 416 490.5 416 464C416 437.5 437.5 416 464 416C490.5 416 512 437.5 512 464z" />
+                                    </svg>
+                                    <span class="text-sm">Requerimientos</span>
+                                </a>
+                            </li>
+
+                            <li @click="openTab = 5" class="mr-1 cursor-pointer">
+                                <a :class="openTab === 5 ? activeClass : inactive"
+                                    class="bg-white py-2 px-2 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                        class="w-6 h-6 mr-2">
+                                        <path fill="currentColor"
+                                            d="M447.1 32h-384C28.64 32-.0091 60.65-.0091 96v320c0 35.35 28.65 64 63.1 64h384c35.35 0 64-28.65 64-64V96C511.1 60.65 483.3 32 447.1 32zM111.1 96c26.51 0 48 21.49 48 48S138.5 192 111.1 192s-48-21.49-48-48S85.48 96 111.1 96zM446.1 407.6C443.3 412.8 437.9 416 432 416H82.01c-6.021 0-11.53-3.379-14.26-8.75c-2.73-5.367-2.215-11.81 1.334-16.68l70-96C142.1 290.4 146.9 288 152 288s9.916 2.441 12.93 6.574l32.46 44.51l93.3-139.1C293.7 194.7 298.7 192 304 192s10.35 2.672 13.31 7.125l128 192C448.6 396 448.9 402.3 446.1 407.6z" />
+                                    </svg>
+                                    <span class="text-xs">Galeria</span>
+                                </a>
+                            </li>
+
+                            <li @click="openTab = 6" class="mr-1 cursor-pointer">
+                                <a :class="openTab === 6 ? activeClass : inactive"
+                                    class="bg-white py-2 px-2 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
+                                        <path
+                                            d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z">
+                                        </path>
+                                    </svg>
+                                    <span class="text-sm">Actas</span>
+                                </a>
+                            </li>
+
+                            <li @click="openTab = 7" class="mr-1 cursor-pointer">
+                                <a :class="openTab === 7 ? activeClass : inactive"
+                                    class="bg-white py-2 px-2 flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                        viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span class="text-sm">Siniestro</span>
+                                </a>
+                            </li>
                         </ul>
 
 
@@ -212,6 +262,39 @@
                             </div>
                             @livewire('estation.estation-observations', ['estation' => $estation], key($estation->id))
                         </div>
+
+                        <div x-show="openTab === 4">
+                            <div class="w-full mt-2">
+                                <h2 class="text-center text-blue-700 text-lg underline">
+                                    OBSERVACIONES DE LA ESTACION
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div x-show="openTab === 5">
+                            <div class="w-full mt-2">
+                                <h2 class="text-center text-blue-700 text-lg underline">
+                                    OBSERVACIONES DE LA ESTACION
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div x-show="openTab === 6">
+                            <div class="w-full mt-2">
+                                <h2 class="text-center text-blue-700 text-lg underline">
+                                    OBSERVACIONES DE LA ESTACION
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div x-show="openTab === 7">
+                            <div class="w-full mt-2">
+                                <h2 class="text-center text-blue-700 text-lg underline">
+                                    OBSERVACIONES DE LA ESTACION
+                                </h2>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
