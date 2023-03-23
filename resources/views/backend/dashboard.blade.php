@@ -8,7 +8,7 @@
             <div class="col-span-12 mt-6">
                 <div class="grid grid-cols-12 gap-6 mt-5">
                     <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white"
-                        href="#">
+                        href="{{ route('comision.index') }}">
                         <div class="p-5">
                             <div class="flex justify-between">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-400"
@@ -29,7 +29,7 @@
                         </div>
                     </a>
                     <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white"
-                        href="#">
+                        href="{{ route('estacion.index') }}">
                         <div class="p-5">
                             <div class="flex justify-between">
                                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="wifi" class="h-6 w-6 text-yellow-600 svg-inline--fa fa-wifi fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -52,7 +52,7 @@
                         </div>
                     </a>
                     <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white"
-                        href="#">
+                        href="{{ route('mediciones.index') }}">
                         <div class="p-5">
                             <div class="flex justify-between">
                                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="radiation" class="svg-inline--fa fa-radiation fa-w-16 h-7 w-7 text-pink-600" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -69,7 +69,7 @@
                         </div>
                     </a>
                     <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white"
-                        href="#">
+                        href="{{ route('mantenimient.index') }}">
                         <div class="p-5">
                             <div class="flex justify-between">
                                 <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="file"

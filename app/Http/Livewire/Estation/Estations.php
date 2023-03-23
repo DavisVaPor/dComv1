@@ -18,7 +18,9 @@ class Estations extends Component
     public $distritoSearch;
     public $tipo;
     public $ubigeo;
-
+    public $sistema;
+    public $energia;
+    public $siniestrado;
     public $search = '';
 
     public $modalAdd = false;
@@ -40,6 +42,9 @@ class Estations extends Component
         $estations = Estation::where('name','LIKE','%'.$this->search.'%')
                     ->where('ubigeo_id','LIKE',$this->provinciaSearch.'%')
                     ->where('tipo','LIKE',$this->tipo.'%')
+                    ->where('sistema','LIKE',$this->sistema.'%')
+                    ->where('siniestrado','LIKE',$this->siniestrado.'%')
+                    ->where('energia','LIKE',$this->energia.'%')
                     ->where('estado','LIKE','%'.$this->estado.'%')
                     ->orderBy('name','asc')
                     ->latest('id')->paginate($this->paginate);

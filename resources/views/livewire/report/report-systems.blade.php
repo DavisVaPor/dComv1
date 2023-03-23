@@ -114,9 +114,22 @@
                                                     INOOPERATIVO
                                                 </span>
                                             @endif
+
+                                            <button wire:click="editStatus({{ $estation->id }})"
+                                                class="text-blue-500 hover:text-gray-900 cursor-pointer mr-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 m-auto"
+                                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        stroke-width="2"
+                                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                                </svg>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
+
+
+
 
                                 <div x-data="{
                                     openTab: 1,
@@ -144,8 +157,9 @@
                                             <a :class="openTab === 3 ? activeClass : inactive"
                                                 class="bg-gray-100 py-2 px-2 flex items-center">
                                                 <svg aria-hidden="true" focusable="false" data-prefix="fas"
-                                                    data-icon="tools" class="h-4 w-4 svg-inline--fa fa-eye fa-w-18 mr-2"
-                                                    role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                                    data-icon="tools"
+                                                    class="h-4 w-4 svg-inline--fa fa-eye fa-w-18 mr-2" role="img"
+                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                                                     <path fill="currentColor"
                                                         d="M501.1 395.7L384 278.6c-23.1-23.1-57.6-27.6-85.4-13.9L192 158.1V96L64 0 0 64l96 128h62.1l106.6 106.6c-13.6 27.8-9.2 62.3 13.9 85.4l117.1 117.1c14.6 14.6 38.2 14.6 52.7 0l52.7-52.7c14.5-14.6 14.5-38.2 0-52.7zM331.7 225c28.3 0 54.9 11 74.9 31l19.4 19.4c15.8-6.9 30.8-16.5 43.8-29.5 37.1-37.1 49.7-89.3 37.9-136.7-2.2-9-13.5-12.1-20.1-5.5l-74.4 74.4-67.9-11.3L334 98.9l74.4-74.4c6.6-6.6 3.4-17.9-5.7-20.2-47.4-11.7-99.6.9-136.6 37.9-28.5 28.5-41.9 66.1-41.2 103.6l82.1 82.1c8.1-1.9 16.5-2.9 24.7-2.9zm-103.9 82l-56.7-56.7L18.7 402.8c-25 25-25 65.5 0 90.5s65.5 25 90.5 0l123.6-123.6c-7.6-19.9-9.9-41.6-5-62.7zM64 472c-13.2 0-24-10.8-24-24 0-13.3 10.7-24 24-24s24 10.7 24 24c0 13.2-10.7 24-24 24z">
                                                     </path>
@@ -171,7 +185,8 @@
                                                 class="bg-gray-100 py-2 px-2 flex items-center">
                                                 <svg aria-hidden="true" focusable="false" data-prefix="fas"
                                                     data-icon="eye" class="h-4 w-4 svg-inline--fa fa-eye fa-w-18 mr-2"
-                                                    role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                                                    role="img" xmlns="http://www.w3.org/2000/svg"
+                                                    viewBox="0 0 576 512">
                                                     <path fill="currentColor"
                                                         d="M572.52 241.4C518.29 135.59 410.93 64 288 64S57.68 135.64 3.48 241.41a32.35 32.35 0 0 0 0 29.19C57.71 376.41 165.07 448 288 448s230.32-71.64 284.52-177.41a32.35 32.35 0 0 0 0-29.19zM288 400a144 144 0 1 1 144-144 143.93 143.93 0 0 1-144 144zm0-240a95.31 95.31 0 0 0-25.31 3.79 47.85 47.85 0 0 1-66.9 66.9A95.78 95.78 0 1 0 288 160z">
                                                     </path>
@@ -183,11 +198,12 @@
                                         <li @click="openTab = 6" class="mr-1 cursor-pointer">
                                             <a :class="openTab === 6 ? activeClass : inactive"
                                                 class="bg-gray-100 py-2 px-2 flex items-center ">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="h-4 w-4 mr-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                                    class="h-4 w-4 mr-2">
                                                     <path fill="currentColor"
                                                         d="M449.9 39.96l-48.5 48.53C362.5 53.19 311.4 32 256 32C161.5 32 78.59 92.34 49.58 182.2c-5.438 16.81 3.797 34.88 20.61 40.28c16.97 5.5 34.86-3.812 40.3-20.59C130.9 138.5 189.4 96 256 96c37.96 0 73 14.18 100.2 37.8L311.1 178C295.1 194.8 306.8 223.4 330.4 224h146.9C487.7 223.7 496 215.3 496 204.9V59.04C496 34.99 466.9 22.95 449.9 39.96zM441.8 289.6c-16.94-5.438-34.88 3.812-40.3 20.59C381.1 373.5 322.6 416 256 416c-37.96 0-73-14.18-100.2-37.8L200 334C216.9 317.2 205.2 288.6 181.6 288H34.66C24.32 288.3 16 296.7 16 307.1v145.9c0 24.04 29.07 36.08 46.07 19.07l48.5-48.53C149.5 458.8 200.6 480 255.1 480c94.45 0 177.4-60.34 206.4-150.2C467.9 313 458.6 294.1 441.8 289.6z" />
                                                 </svg>
-                                                
+
                                                 <span class="text-sm">Movimientos</span>
                                             </a>
                                         </li>
@@ -195,7 +211,8 @@
                                         <li @click="openTab = 7" class="mr-1 cursor-pointer">
                                             <a :class="openTab === 7 ? activeClass : inactive"
                                                 class="bg-gray-100 py-2 px-2 flex items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-6 h-6 mr-2">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                                                    class="w-6 h-6 mr-2">
                                                     <path fill="currentColor"
                                                         d="M447.1 32h-384C28.64 32-.0091 60.65-.0091 96v320c0 35.35 28.65 64 63.1 64h384c35.35 0 64-28.65 64-64V96C511.1 60.65 483.3 32 447.1 32zM111.1 96c26.51 0 48 21.49 48 48S138.5 192 111.1 192s-48-21.49-48-48S85.48 96 111.1 96zM446.1 407.6C443.3 412.8 437.9 416 432 416H82.01c-6.021 0-11.53-3.379-14.26-8.75c-2.73-5.367-2.215-11.81 1.334-16.68l70-96C142.1 290.4 146.9 288 152 288s9.916 2.441 12.93 6.574l32.46 44.51l93.3-139.1C293.7 194.7 298.7 192 304 192s10.35 2.672 13.31 7.125l128 192C448.6 396 448.9 402.3 446.1 407.6z" />
                                                 </svg>
@@ -206,42 +223,55 @@
                                         <li @click="openTab = 8" class="mr-1 cursor-pointer">
                                             <a :class="openTab === 8 ? activeClass : inactive"
                                                 class="bg-gray-100 py-2 px-2 flex items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                    viewBox="0 0 20 20" fill="currentColor">
                                                     <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"></path>
-                                                    <path d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"></path>
+                                                    <path
+                                                        d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z">
+                                                    </path>
                                                 </svg>
                                                 <span class="text-sm">Actas</span>
                                             </a>
                                         </li>
+
+
+                                        <li @click="openTab = 9" class="mr-1 cursor-pointer">
+                                            <a :class="openTab === 9 ? activeClass : inactive"
+                                                class="bg-gray-100 py-2 px-2 flex items-center">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
+                                                    viewBox="0 0 20 20" fill="currentColor">
+                                                    <path fill-rule="evenodd"
+                                                        d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z"
+                                                        clip-rule="evenodd"></path>
+                                                </svg>
+                                                <span class="text-sm">Siniestro</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                     <div x-show="openTab === 1">
-                                        @livewire('report.report-articles', ['estation' => $estation,'informe' =>
-                                        $informe],key($estation->id))
+                                        @livewire('report.report-articles', ['estation' => $estation, 'informe' => $informe], key($estation->id))
                                     </div>
 
                                     <div x-show="openTab === 3">
-                                        @livewire('report.report-activities', ['estation' => $estation,'informe' =>
-                                        $informe], key($estation->id))
+                                        @livewire('report.report-activities', ['estation' => $estation, 'informe' => $informe], key($estation->id))
                                     </div>
                                     <div x-show="openTab === 4">
-                                        @livewire('report.estation.requirements', ['estation' => $estation,'informe' =>
-                                        $informe], key($estation->id))
+                                        @livewire('report.estation.requirements', ['estation' => $estation, 'informe' => $informe], key($estation->id))
                                     </div>
                                     <div x-show="openTab === 5">
-                                        @livewire('report.report-observations', ['estation' => $estation,'informe' =>
-                                        $informe], key($estation->id))
+                                        @livewire('report.report-observations', ['estation' => $estation, 'informe' => $informe], key($estation->id))
                                     </div>
                                     <div x-show="openTab === 6">
-                                        @livewire('report.estation.moviments', ['estation' => $estation,'informe' =>
-                                        $informe], key($estation->id))
+                                        @livewire('report.estation.moviments', ['estation' => $estation, 'informe' => $informe], key($estation->id))
                                     </div>
                                     <div x-show="openTab === 7">
-                                        @livewire('report.estation.images', ['estation' => $estation,'informe' =>
-                                        $informe], key($estation->id))
+                                        @livewire('report.estation.images', ['estation' => $estation, 'informe' => $informe], key($estation->id))
                                     </div>
                                     <div x-show="openTab === 8">
-                                        @livewire('report.estation.images', ['estation' => $estation,'informe' =>
-                                        $informe], key($estation->id))
+                                        @livewire('report.estation.images', ['estation' => $estation, 'informe' => $informe], key($estation->id))
+                                    </div>
+                                    <div x-show="openTab === 9">
+                                        @livewire('report.report-observations', ['estation' => $estation, 'informe' => $informe], key($estation->id))
                                     </div>
                                 </div>
 
@@ -252,83 +282,4 @@
             </div>
         @endforeach
     </div>
-
-    {{-- Modal de Agregar --}}
-    @isset($estacion)
-        <x-jet-dialog-modal wire:model="modaladdEquipo">
-            <x-slot name="title">
-                <h1 class="font-bold uppercase">Instalación de Equipo</h1>
-            </x-slot>
-            <x-slot name="content">
-                <h1 class="font-bold text-xl text-center underline">Estacion : E-{{ $estacion->id }}
-                    {{ $estacion->name }}
-                </h1>
-                <h1 class="font-semibold text-sm text-center">
-                    ({{ $estacion->ubigeo->distrito }}-{{ $estacion->ubigeo->provincia }})</h1>
-                <div class="tems-center">
-                    <div class="col-span-6 sm:col-span-4 mb-2">
-                        <div class="">
-                            <x-jet-label class="text-base font-bold border-gray-200 mr-2" for="fecha"
-                                value="{{ __('Fecha de la instalacion') }}" />
-                            <x-jet-input id="fechainstall" type="date" class="mt-1 block w-44 font-semibold"
-                                wire:model='fechainstall' />
-                        </div>
-                        <x-jet-input-error for="fechainstall" class="mt-2" />
-                    </div>
-                </div>
-                <div class="col-span-6 sm:col-span-4 bg-gray-50 p-2 border rounded-xl">
-                    <x-jet-label class="text-base font-bold border-gray-200 mt-2" for="article.estado"
-                        value="{{ __('Equipos asignandos a la Comision') }}" />
-                    <table class="rounded-t-lg m-5 w-11/12 mx-auto bg-gray-200 text-gray-800">
-                        <tr class="text-left border-b-2 border-gray-300">
-                            <th class=""></th>
-                            <th class="px-4 py-3">Nombre</th>
-                            <th class="px-4 py-3">Serie</th>
-                            <th class="px-4 py-3 text-center">Sistema</th>
-                            <th class="px-4 py-3">Estado</th>
-                        </tr>
-                        @foreach ($informe->commission->articles as $article)
-                            @if ($article->estation_id === 1)
-                                <tr class="bg-gray-100 border-b border-gray-200 hover:bg-gray-500">
-                                    <td class="">
-                                        <input class="rounded-2xl" wire:model='selectedArticle'
-                                            value="{{ $article->id }}" type="radio">
-                                    </td>
-                                    <td class="px-4 py-3">{{ $article->denominacion }}</td>
-                                    <td class="px-4 py-3">{{ $article->nserie }}</td>
-                                    <td class="px-4 py-3 text-center text-xs">
-                                        <select class="rounded-xl mx-2 text-xs" name="sistemaadd" id="sistemaadd"
-                                            wire:model='sistemaadd'>
-                                            <option value="" selected>No Asignado</option>
-                                            @foreach ($systems as $item)
-                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                    <td class="px-4 py-3">{{ $article->estado }}</td>
-                                </tr>
-                            @else
-                                <tr class="bg-gray-100 border-b border-gray-200 hover:bg-gray-500">
-                                    <td colspan="5" class="text-center">
-                                        No se encuentraron registros
-                                    </td>
-                                </tr>
-                            @endif
-                        @endforeach
-                    </table>
-                    <x-jet-input-error for="selectedArticle" class="mt-2" />
-                </div>
-            </x-slot>
-
-            <x-slot name="footer">
-                <x-jet-secondary-button wire:click="$set('modaladdEquipo',false)" wire:loading.attr="disabled">
-                    {{ __('Cancel') }}
-                </x-jet-secondary-button>
-
-                <x-jet-button class="ml-2" wire:click="ArticleAdd()" wire:loading.attr="disabled">
-                    {{ __('AGREGAR') }}
-                </x-jet-button>
-            </x-slot>
-        </x-jet-dialog-modal>
-    @endisset
 </div>

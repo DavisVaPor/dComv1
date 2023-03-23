@@ -125,7 +125,7 @@
     {{-- Modal de Añadir --}}
     <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
-            <h1 class="font-bold">Añadir un Equipo</h1>
+            <h1 class="font-bold">Ingreso de Equipo</h1>
         </x-slot>
 
         <x-slot name="content">
@@ -184,7 +184,6 @@
                     <x-jet-label class="text-base font-bold border-gray-200" for="estado"
                         value="{{ __('Estado') }}" />
                     <select class="rounded-lg text-sm font-semibold" wire:model.defer='article.estado'>
-                        <option>Estados</option>
                         <option value="BUENO" selected>BUENO</option>
                         <option value="REGULAR">REGULAR</option>
                         <option value="MALO">MALO</option>
@@ -205,7 +204,19 @@
                 <x-jet-input-error for="article.category_id" class="mt-2" />
             </div>
 
-            <div class="mt-2 flex items-center col-span-6 sm:col-span-4">
+            <div class="mt-2 col-span-6 sm:col-span-4">
+                <x-jet-label class="text-base font-bold border-gray-200" for="category_id"
+                    value="{{ __('Sistema') }}" />
+                <select class="rounded-lg text-xs" wire:model='article.system_id'>
+                    <option value="">Sistema</option>
+                    @foreach ($systems as $system)
+                        <option value="{{ $system->id }}">{{ $system->name }}</option>
+                    @endforeach
+                </select>
+                <x-jet-input-error for="article.system_id" class="mt-2" />
+            </div>
+
+            {{-- <div class="mt-2 flex items-center col-span-6 sm:col-span-4">
                 <x-jet-label class="text-base font-bold border-gray-200" for="estacion"
                     value="{{ __('Ubicacion del Equipo') }}" />
                 <select class="rounded-lg text-sm ml-2" wire:model='article.estacion'>
@@ -223,8 +234,8 @@
                             clip-rule="evenodd"></path>
                     </svg>
                 </abbr>
-            </div>
-            <x-jet-input-error for="article.estacion" class="mt-2 " />
+            </div> --}}
+            {{-- <x-jet-input-error for="article.estacion" class="mt-2 " /> --}}
         </x-slot>
 
         <x-slot name="footer">

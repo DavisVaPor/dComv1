@@ -4,7 +4,7 @@
         @if ($informe->estado == 'BORRADOR')
             <x-jet-button wire:click="addModal" class="bg-blue-500 justify-end">
                 Añadir
-                <span class="w-6 h-6 ml-2">
+                <span class="w-4 h-4 ml-2">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
                             d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
@@ -19,11 +19,11 @@
         <table class="rounded-t-lg m-5 w-full mx-auto bg-gray-200 text-gray-800">
             <tr class="text-left border-b-2 border-gray-300">
                 <th class="px-2 text-center">#</th>
-                <th class="px-4 py-3">Descripcion</th>
-                <th class="px-4 py-3 text-center">Tipo de Servicio</th>
-                <th class="py-3 text-center w-24">Fecha</th>
+                <th class="px-4 py-2">Descripcion</th>
+                <th class="px-4 py-2 text-center">Tipo de Servicio</th>
+                <th class="py-2 text-center w-24">Fecha</th>
                 @if ($informe->estado == 'BORRADOR')
-                    <th class="px-4 py-3 w-1/12">
+                    <th class="px-4 py-2 w-1/12">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 m-auto" viewBox="0 0 20 20"
                             fill="currentColor">
                             <path
@@ -37,11 +37,11 @@
             @foreach ($estation->activities as $activity)
                 <tr class="bg-gray-100 border-b border-gray-200">
                     <td class="px-2 font-bold text-xs text-center">{{ $loop->iteration }}</td>
-                    <td class="px-4 py-3 text-sm">{{ $activity->descripcion }}</td>
-                    <td class="px-4 py-3 text-sm text-center">{{ $activity->tipoActivity }}</td>
+                    <td class="px-4 py-1 text-sm">{{ $activity->descripcion }}</td>
+                    <td class="px-4 py-1 text-sm text-center">{{ $activity->tipoActivity }}</td>
                     <td class="text-sm text-center w-24">{{ $activity->fechaInicio }}</td>
                     @if ($informe->estado == 'BORRADOR')
-                        <td class="px-4 py-3 w-1/12">
+                        <td class="px-4 py-1 w-1/12">
                             <div class="flex justify-between">
                                 @livewire('report.activities.images', ['activity' => $activity, 'informe' => $informe], key($activity->id))
                                
@@ -80,9 +80,15 @@
     <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
             <h1 class="font-bold uppercase">Registrar una Actividad</h1>
+            
         </x-slot>
 
         <x-slot name="content">
+            <div class="flex justify-between mb-2">
+                <h1 class="font-bold uppercase">Estacion:{{$estation->name}}</h1>
+                <h1 class="font-bold uppercase">Estado:{{$estation->estado}}</h1>               
+            </div>
+
             <div class="col-span-8 sm:col-span-4">
                 <div class="flex justify-between">
                     <div>

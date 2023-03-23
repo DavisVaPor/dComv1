@@ -6,6 +6,7 @@ use App\Http\Livewire\Estation\Estations;
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Estation;
+use App\Models\System;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -30,7 +31,7 @@ class Articles extends Component
         'article.nserie' => 'required',
         'article.estado' => 'required',
         'article.category_id' => 'required',
-        'article.estacion' => 'required',
+        'article.system_id' => 'required',
     ];
 
 
@@ -43,15 +44,18 @@ class Articles extends Component
                     ->paginate(13);
 
         $estations = Estation::all();
-        $estaciones = Estation::all();
+        // $estaciones = Estation::all();
 
         $categories = Category::all();
+
+        $systems = System::all();
 
         return view('livewire.article.articles',[
             'articles' => $articles,
             'categories' => $categories,
             'estations' => $estations,
-            'estaciones' => $estaciones,
+            'systems' => $systems,
+            // 'estaciones' => $estaciones,
         ]);
     }
 
@@ -64,7 +68,21 @@ class Articles extends Component
     public function saveArticle()
     {
         $this->validate();
-        if (isset($this->article->id)) {
+
+        Article::create([
+            'codPatrimonial' => $this->article['codPatrimonial'],
+            'denominacion' => $this->article['denominacion'],
+            'cantidad' => 1,
+            'marca' => $this->article['marca'],
+            'modelo' => $this->article['modelo'],
+            'category_id' => $this->article['category_id'],
+            'color' => $this->article['color'],
+            'nserie' => $this->article['nserie'],
+            'estado' => $this->article['estado'],
+            'estation_id'=> 1,
+            'system_id' => $this->article['system_id'],
+        ]);
+        /* if (isset($this->article->id)) {
             $this->article->save();
         } else {
             Article::create([
@@ -77,12 +95,12 @@ class Articles extends Component
                 'color' => $this->article['color'],
                 'nserie' => $this->article['nserie'],
                 'estado' => $this->article['estado'],
-                'estation_id'=> $this->article['estacion_id'],
+                'estation_id'=> 1,
             ]);
-        }
-
-        $this->reset('article');
+        } */
+        
         $this->modalAdd = false;
+        $this->reset('article');
     }
 
     public function edit(Article $article)

@@ -20,7 +20,7 @@ class Article extends Model
         'nserie',
         'estado',
         'estation_id',
-        'system_id',
+        'system_id'
     ];
 
 
