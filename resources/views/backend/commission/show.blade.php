@@ -4,19 +4,13 @@
     <section class="mt-4">
         @livewire('commission.show-commission', ['commission' => $commission], key($commission->id))
     </section>
-    <div class="flex justify-between">
-        <div>
 
-        </div>
-    </div>
     <div class="text-center items-center text-xl mt-6 w-full font-extrabold text-green-600 uppercase">
         <h1>DCOM-{{ $commission->numero }} - {{ $commission->anho }}</h1>
         <h3>{{ $commission->name }}</h1>
     </div>
     <div class="flex justify-between mt-4">
-        <div class="mx-4">
-            <p class="text-sm text-gray-600  text-right font-bold">Estado: {{ $commission->estado }}</p>
-        </div>
+       
         <div class="text-sm">
             @if ($commission->tipo === 'MANTENIMIENTO')
                 <p>Tipo: <span class=" ">MANTENIEMIENTO DE LOS SISTEMAS DE TELECOMUNICACIÓN</span>
@@ -35,6 +29,9 @@
         </div>
         <div class="mx-2">
             <p class="text-sm text-gray-600  text-right font-bold">Fin: {{ $commission->fechafin }}</p>
+        </div>
+        <div class="mx-4">
+            <p class="text-sm text-gray-600  text-right font-bold">Estado: {{ $commission->estado }}</p>
         </div>
     </div>
     

@@ -16,6 +16,7 @@ class Commissions extends Component
     public $modalDel = false;
     public $search = '';
     public $commission;
+    public $nameCommision = 'Comisión de Servicio';
     public $estado;
     public $tipofiltro;
     public $tipo = '';
@@ -23,7 +24,7 @@ class Commissions extends Component
     public $fechainicio, $fechafin, $periodo;
 
     protected $rules = [
-        'commission.name' => 'required | min:35 |max:255',
+        'nameCommision' => 'required | min:35 |max:255',
         'tipo' => 'required',
         'fechainicio' => 'required',
         'fechafin' => 'required',
@@ -31,13 +32,14 @@ class Commissions extends Component
 
     public function render()
     {
+        
         $commissions = Commission::where('name', 'LIKE', '%' . $this->search . '%')
             ->where('estado', 'LIKE', '%' . $this->estado . '%')
             ->where('tipo', 'LIKE', '%' . $this->tipofiltro . '%')
             ->where('mes', 'LIKE', '%' . $this->mes . '%')
             ->where('anho', 'LIKE', '%' . $this->anho . '%')
             ->latest('id')
-            ->paginate(10);
+            ->paginate(15);
         return view('livewire.commission.commissions', [
             'commissions' => $commissions,
         ]);
@@ -60,12 +62,6 @@ class Commissions extends Component
 
         $ultimo = Commission::latest()->first();
 
-        if($ultimo->anho == date('Y')){
-            $num = $ultimo->numero;
-        }else {
-            $num = 0;
-        }
-        
         $this->periodo = $day;
        
         $mesconver = Str::between($this->fechainicio, '-', '-');
@@ -78,19 +74,30 @@ class Commissions extends Component
         }
 
         if (isset($this->commission->id)) {
+
             $this->commission->name = Str::upper($this->commission->name);
             $this->commission->tipo = $this->tipo;
-            $this->commission->fechainicio = $this->fechainicio;
-            $this->commission->fechafin = $this->fechafin;
-            if ($this->fechafin == $this->fechainicio){
-                $this->periodo = 1;
+            if ($this->commission->fechainicio != $this->fechainicio) {
+                $this->commission->fechainicio = $this->fechainicio;
             }
+
+            if ($this->commission->fechafin != $this->fechafin) {
+                $this->commission->fechafin = $this->fechafin;
+            }
+
             $this->commission->periodo = $this->periodo;
+
+            $this->commission->mes = $this->meses[date($mesconver) - 1];
+
+
             $this->commission->save();
+
+            $this->modalAdd = false;
         } else {
+            //{{strftime('%Y',strtotime("12/23/2004"))}}
             $comi  = Commission::create([
-                'name' => Str::upper($this->commission['name']),
-                'numero' => $num + 1,
+                'name' => Str::upper($this->nameCommision),
+                'numero' => $ultimo->numero + 1,
                 'tipo' => $this->tipo,
                 'fechainicio' => $this->fechainicio,
                 'fechafin' => $this->fechafin,
@@ -99,10 +106,10 @@ class Commissions extends Component
                 'anho' =>  date('Y'),
                 'mes' => $this->meses[date($mesconver) - 1],
             ]);
+
+            return redirect()->route('commision.show', $comi->id);
         }
         $this->modalAdd = false;
-
-        return redirect()->route('commision.show', $comi->id);
     }
     public function delCommission($id)
     {
@@ -115,11 +122,12 @@ class Commissions extends Component
     }
 
     public function editCommission(Commission $commission)
-    {
+    {   $this->modalAdd = true;
         $this->commission = $commission;
+        $this->nameCommision = $commission->name;
         $this->tipo = $commission->tipo;
         $this->fechainicio = $commission->fechainicio;
         $this->fechafin =  $commission->fechafin;
-        $this->modalAdd = true;
+        
     }
 }
