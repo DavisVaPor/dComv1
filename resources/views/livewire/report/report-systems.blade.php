@@ -104,8 +104,8 @@
                                         <div class="w-3/12">
                                             <span class="text-base text-gray-900 block">ESTADO:</span>
                                         </div>
-                                        <div class="w-9/12 ml-2">
-                                            @if ($estation->operativo == 1)
+                                        <div class="w-9/12 ml-2 flex">
+                                            @if ($estation->estado == 'OPERATIVO')
                                                 <span class="text-base text-green-500 block font-extrabold">
                                                     OPERATIVO
                                                 </span>
@@ -127,9 +127,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
-
 
                                 <div x-data="{
                                     openTab: 1,

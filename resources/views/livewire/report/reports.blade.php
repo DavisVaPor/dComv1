@@ -144,7 +144,7 @@
             <div class="flex justify-between items-center">
                 <h1 class="font-bold uppercase underline">Registrar Informe</h1>
                 <div class="col-span-6 sm:col-span-4 mt-2 flex">
-                    <input type="date" name="" value="{{ date('Y-m-d') }}" id=""
+                    <input disabled type="date" name="" value="{{ $fechactual }}" id=""
                         class="rounded-xl block font-bold">
                 </div>
             </div>
@@ -154,23 +154,22 @@
 
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label class="text-base font-bold border-gray-200" for="name"
-                    value="{{ __('Asunto del Informe') }}" />
-                <textarea id="name" wire:model.defer='report.asunto' class="resize-none w-full h-20 border rounded-md">
+                    value="{{ __('ASUNTO DEL INFORME') }}" />
+                <textarea id="name" wire:model.defer='asunto' class="resize-none w-full h-20 border rounded-md">
 
                 </textarea>
-                <x-jet-input-error for="report.asunto" class="mt-2" />
+                <x-jet-input-error for="asunto" class="mt-2" />
             </div>
 
 
             <div class="col-span-6 sm:col-span-4">
-                <table
-                    class="rounded-t-lg m-5 mx-auto text-gray-800 border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative">
+                <table class="rounded-t-lg mx-2 text-gray-800 border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative">
                     <tr class="text-left border-b-2 border-gray-300">
-                        <th colspan="2" class="font-bold px-4 py-3">COMISIONES CONFIRMADAS</th>
+                        <th colspan="2" class="font-bold  py-1">COMISIONES CONFIRMADAS: </th>
                     </tr>
                     @foreach ($commissions as $item)
-                        <tr class="bg-gray-100 border-b border-gray-200">
-                            <td class="px-2">
+                        <tr class="bg-white border-b border-gray-200 text-sm">
+                            <td class="px-2 py-1">
                                 <input class="rounded-2xl" wire:model='selectedCommission'
                                     value="{{ $item->id }}" type="radio">
                             </td>

@@ -16,6 +16,8 @@
         </div>
 
         <div class="flex my-2 items-center justify-end ">
+            <input wire:model='searchcode' class="form-control rounded-xl w-full mr-2 py-2 bg-white" type="search" placeholder="Numero"
+                aria-label="searchcode">
             <label for="">Tipo de Servicio:</label>
             <select class="text-sm rounded-xl mx-2" name="tipofiltro" id="tipofiltro" wire:model='tipofiltro'>
                 <option seleted value="">Todos</option>
@@ -149,7 +151,6 @@
     </table>
     <p class="py-2">{{ $commissions->links() }}</p>
 
-
     {{-- Modal de Añadir --}}
     <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
@@ -166,8 +167,8 @@
                     <option value="MEDICION">MEDICION DE RADIACION NO IONIZANTE</option>
                     <option value="PROMOCION">PROMOCION DE LAS TELECOMUNICACIONES</option>
                 </select>
-                <x-jet-input-error for="tipo" class="mt-2" />
             </div>
+            <x-jet-input-error for="tipo" class="mt-2" />
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label class="text-sm font-bold border-gray-200 uppercase" for="name"
                     value="{{ __('Asunto') }}" />
@@ -175,7 +176,6 @@
                     class="resize-none w-full border rounded-md border-gray-300" id="">
                 
                 </textarea>
-                
                 <x-jet-input-error for="nameCommision" class="mt-2" />
             </div>
 
@@ -185,13 +185,15 @@
                     value="{{ __('Fecha de la Comisión DEL') }}" />
                 <x-jet-input id="fechainicio" type="date" class=" block font-semibold"
                     wire:model='fechainicio' />
-                <x-jet-input-error for="fechainicio" class="mt-2" />
+                
                 <x-jet-label class="text-sm font-bold mx-2 border-gray-200 uppercase " for="fecha"
                     value="{{ __('AL') }}" />
                 <x-jet-input id="fechafin" type="date" class=" block font-semibold"
                     wire:model='fechafin' />
-                <x-jet-input-error for="fechafin" class="mt-2" />
+                
             </div>
+            <x-jet-input-error for="fechainicio" class="mt-2" />
+            <x-jet-input-error for="fechafin" class="mt-2" />
         </x-slot>
 
         <x-slot name="footer">

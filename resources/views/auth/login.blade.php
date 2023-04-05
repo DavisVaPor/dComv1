@@ -16,9 +16,11 @@
             @csrf
             <div class="text-3xl text-center">
                 <span class="font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-indigo-700">
-                    Intranet DirComunicaciones <br>
-                    DRTC-A
+                    INTRANET
                 </span>
+                <p class="text-blue-600 font-extrabold text-2xl">Dirección de Comunicaciones</p>
+                
+                
             </div>
             <div>
                 <x-jet-label for="email" value="{{ __('Email') }}" />
@@ -50,6 +52,15 @@
                 <x-jet-button class="ml-4">
                     {{ __('Ingresar') }}
                 </x-jet-button>
+            </div>
+            <div class="mt-2 text-center text-xs">
+                <p class="text-indigo-600">
+                   Area de Informatica &copy; {{ date('Y') }}
+               </p>
+               <p class="text-indigo-600 font-bold">
+                   Direccion Regional de Transportes y Comunicaciones-Amazonas
+               </p>
+              
             </div>
         </form>
     </x-jet-authentication-card>

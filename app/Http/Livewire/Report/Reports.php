@@ -21,9 +21,10 @@ class Reports extends Component
     public $selectedCommission;
     public $estado;
     public $fechactual;
+    public $asunto = 'INFORME DE ACTIVIDADES REALIZADAS ';
 
     protected $rules = [
-        'report.asunto' => 'required|min:20',
+        'asunto' => 'required|min:20',
         'selectedCommission' => 'required',
     ];
 
@@ -50,7 +51,7 @@ class Reports extends Component
 
     public function addReport()
     {
-        $this->reset('report');
+        $this->reset('report','asunto','selectedCommission');
         $this->modalAdd = true;
     }
 
@@ -61,21 +62,24 @@ class Reports extends Component
 
         $this->validate();
         if (isset($this->report->id)) {
+            $this->report->asunto = $this->asunto;
             $this->report->commission_id =  $this->selectedCommission;
             $this->report->save();
         } else {
             $newreport = Report::create([
-                'asunto' => Str::upper($this->report['asunto']),
+                'asunto' => Str::upper($this->asunto.'EN LA '.$commission->name),
                 'tipo' => $tipo,
                 'fechaCreacion' => $this->fechactual,
                 'user_id' => Auth::user()->id,
                 'estado' => 'BORRADOR',
                 'commission_id' => $this->selectedCommission,
             ]);
+
+            return redirect()->route('informe.show', $newreport->id);
         }
+        
         $this->modalAdd = false;
-        $this->reset('report','selectedCommission');
-        return redirect()->route('informe.show', $newreport->id);
+        $this->reset('report','asunto','selectedCommission');
     }
 
     public function delReport($id)
@@ -92,6 +96,7 @@ class Reports extends Component
     public function editReport(Report $report)
     {
         $this->report = $report;
+        $this->asunto = $report->asunto;
         $this->selectedCommission = $this->report->commission->id;;
         $this->modalAdd = true;
     }

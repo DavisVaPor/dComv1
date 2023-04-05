@@ -9,16 +9,12 @@ class Estation extends Model
 {
     use HasFactory;
 
-    const INOPERATIVO = 0;
-    const OPERATIVO = 1;
-
-
     protected $fillable = [
         'name',
         'latitud',
         'longitud',
         'altitud',
-        'operativo',
+        'estado',
         'urlgooglearth',
         'tipo',
         'terreno',

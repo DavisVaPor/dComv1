@@ -42,7 +42,7 @@ class ShowCommission extends Component
 
     public function Confirmar()
     {
-        if ($this->commission->objetives->isNotEmpty()) {
+        if ($this->commission->users->isNotEmpty()) {
             $confirmar = Commission::findOrFail($this->commission->id);
 
             $confirmar->estado = 'CONFIRMADA';

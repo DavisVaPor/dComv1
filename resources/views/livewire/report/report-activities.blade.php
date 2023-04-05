@@ -74,8 +74,6 @@
         </div>
     @endif
 
-
-
     {{-- Modal de Añadir --}}
     <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">

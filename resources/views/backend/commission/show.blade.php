@@ -10,16 +10,15 @@
         <h3>{{ $commission->name }}</h1>
     </div>
     <div class="flex justify-between mt-4">
-       
         <div class="text-sm">
+            <p>Tipo</p>
             @if ($commission->tipo === 'MANTENIMIENTO')
-                <p>Tipo: <span class=" ">MANTENIEMIENTO DE LOS SISTEMAS DE TELECOMUNICACIÓN</span>
-                </p>
+                <span class="">MANTENIEMIENTO DE LOS SISTEMAS DE TELECOMUNICACIÓN</span>
             @else
                 @if ($commission->tipo === 'MEDICION')
-                    <p>Tipo: <span class="">MEDICION DE RADIACION NO IONIZANTE (RNI)</span></p>
+                <span class="">MEDICION DE RADIACION NO IONIZANTE (RNI)</span>
                 @else
-                    <p>Tipo: <span class="">PROMOCION DE LAS TELECOMUNIACIONES</span></p>
+                <span class="">PROMOCION DE LAS TELECOMUNIACIONES</span>
                 @endif
             @endif
         </div>
@@ -52,8 +51,6 @@
     <section>
         <livewire:commission.commission-users :commission="$commission">
     </section>
-
-    
 
     @if ($commission->tipo === 'MANTENIMIENTO')
         <section>

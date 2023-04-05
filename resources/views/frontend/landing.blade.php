@@ -6,8 +6,8 @@
     <div class="container">
         <div class="justify-center row">
             <div class="w-full lg:w-5/6 xl:w-2/3">
-                <div class="pt-48 pb-64 text-center header-content">
-                    <img src="images/recurso1.png" alt="logo">
+                <div class="pt-48 pb-64 m-auto header-content">
+                    <img class="m-auto" src="images/recurso1.png" alt="logo">
                     <ul class="flex flex-wrap justify-center">
                         <li><a class="mx-3 main-btn video-popup" href="https://www.youtube.com/watch?v=Cp834TamMfQ">VIDEO INSTITUCIONAL <i class="ml-2 lni lni-play"></i></a></li>
                     </ul>

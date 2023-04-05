@@ -101,7 +101,7 @@
                             </div>
                             <div class="w-9/12">
                                 <span
-                                    class="text-base text-gray-900 block font-extrabold">{{ $estation->operativo ? 'OPERATIVO' : 'INOPERATIVO' }}</span>
+                                    class="text-base text-gray-900 block font-extrabold">{{ $estation->estado}}</span>
                             </div>
                         </div>
                         <div class="flex mb-2 border-b border-gray-600">

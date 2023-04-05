@@ -7,7 +7,7 @@
             <div class="justify-center row">
                 <div class="w-full lg:w-5/6 xl:w-2/3">
                     <div class="pt-40 pb-8 text-center header-content m-auto w-full">
-                        <img src="images/recurso1.png" alt="logo">
+                        <img class="m-auto" src="images/recurso1.png" alt="logo">
                     </div> <!-- header content -->
                 </div>
             </div> <!-- row -->

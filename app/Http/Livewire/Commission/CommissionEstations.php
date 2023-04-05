@@ -10,6 +10,7 @@ use Livewire\WithPagination;
 class CommissionEstations extends Component
 {
     use WithPagination;
+    
     public $commission;
     public $searchEstation = '';
     public $ubigeo = '';

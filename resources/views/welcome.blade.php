@@ -49,6 +49,7 @@
                         <nav class="flex items-center justify-between navbar">
                             <a class="mr-4 navbar-brand" href="{{ route('home') }}">
                                 <img class="m-auto" src="images/antena-parabolica.svg" alt="Logo">
+                                <h1 class="font-bold text-blue-600 text-center">Direccion de</h1>
                                 <h1 class="font-bold text-blue-600 text-center">Comunicaciones</h1>
                             </a>
 
@@ -124,26 +125,25 @@
     <!--====== CLIENT LOGO PART START ======-->
 
     <section class="py-8 bg-gray-800 client-logo-area">
-        <div class="container">
-            <div class="flex justify-center items-center row">
+        <div class="container px-16">
+            <div class="flex justify-between row">
                 <a href="https://www.gob.pe/regionamazonas" target='_blank' class="w-48 m-2">
-                    <div class="flex justify-center single-client">
+                    <div class="flex justify-center single-client mx-auto">
                         <img src="images/amazonass.png" alt="Logo">
                     </div> <!-- single client -->
                 </a>
-                
                 <div class="w-48 m-2">
                     <div class="flex justify-center single-client">
                         <img src="images/DRTC.png" alt="Logo">
                     </div> <!-- single client -->
                 </div>
                 <div class="w-48 m-2">
-                    <div class="flex justify-center single-client">
+                    <div class="single-client">
                         <img src="images/LOGO_DIRCOM.png" alt="Logo">
                     </div> <!-- single client -->
                 </div>
                 <a href="https://www.gob.pe/mtc" target='_blank' class="w-48 m-2">
-                    <div class="flex justify-center single-client">
+                    <div class="single-client">
                         <img src="images/mtc.png" alt="Logo">
                     </div> <!-- single client -->
                 </a>
@@ -153,20 +153,18 @@
 
     <!--====== CLIENT LOGO PART ENDS ======-->
     <footer id="footer" class="bg-gray-800 footer-area">
-    
-
         <div class="footer-copyright">
             <div class="container">
                 <div class="row">
                     <div class="w-full">
                         <div class="py-6 text-center">
-                            
+                             <p class="text-white">
+                                Area de Informatica &copy; {{ date('Y') }}
+                            </p>
                             <p class="text-white font-bold">
                                 Direccion Regional de Transportes y Comunicaciones-Amazonas
                             </p>
-                            <p class="text-white">
-                                Area de Informatica &copy; {{ date('Y') }}
-                            </p>
+                           
                         </div>
                     </div>
                 </div> <!-- row -->

@@ -32,7 +32,7 @@
                         <td class="px-4 py-3 text-center">{{ $estation->ubigeo->provincia }}</td>
                         <td class="px-4 py-3 text-center">{{ $estation->ubigeo->distrito }}</td>
                         <td class="px-4 py-3">
-                            @if ($estation->operativo == '1')
+                            @if ($estation->estado == 'OPERATIVO')
                                 <div
                                     class="text-gray-100 text-sm text-center bg-green-600 bg-clip-content font-semibold w-auto rounded-xl">
                                     OPERATIVO
@@ -120,6 +120,7 @@
                             @endforeach
                         </table>
                         {{ $estations->links() }}
+                        <p class="text-right text-xs">Numero de Registros {{ $estations->count() }}</p>
                     </div>
                 </div>
 {{-- 

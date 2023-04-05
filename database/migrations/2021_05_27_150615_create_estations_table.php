@@ -20,7 +20,7 @@ class CreateEstationsTable extends Migration
             $table->string('latitud',25);
             $table->string('longitud',25);
             $table->string('altitud',25)->nullable();
-            $table->enum('operativo',[Estation::OPERATIVO,Estation::INOPERATIVO])->default(Estation::OPERATIVO);
+            $table->enum('estado',['OPERATIVO','INOPERATIVO'])->default('OPERATIVO');
             $table->text('urlgooglearth');
             $table->enum('tipo',['A','B','C']);
             $table->unsignedBigInteger('ubigeo_id');
