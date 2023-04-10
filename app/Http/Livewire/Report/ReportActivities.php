@@ -2,11 +2,9 @@
 
 namespace App\Http\Livewire\Report;
 
-use App\Models\Report;
 use Livewire\Component;
 use App\Models\Activity;
 use App\Models\Estation;
-
 
 class ReportActivities extends Component
 {
@@ -15,8 +13,12 @@ class ReportActivities extends Component
     public $activity;
     public $selectedEstation;
 
+    public $estadoEstacion;
+
     public $modalAdd = false;
     public $modalDel = false;
+
+
 
     protected $rules = [
         'activity.descripcion' => 'required',
@@ -37,7 +39,10 @@ class ReportActivities extends Component
 
     public function render()
     {
-        return view('livewire.report.report-activities');
+
+        return view('livewire.report.report-activities',[
+  
+        ]);
     }
     public function addModal()
     {
@@ -82,4 +87,5 @@ class ReportActivities extends Component
         $this->selectedEstation = $this->activity->estation_id;
         $this->modalAdd = true;
     }
+
 }

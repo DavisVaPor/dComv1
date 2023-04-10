@@ -1,4 +1,5 @@
 <div>
+    @livewire('report.servicio.mantenimiento', ['estation' => $estation, 'informe' => $informe], key($estation->id))
     <h1 class="mr-5 text-lg font-bold text-blue-800 text-center">REGISTRO DE ACTIVIDADES REALIZADAS</h1>
     <div class="flex justify-end my-2 items-center">
         @if ($informe->estado == 'BORRADOR')
@@ -15,12 +16,17 @@
         @endif
     </div>
 
-    @if ($estation->activities->isNotEmpty())
+    @isset($informe->mantenimient)
+        SE ENCONTRO
+    @else
+        SIN REGISTRO
+    @endisset
+
+    {{-- @if ($informe->mantenimient->activities->isNotEmpty())
         <table class="rounded-t-lg m-5 w-full mx-auto bg-gray-200 text-gray-800">
             <tr class="text-left border-b-2 border-gray-300">
                 <th class="px-2 text-center">#</th>
                 <th class="px-4 py-2">Descripcion</th>
-                <th class="px-4 py-2 text-center">Tipo de Servicio</th>
                 <th class="py-2 text-center w-24">Fecha</th>
                 @if ($informe->estado == 'BORRADOR')
                     <th class="px-4 py-2 w-1/12">
@@ -33,8 +39,8 @@
                     </th>
                 @endif
             </tr>
-            
-            @foreach ($estation->activities as $activity)
+
+            @foreach ($informe->mantenimient->activities as $activity)
                 <tr class="bg-gray-100 border-b border-gray-200">
                     <td class="px-2 font-bold text-xs text-center">{{ $loop->iteration }}</td>
                     <td class="px-4 py-1 text-sm">{{ $activity->descripcion }}</td>
@@ -44,7 +50,7 @@
                         <td class="px-4 py-1 w-1/12">
                             <div class="flex justify-between">
                                 @livewire('report.activities.images', ['activity' => $activity, 'informe' => $informe], key($activity->id))
-                               
+
                                 <button wire:click="editActivity({{ $activity->id }})"
                                     class="text-blue-500 hover:text-gray-900 cursor-pointer mr-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 m-auto" fill="none"
@@ -53,7 +59,7 @@
                                             d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                     </svg>
                                 </button>
-                               
+
                                 <button class="text-red-500 hover:text-gray-900 cursor-pointer"
                                     wire:click="mostrarDel({{ $activity->id }})" wire:loading.attr="disabled">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 m-auto" fill="none"
@@ -72,19 +78,18 @@
         <div class="text-center border border-gray-100">
             <p class="text-gray-400">.:: Sin registro de actividades ::.</p>
         </div>
-    @endif
+    @endif --}}
 
     {{-- Modal de Añadir --}}
     <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
             <h1 class="font-bold uppercase">Registrar una Actividad</h1>
-            
+
         </x-slot>
 
         <x-slot name="content">
-            <div class="flex justify-between mb-2">
-                <h1 class="font-bold uppercase">Estacion:{{$estation->name}}</h1>
-                <h1 class="font-bold uppercase">Estado:{{$estation->estado}}</h1>               
+            <div class="mb-2">
+                <h1 class="font-bold uppercase">Estacion:{{ $estation->name }}</h1>
             </div>
 
             <div class="col-span-8 sm:col-span-4">
@@ -118,8 +123,7 @@
                 </div>
                 <x-jet-label class="text-base font-bold border-gray-200 mt-2" for="descripcion"
                     value="{{ __('Descripcion de la actividad') }}" />
-                <textarea id="name" wire:model.defer='activity.descripcion'
-                    class="resize-none w-full h-1/4 border rounded-md"></textarea>
+                <textarea id="name" wire:model.defer='activity.descripcion' class="resize-none w-full h-1/4 border rounded-md"></textarea>
                 <x-jet-input-error for="activity.descripcion" class="mt-2" />
             </div>
         </x-slot>
@@ -151,8 +155,7 @@
                 {{ __('Cancel') }}
             </x-jet-secondary-button>
 
-            <x-jet-button class="ml-2" wire:click="deleteActivity({{ $modalDel }})"
-                wire:loading.attr="disabled">
+            <x-jet-button class="ml-2" wire:click="deleteActivity({{ $modalDel }})" wire:loading.attr="disabled">
                 {{ __('Eliminar') }}
             </x-jet-button>
         </x-slot>

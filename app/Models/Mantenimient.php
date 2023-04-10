@@ -5,14 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Activity extends Model
+class Mantenimient extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'descripcion',
+        'tipo',
+        'fechaMantenimiento',
         'report_id',
         'estation_id',
+        'user_id',
     ];
 
     public function report(){
@@ -23,13 +25,12 @@ class Activity extends Model
         return $this->belongsTo(Estation::class);
     }
 
-    public function manteniemient(){
-        return $this->belongsTo(Mantenimient::class);
+    public function activities(){
+        return $this->hasMany(Activity::class);
     }
 
     public function images()
     {
         return $this->morphMany(Image::class, 'imageable');
     }
-
 }

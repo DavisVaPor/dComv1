@@ -26,16 +26,8 @@ class Report extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function backgrounds(){
-        return $this->hasMany(Background::class);
-    }
-
     public function activities(){
         return $this->hasMany(Activity::class);
-    }
-
-    public function conclusions(){
-        return $this->hasMany(Conclusion::class);
     }
 
     public function actas(){
@@ -73,5 +65,9 @@ class Report extends Model
     public function movimient()
     {
         return $this->hasMany(Movements::class);
+    }
+
+    public function mantenimient(){
+        return $this->hasOne(Mantenimient::class);
     }
 }

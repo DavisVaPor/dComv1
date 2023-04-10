@@ -79,4 +79,8 @@ class Estation extends Model
     {
         return $this->hasMany(Movements::class);
     }
+
+    public function mantenimient(){
+        return $this->hasMany(Mantenimient::class);
+    }
 }
