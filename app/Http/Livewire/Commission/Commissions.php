@@ -72,8 +72,6 @@ class Commissions extends Component
 
         $this->periodo = $day;
 
-        $mesconver = Str::between($this->fechainicio, '-', '-');
-
         if ($this->fechafin == $this->fechainicio) {
             $this->periodo = 1;
         }
@@ -94,7 +92,7 @@ class Commissions extends Component
             }
             $this->commission->periodo = $this->periodo;
 
-            $this->commission->mes = $this->meses[date($mesconver) - 1];
+            $this->commission->mes = $this->meses[strftime('%m', strtotime($this->fechainicio)) - 1];
 
             $this->commission->save();
 
@@ -109,7 +107,7 @@ class Commissions extends Component
                 'periodo' => $this->periodo,
                 'estado' => 'CREADA',
                 'anho' =>  strftime('%Y', strtotime($this->fechainicio)),
-                'mes' => $this->meses[date($mesconver) - 1],
+                'mes' => $this->meses[strftime('%m', strtotime($this->fechainicio)) - 1],
             ]);
 
             if ($comi->tipo == 'MANTENIMIENTO') {

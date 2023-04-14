@@ -22,7 +22,13 @@
 
         <x-slot name="content">
             <div class="col-span-6 sm:col-span-4">
-
+                <div class="m-2">
+                    <x-jet-label class="text-base uppercase font-bold border-gray-200" for="fecha"
+                        value="{{ __('Fecha de instalacion') }}" />
+                    <input class="rounded-xl text-sm" type="date" name="fecha" id="fecha"
+                        wire:model='fecha'>
+                    <x-jet-input-error for="fecha" class="mt-2" />
+                </div>
                 <x-jet-label class="text-base font-bold border-gray-200 uppercase" for="ArticleSelect"
                     value="{{ __('Equipos Trasladados') }}" />
                 <table class="rounded-t-lg m-2 w-full mx-auto bg-gray-200 text-gray-800">
@@ -63,24 +69,13 @@
                 <x-jet-input-error for="ArticleSelect" />
                 <x-jet-input-error for="SystemSelect" />
 
-                <x-jet-label class="text-base font-bold uppercase" for="url"
-                    value="{{ __('Acta de Instalacion') }}" />
-                <div class="col-span-6 sm:col-span-4 border rounded-lg ">
-                    <div class="m-2">
-                        <x-jet-label class="text-base uppercase font-bold border-gray-200" for="fecha"
-                            value="{{ __('Fecha de instalacion') }}" />
-                        <input class="rounded-xl text-sm" type="date" name="fecha" id="fecha"
-                            wire:model='fecha'>
-                        <x-jet-input-error for="fecha" class="mt-2" />
-                    </div>
-                    <div class="m-2">
-                        <x-jet-label class="text-base uppercase font-bold border-gray-200" for="file_url"
-                            value="{{ __('Archivo') }}" />
-                        <input type='file' class="" wire:model='file_url' accept="application/pdf">
-                        <x-jet-input-error for="file_url" class="mt-2" />
-                    </div>
-                    
-                </div>
+                {{-- <div class="m-2">
+                    <x-jet-label class="text-base uppercase font-bold border-gray-200" for="file_url"
+                        value="{{ __('Archivo') }}" />
+                    <input type='file' class="" wire:model='file_url' accept="application/pdf">
+                    <x-jet-input-error for="file_url" class="mt-2" />
+                </div> --}}
+        
             </div>
         </x-slot>
 

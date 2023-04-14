@@ -10,6 +10,7 @@ class ReportActivities extends Component
 {
     public $informe;
     public $estation;
+    public $mantenimient;
     public $activity;
     public $selectedEstation;
 
@@ -18,18 +19,14 @@ class ReportActivities extends Component
     public $modalAdd = false;
     public $modalDel = false;
 
-
-
     protected $rules = [
         'activity.descripcion' => 'required',
-        'activity.tipoActivity' => 'required',
-        'activity.fechaInicio' => 'required',
-        'activity.fechaFin' => 'required',
     ];
 
     protected $listeners = [
         'activityAdd' => 'render',
         'activitySup' => 'render',
+        'mantenimientoadd'=> 'render',
     ];
 
     public function mount(Estation $estation)
@@ -58,10 +55,8 @@ class ReportActivities extends Component
         } else {
             $this->informe->activities()->create([
                 'descripcion' => $this->activity['descripcion'],
-                'tipoActivity' => $this->activity['tipoActivity'],
                 'estation_id' => $this->estation->id,
-                'fechaInicio' => $this->activity['fechaInicio'],
-                'fechaFin' => $this->activity['fechaFin'],
+                'manteniemient_id' => $this->informe->mantenimient->id,
             ]);
         }
         $this->emit('activityAdd');

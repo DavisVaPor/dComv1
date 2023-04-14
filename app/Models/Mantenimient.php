@@ -12,6 +12,8 @@ class Mantenimient extends Model
     protected $fillable = [
         'tipo',
         'fechaMantenimiento',
+        'mes',
+        'anho',
         'report_id',
         'estation_id',
         'user_id',

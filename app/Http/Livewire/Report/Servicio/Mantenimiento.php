@@ -9,6 +9,8 @@ use Livewire\Component;
 
 class Mantenimiento extends Component
 {
+    public $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+
     public $informe;
     public $estation;
 
@@ -55,6 +57,8 @@ class Mantenimiento extends Component
                 'estation_id' => $this->estation->id,
                 'user_id' => Auth::user()->id,
                 'fechaMantenimiento' => $this->fechaMantenimiento,
+                'mes' => $this->meses[strftime('%m', strtotime($this->fechaMantenimiento))-1],
+                'anho' => strftime('%Y', strtotime($this->fechaMantenimiento)),
             ]);
         } 
         $this->emit('mantenimientoadd');
@@ -73,6 +77,5 @@ class Mantenimiento extends Component
         $this->tipoMantenimiento = $manteniemient->tipo;
         $this->fechaMantenimiento = $manteniemient->fechaMantenimiento;
         $this->modalServicio = true;
-
     }
 }

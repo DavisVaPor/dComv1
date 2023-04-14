@@ -25,7 +25,6 @@ class InstallEquipament extends Component
     protected $rules = [
         'ArticleSelect' => 'required',
         'SystemSelect' => 'required',
-        'file_url' => 'required',
         'fecha' => 'required',
     ];
 
@@ -63,12 +62,12 @@ class InstallEquipament extends Component
         $this->validate();
         $article = Article::findOrFail($this->ArticleSelect);
 
-        $acta_url = $this->file_url->store('Movimient'.'/'.'Installations'.'/'.$article->id.'-'.$article->codPatrimonial);
+        //$acta_url = $this->file_url->store('Movimient'.'/'.'Installations'.'/'.$article->id.'-'.$article->codPatrimonial);
 
         $article->movimient()->create([
             'tipo_movimiento' => 'INSTALACION',
             'fecha_move' => $this->fecha,
-            'acta' => $acta_url,
+            //'acta' => $acta_url,
             'report_id' => $this->informe->id,
             'estacion_out_id' =>  $article->estation->id,
             'estacion_out_name' =>  $article->estation->name,

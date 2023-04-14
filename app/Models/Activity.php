@@ -12,6 +12,7 @@ class Activity extends Model
     protected $fillable = [
         'descripcion',
         'report_id',
+        'manteniemient_id',
         'estation_id',
     ];
 

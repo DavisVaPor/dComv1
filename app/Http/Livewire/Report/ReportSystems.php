@@ -19,6 +19,10 @@ class ReportSystems extends Component
         $this->informe = $informe;
     }
 
+    protected $listeners = [
+        'changeStatus' => 'render',
+    ];
+
     public function render()
     {
         return view('livewire.report.report-systems',[
