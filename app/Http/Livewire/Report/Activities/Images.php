@@ -14,6 +14,7 @@ class Images extends Component
     use WithFileUploads;
 
     public $informe;
+    public $estation;
     public $image;
     public $imagen;
     public $activity;
@@ -23,7 +24,6 @@ class Images extends Component
     public $modalDel = false;
 
     protected $rules = [
-        'image.name' => 'required',
         'imagen' => 'required|image',
     ];
 
@@ -69,10 +69,10 @@ class Images extends Component
         if (isset($this->image->id)) {
             $this->image->save();
         } else {
-            $imagen = $this->imagen->store($this->informe->id.'/img');
+            $imagen = $this->imagen->store($this->informe->id.$this->estation->id.'/img');
             
                 $this->activity->images()->create([
-                    'name' => $this->image['name'],
+                    'name' => 'estation'.'-'.$this->estation->id.$this->estation->name,
                     'url' => $imagen,
                 ]);
 

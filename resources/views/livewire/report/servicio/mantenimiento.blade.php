@@ -60,7 +60,6 @@
                         <x-jet-label class="text-base font-bold border-gray-200 " for="tipo"
                             value="{{ __('Tipo de Servicio') }}" />
                         <select class="rounded-xl text-sm" name="tipo" id="tipo" wire:model='tipoMantenimiento'>
-                            <option>Seleccione</option>
                             <option value="DIAGNOSTICO">DIAGNOSTICO</option>
                             <option value="PREVENTIVO">MANTENIMIENTO PREVENTIVO</option>
                             <option value="CORRECTIVO">MANTENIMIENTO CORRECTIVO</option>

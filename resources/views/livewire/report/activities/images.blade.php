@@ -71,14 +71,6 @@
         </x-slot>
 
         <x-slot name="content">
-
-            <div class="col-span-6 sm:col-span-4">
-                <x-jet-label class="text-base font-bold border-gray-200" for="name" value="{{ __('Nombre') }}" />
-                <x-jet-input id="name" type="text" class="mt-1 border-gray-600 block w-full font-semibold"
-                    wire:model.defer='image.name' />
-                <x-jet-input-error for="image.name" class="mt-2" />
-            </div>
-
             <div class="col-span-6 sm:col-span-4 mt-2">
                 <x-jet-label class="text-base font-bold border-gray-200" for="url" value="{{ __('Imagen') }}" />
                 <label

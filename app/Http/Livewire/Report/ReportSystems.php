@@ -13,15 +13,11 @@ class ReportSystems extends Component
 {
     public $informe;
     public $estation;
-    public $modalEstatus = false;
+
     public function mount(Report $informe)
     {
         $this->informe = $informe;
     }
-
-    protected $listeners = [
-        'changeStatus' => 'render',
-    ];
 
     public function render()
     {
@@ -29,13 +25,5 @@ class ReportSystems extends Component
 
         ]);
     }
-
-    public function editStatus(Estation $estation){
-        
-        $this->modalEstatus = true;
-        $this->$estation = $estation;
-        
-    }
-
 }
 

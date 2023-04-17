@@ -11,12 +11,13 @@ class UpdatingStatus extends Component
     public $informe;
     public $estation;
 
+    public $estadoOld;
     public $estado;
 
     public $modalStatus = false;
 
     protected $rules = [
-        'estado' => 'required',
+        'estado' => 'required|different:estadoOld',
     ];
 
     protected $listeners = [
@@ -35,20 +36,19 @@ class UpdatingStatus extends Component
 
     public function editStatus()
     {
-        $this->reset('estado');
         $this->estado = $this->estation->estado;
+        $this->estadoOld = $this->estation->estado;
         $this->modalStatus = true;
     }
 
     public function updateStatus()
     {
         $this->validate();
-        if ($this->estation->estado = !$this->estado) {
-            $this->estado = $this->estation->estado;
-            $this->estation->save();
-        }
 
+        $this->estation->estado = $this->estado;
+        $this->estation->save();
         $this->emit('changeStatus');
+
         $this->modalStatus = false;
     }
 }

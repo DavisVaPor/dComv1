@@ -47,7 +47,7 @@
                     @if ($informe->estado == 'BORRADOR')
                         <td class="px-4 py-1 w-1/12">
                             <div class="flex justify-between">
-                                @livewire('report.activities.images', ['activity' => $activity, 'informe' => $informe], key($activity->id))
+                                @livewire('report.activities.images', ['estation' => $estation,'activity' => $activity, 'informe' => $informe], key($activity->id))
 
                                 <button wire:click="editActivity({{ $activity->id }})"
                                     class="text-blue-500 hover:text-gray-900 cursor-pointer mr-2">
@@ -80,6 +80,7 @@
         SIN REGISTRO
     @endisset
 
+    {{-- Modal de Registro de Actividad --}}
     <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
             <h1 class="font-bold uppercase">Registrar una Actividad</h1>
