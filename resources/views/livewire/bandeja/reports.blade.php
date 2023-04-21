@@ -97,7 +97,7 @@
                 @endforeach
             @else
                 <tr class="bg-white border-b border-gray-300 py-1">
-                    <td colspan="5" class="text-center font-bold">No se encuentra registros</td>
+                    <td colspan="7" class="text-center font-bold">No se encuentra registros</td>
                 </tr>
             @endif
         </tbody>

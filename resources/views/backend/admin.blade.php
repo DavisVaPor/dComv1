@@ -51,10 +51,10 @@
                         </a>
                     </div>
                     <div class="">
-                        <div class="w-full flex justify-center items-center mb-2">
+                        <div class="w-full px-8 flex justify-between items-center mb-1">
                             <abbr title="Perfil de Usuario">
                                 <a href="{{ route('profile.show') }}">
-                                    <img class="hidden h-10 w-10 rounded-full sm:block object-cover border-2 border-green-300 hover:border-yellow-500"
+                                    <img class="hidden h-8 w-8 rounded-full sm:block object-cover border-2 border-green-300 hover:border-yellow-500"
                                         src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
                                 </a>
                             </abbr>
@@ -97,7 +97,7 @@
                                 </a>
                             </li>
 
-                            @if (Auth::user()->rol->name == 'Director(a)')
+                            @if (Auth::user()->rol_id == '2')
                                 <li class="relative px-1 ">
                                     <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
                                         href="{{ route('bandeja.index') }}">

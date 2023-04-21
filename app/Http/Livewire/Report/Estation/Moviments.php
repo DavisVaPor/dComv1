@@ -37,11 +37,11 @@ class Moviments extends Component
         ]);
     }
 
-    public function infoActa(Movements $moviment)
+    /* public function infoActa(Movements $moviment)
     {
         $this->modalActa = true;
         $this->actamovimiento =  $moviment;
-    }
+    } */
 
     public function deleteModal($id)
     {
@@ -53,7 +53,6 @@ class Moviments extends Component
     public function deleteMovimient(Movements $movement)
     {
         $this->article->estation_id = $this->movement->estacion_out_id;
-        Storage::delete($movement->acta);
         $movement->delete();
         $this->article->save();
         $this->modalSup = false;

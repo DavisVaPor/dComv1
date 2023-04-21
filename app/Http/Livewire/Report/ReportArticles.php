@@ -31,7 +31,8 @@ class ReportArticles extends Component
     protected $listeners = ['ArtAdd' => 'render',
                             'ArtEdit' => 'render',
                             'EquipoInstall' => 'render',
-                            'EquipoRetiro' => 'render'];
+                            'EquipoRetiro' => 'render',
+                            'movementDelete' => 'render'];
 
     public function mount(Estation $estation)
     {

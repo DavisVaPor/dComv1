@@ -12,6 +12,8 @@ class Acta extends Model
     protected $fillable = [
         'name',
         'estation_id',
+        'fecha',
+        'report_id',
         'file_url',
     ];
 

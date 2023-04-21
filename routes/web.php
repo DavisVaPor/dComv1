@@ -11,6 +11,7 @@ use App\Http\Controllers\MedicionesController;
 use App\Http\Controllers\PromotionController;
 use App\Http\Controllers\RequerimientController;
 use App\Http\Controllers\TallerController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*

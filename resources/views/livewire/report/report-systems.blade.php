@@ -246,13 +246,12 @@
                                             @livewire('report.estation.images', ['estation' => $estation, 'informe' => $informe], key($estation->id))
                                         </div>
                                         <div x-show="openTab === 7">
-                                            @livewire('report.estation.images', ['estation' => $estation, 'informe' => $informe], key($estation->id))
+                                            @livewire('report.report-actas', ['estation' => $estation, 'informe' => $informe], key($estation->id))
                                         </div>
                                         <div x-show="openTab === 8">
                                             @livewire('report.report-observations', ['estation' => $estation, 'informe' => $informe], key($estation->id))
                                         </div>
                                     </div>
-
                                 </section>
 
                             </div>

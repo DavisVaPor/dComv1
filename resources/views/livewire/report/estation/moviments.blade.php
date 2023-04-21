@@ -49,7 +49,8 @@
                 </td>
                 <td class="py-2"> {{ $movimient->estation->name}}</td>
                 <td class="py-2 ">
-                    <abbr title="Acta de Instalacion">
+                    {{-- Modal sobre la presentacion de la Acta --}}
+                    {{-- <abbr title="Acta de Instalacion">
                         <button wire:click='infoActa({{ $movimient }})'
                             class="inline-flex items-center text-gray-500 transition-colors duration-150 cursor-pointer hover:text-blue-500">
                             <svg xmlns="http://www.w3.org/2000/svg" class="m-auto h-6 w-6" class="h-10 w-10"
@@ -59,7 +60,7 @@
                                     clip-rule="evenodd"></path>
                             </svg>
                         </button>
-                    </abbr>
+                    </abbr> --}}
                     <abbr title="Eliminar">
                         <button wire:click='deleteModal({{ $movimient->id }})'
                             class="inline-flex items-center text-gray-500 transition-colors duration-150 cursor-pointer hover:text-red-500">
