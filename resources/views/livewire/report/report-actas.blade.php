@@ -15,111 +15,121 @@
         </x-jet-button>
     </div>
 
+    <div>
+        <table>
+            <thead>
+                <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                    <th class="py-3 px-6 w-ful text-center">Acta de Mantenimiento</th>
+                    <th class="py-3 w-32 text-center">Fecha</th>
+                    <th class="py-3 w-1/12 text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-600 text-sm font-light">
+                @forelse ($informe->actas as $item)
+                    <tr class=" border-b border-gray-200 hover:bg-blue-100">
+                        <td class="w-8/12 text-left whitespace-nowrap">
+                            <div class="flex items-center">
+                                <div class="mr-2 text-black">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20"
+                                        fill="currentColor">
+                                        <path fill-rule="evenodd"
+                                            d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
+                                            clip-rule="evenodd"></path>
+                                    </svg>
 
-    <div class="">
-        <div class="flex items-center justify-center bg-gray-100 font-sans overflow-hidden">
-            <div class="w-full">
-                <div class="bg-white shadow-md rounded my-6">
-                    <table class="min-w-max w-full table-auto">
-                        <thead>
-                            <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                                <th class="py-3 px-6 w-10/12 text-center">Acta de Mantenimiento</th>
-                                <th class="py-3 w-32 text-center">Fecha</th>
-                                <th class="py-3 w-1/12 text-center">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody class="text-gray-600 text-sm font-light">
-                            <tr class=" border-b border-gray-200 hover:bg-blue-100">
-                                @forelse ($informe->actas as $item)
-                                    <td class="w-10/12 py-3 px-6 text-left whitespace-nowrap">
-                                        <div class="flex items-center">
-                                            <div class="mr-2 text-black">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
-                                                    viewBox="0 0 20 20" fill="currentColor">
-                                                    <path fill-rule="evenodd"
-                                                        d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
-                                                        clip-rule="evenodd"></path>
-                                                </svg>
+                                </div>
+                                <span class="font-medium">{{ $item->name }}</span>
+                            </div>
+                        </td>
+                        <td class="py-3 w-32 text-xs text-center">
+                            <span class="font-medium">{{ $item->fecha }}</span>
+                        </td>
 
-                                            </div>
-                                            <span class="font-medium">{{$item->name}}</span>
+                        <td class="py-3 w-1/12 text-center">
+                            <div class="flex item-center justify-center">
+                                <abbr title="Previsualizcion del Documento">
+                                    <div wire:click='infoActa({{ $item }})'
+                                    class="w-6 mr-2 transform hover:text-blue-500 hover:scale-110">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+                                </div>
+                                </abbr>
+
+                                @if ($informe->estado == 'BORRADOR')
+                                    <abbr title="Editar Registro">
+                                        <div wire:click='editModal({{ $item }})' class="w-6 mr-2 transform hover:text-blue-500 hover:scale-110">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                            </svg>
                                         </div>
-                                    </td>
-                                    <td class="py-3 w-32 text-xs text-center">
-                                        <span class="font-medium">{{$item->fecha}}</span>
-                                    </td>
-                                    <td class="py-3 w-1/12 text-center">
-                                        <div class="flex item-center justify-center">
-                                            <div class="w-6 mr-2 transform hover:text-blue-500 hover:scale-110">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                                </svg>
-                                            </div>
-                                            <div class="w-6 mr-2 transform hover:text-blue-500 hover:scale-110">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                                                </svg>
-                                            </div>
-                                            <div class="w-6 mr-2 transform hover:text-blue-500 hover:scale-110">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                </svg>
-                                            </div>
+                                    </abbr>
+                                
+                                    <abbr title="Eliminar Registro">
+                                        <div wire:click='deleteModal({{ $item->id }})' class="w-6 mr-2 transform hover:text-red-500 hover:scale-110">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                            </svg>
                                         </div>
-                                    </td>
-                                @empty
-                                    <td class="py-3 px-6 text-center whitespace-nowrap" colspan="2">
-                                        No Existen Datos
-                                    </td>
-                                @endforelse
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+                                    </abbr>
+                                @endif
+                            
+                            </div>
+                        </td>
+                    @empty
+                        <td class="py-3 w-full px-6 text-center whitespace-nowrap" colspan="3">
+                            No Existen Datos
+                        </td>
+                @endforelse
+            </tbody>
+        </table>
     </div>
+
 
     <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
             <h1 class="font-bold">Registro de Acta</h1>
         </x-slot>
         <x-slot name="content">
-            <div class="block">
-                <x-jet-label class="text-base font-bold border-gray-200" for="name"
-                    value="{{ __('Fecha de Servicio') }}" />
-                <input class="rounded-xl text-sm" type="date" id="" wire:model='fechaActa'
-                    min="2018-01-01" max="{{ $fechaActual }}">
-                <x-jet-input-error for="fechaActa" class="mt-2" />
-            </div>
-            <div class="col-span-6 sm:col-span-4 mt-2">
-                <x-jet-label class="text-base font-bold border-gray-200" for="url"
-                    value="{{ __('Archivo') }}" />
-                <label
-                    class="inline-flex items-center py-2 px-2 bg-gray-300 text-white rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:text-white">
-                    <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                        <path
-                            d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
-                    </svg>
-                    <input type='file' class="" wire:model='file_url' accept="application/pdf">
-                </label>
-                <x-jet-input-error for="file_url" class="mt-2" />
+            <div class="flex justify-between items-center">
+                <div class="col-span-6 sm:col-span-4 mt-2">
+                    <x-jet-label class="text-base font-bold border-gray-200" for="url"
+                        value="{{ __('Archivo') }}" />
+                        @isset($acta)
+                            {{$acta->name}}
+                        @endisset ()
+                    <label
+                        class="inline-flex items-center py-2 px-2 bg-gray-300 text-white rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:text-white">
+                        <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                            <path
+                                d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
+                        </svg>
+                        <input type='file' class="" wire:model='file_url' accept="application/pdf">
+                    </label>
+                    <x-jet-label class="text-sm text-center font-bold border-gray-200" for="url"
+                        value="{{ __('.:: Archivo no debe pasarse de los 3 MB ::.') }}" />
+                    <x-jet-input-error for="file_url" class="mt-2" />
+                </div>
+                <div class="block ml-4">
+                    <x-jet-label class="text-base font-bold border-gray-200" for="name"
+                        value="{{ __('Fecha de Servicio') }}" />
+                    <input class="rounded-xl text-sm" type="date" id="" wire:model='fechaActa'
+                        min="2018-01-01" max="{{ $fechaActual }}">
+                    <x-jet-input-error for="fechaActa" class="mt-2" role="alert" />
+                </div>
             </div>
 
             <div wire:loading wire:target="file_url" class="bg-yellow-300 border-l-4 border-red-300 p-4 m-auto"
                 role="alert">
-                <p class="font-bold text-center">Previsualizacion</p>
-                <p>Cargando la imagen ...</p>
+                <p class="font-bold text-center">Subiendo archivo ...</p>
             </div>
         </x-slot>
 
@@ -134,4 +144,51 @@
         </x-slot>
     </x-jet-dialog-modal>
 
+    {{-- Visualizar Acta Cargada --}}
+    @isset($visualizarActa)
+        <x-jet-dialog-modal wire:model="modalInfo">
+            <x-slot name="title">
+                <h1 class="uppercase">Acta de Manteniemiento</h1>
+            </x-slot>
+
+            <x-slot name="content">
+                <h1 class="text-lg text-center font-extrabold">
+                    ESTACIÓN DE {{ $visualizarActa->estation->name }}
+                </h1>
+                <h3 class="text-sm text-right font-extrabold">
+                    FECHA DE CREACION {{ $visualizarActa->created_at }}
+                </h3>
+                <iframe src="{{ Storage::url($visualizarActa->file_url) }}" width="100%" height="400px">
+                </iframe>
+            </x-slot>
+
+            <x-slot name="footer">
+                <x-jet-secondary-button wire:click="$set('modalInfo',false)" wire:loading.attr="disabled">
+                    {{ __('Cerrar') }}
+                </x-jet-secondary-button>
+            </x-slot>
+        </x-jet-dialog-modal>
+    @endisset
+
+     {{-- Modal de Eliminar --}}
+     <x-jet-dialog-modal wire:model="modalEliminar">
+        <x-slot name="title">
+            <h1 class="font-bold uppercase">{{ __('Eliminar Registro') }}</h1>
+        </x-slot>
+
+        <x-slot name="content">
+            {{ __('¿Seguro que desea eliminar?') }}
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-jet-secondary-button wire:click="$set('modalEliminar',false)" wire:loading.attr="disabled">
+                {{ __('Cancel') }}
+            </x-jet-secondary-button>
+
+            <x-jet-button class="ml-2" wire:click="deleteActa({{ $modalEliminar }})"
+                wire:loading.attr="disabled">
+                {{ __('Eliminar') }}
+            </x-jet-button>
+        </x-slot>
+    </x-jet-dialog-modal>
 </div>

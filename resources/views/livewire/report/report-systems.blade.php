@@ -55,7 +55,7 @@
                                         </div>
                                         <div class="w-9/12">
                                             <span
-                                                class="text-base text-gray-900 block font-bold uppercase">{{ $estation->latitud }}</span>
+                                                class="text-base text-gray-900 block font-bold uppercase">{{ $estation->latitud }} S</span>
                                         </div>
                                         <div class="w-3/12">
                                             <span class="text-base text-gray-900 block">LONGITUD</span>
@@ -65,7 +65,7 @@
                                         </div>
                                         <div class="w-9/12">
                                             <span
-                                                class="text-base text-gray-900 block font-bold uppercase">{{ $estation->longitud }}</span>
+                                                class="text-base text-gray-900 block font-bold uppercase">{{ $estation->longitud }} W</span>
                                         </div>
 
                                         <div class="w-9/12">
@@ -107,7 +107,7 @@
                                 </div>
                                 <section>
                                     <div x-data="{
-                                        openTab: 0,
+                                        openTab: 1,
                                         activeClass: 'text-blue-700 border bg-gray-100 rounded-lg font-bold',
                                         inactive: 'bg-gray-100 inline-block py-2 px-4 font-semibold'
                                         };">

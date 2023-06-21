@@ -49,18 +49,6 @@
                 </td>
                 <td class="py-2"> {{ $movimient->estation->name}}</td>
                 <td class="py-2 ">
-                    {{-- Modal sobre la presentacion de la Acta --}}
-                    {{-- <abbr title="Acta de Instalacion">
-                        <button wire:click='infoActa({{ $movimient }})'
-                            class="inline-flex items-center text-gray-500 transition-colors duration-150 cursor-pointer hover:text-blue-500">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="m-auto h-6 w-6" class="h-10 w-10"
-                                viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z"
-                                    clip-rule="evenodd"></path>
-                            </svg>
-                        </button>
-                    </abbr> --}}
                     <abbr title="Eliminar">
                         <button wire:click='deleteModal({{ $movimient->id }})'
                             class="inline-flex items-center text-gray-500 transition-colors duration-150 cursor-pointer hover:text-red-500">
@@ -76,39 +64,10 @@
             </tr>
         @empty
             <tr class="bg-gray-100 border-b border-gray-200">
-                <td colspan="6" class="text-center font-bold py-3 text-gray-400">No se encuentran registros</td>
+                <td colspan="7" class="text-center font-bold py-3 text-gray-400">No se encuentran registros</td>
             </tr>
         @endforelse
     </table>
-
-    {{-- Modal de Ver Acta --}}
-    @isset($actamovimiento)
-        <x-jet-dialog-modal wire:model="modalActa">
-            <x-slot name="title">
-                <h1 class="uppercase">Constancia de {{ $actamovimiento->tipo_movimiento }}</h1>
-            </x-slot>
-
-            <x-slot name="content">
-                <div class="text-sm mb-2">
-                    <h1 class="border-b-2">Equipo de Telecomunicación</h1>
-                    <p class="font-bold text-base">Cod. Patrimonial:
-                        {{ $actamovimiento->article->codPatrimonial }}-{{ $actamovimiento->article->denominacion }}</p>
-
-                    <h1>Fecha de Instalación: {{ $actamovimiento->fecha_move }}</h1>
-                </div>
-
-
-                <iframe src="{{ Storage::url($actamovimiento->acta) }}" width="100%" height="400px">
-                </iframe>
-            </x-slot>
-
-            <x-slot name="footer">
-                <x-jet-secondary-button wire:click="$set('modalActa',false)" wire:loading.attr="disabled">
-                    {{ __('Cerrar') }}
-                </x-jet-secondary-button>
-            </x-slot>
-        </x-jet-dialog-modal>
-    @endisset
 
     {{-- Modal de Eliminar --}}
     <x-jet-dialog-modal wire:model="modalSup">

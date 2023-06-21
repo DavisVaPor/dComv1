@@ -2,12 +2,11 @@
 
 namespace App\Http\Livewire\Report;
 
+use App\Models\Acta;
 use App\Models\Estation;
-use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-
-
 class ReportActas extends Component
 {
     use WithFileUploads;
@@ -16,17 +15,21 @@ class ReportActas extends Component
     public $acta;
     public $modalAdd = false;
     public $file_url;
+    public $modalInfo = false;
+    public $visualizarActa;
+    public $modalEliminar = false;
 
     public $fechaActual;
     public $fechaActa;
 
     protected $rules = [
-        'file_url' => 'required|file',
-        'fechaActa' => 'required|date',
+        'file_url' => 'required|file|max:3064',
+        'fechaActa' => 'required|date|before:fechaActual',
     ];
 
     protected $listeners = [
         'acta' => 'render',
+        'ActaDelete' => 'render',
     ];
 
     public function mount(Estation $estation)
@@ -47,19 +50,56 @@ class ReportActas extends Component
     }
 
     public function save()
-    {
+    {   
         $this->validate();
+        $carpeta = 'ActaMantenimientos' . '/'. 'Acta'.$this->estation->id.$this->estation->name;
+        $name = 'ActaMantenimiento'.$this->estation->name.now()->timestamp.'.pdf';
+        $acta_url = $this->file_url->storeAs($carpeta,$name);
 
-        $acta_url = $this->file_url->store('ActaMantenimiento' . '/' . $this->estation->id . '/' . $this->informe->id . 'Acta');
+        if (isset($this->acta->id)) {
+            Storage::delete($this->acta->file_url);
 
-        $this->informe->actas()->create([
-            'name' => 'ActaMantenimiento'.'-'.$this->estation->id.'-'.$this->fechaActa,
-            'fecha' => $this->fechaActa,
-            'estation_id' => $this->estation->id,
-            'file_url' => $acta_url,
-        ]);
+            $this->acta->name = 'ActaMantenimiento'.'-'.'-'.$this->estation->name.'-'.$this->fechaActa;
+            $this->acta->fecha = $this->fechaActa;
+            $this->acta->file_url =  $acta_url;
+        } else {
+            $this->informe->actas()->create([
+                'name' => 'ActaMantenimiento'.'-'.'-'.$this->estation->name.'-'.$this->fechaActa,
+                'fecha' => $this->fechaActa,
+                'estation_id' => $this->estation->id,
+                'file_url' => $acta_url,
+            ]);
+        }
+
+
+        
         $this->emit('acta');
         $this->reset(['file_url', 'acta']);
         $this->modalAdd = false;
+    }
+
+    public function infoActa(Acta $acta) {
+        $this->visualizarActa =  $acta;
+        $this->modalInfo = true;
+    }
+
+    public function deleteModal($id)
+    {
+        $this->modalEliminar =  Acta::findOrFail($id)->first();
+    }
+
+    public function deleteActa(Acta $acta)
+    {
+        Storage::delete($acta->file_url);
+        $acta->delete();
+        $this->modalEliminar = false;
+        $this->emit('ActaDelete');
+        $this->reset('acta');
+    }
+    function editModal(Acta $acta) {
+        $this->acta = $acta;
+        $this->fechaActa = $acta->fecha;
+        $this->file_url = $acta->file_url;
+        $this->modalAdd = true;
     }
 }
