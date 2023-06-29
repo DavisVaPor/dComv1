@@ -143,10 +143,9 @@
 
             <div class="flex justify-between items-center">
                 <h1 class="font-bold uppercase underline">Registrar Informe</h1>
-                <div class="col-span-6 sm:col-span-4 mt-2 flex">
-                    <input disabled type="date" name="" value="{{ $fechactual }}" id=""
-                        class="rounded-xl block font-bold">
-                </div>
+                <input disabled type="date" name="" value="{{ $fechactual }}" id=""
+                    class="rounded-xl block font-bold text-center">
+
             </div>
         </x-slot>
 
@@ -155,7 +154,7 @@
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label class="text-base font-bold border-gray-200" for="name"
                     value="{{ __('ASUNTO DEL INFORME') }}" />
-                <textarea id="name" wire:model.defer='asunto' class="resize-none w-full h-20 border rounded-md">
+                <textarea disabled id="name" wire:model.defer='asunto' class="text-sm resize-none w-full h-20 border rounded-md bg-gray-100">
 
                 </textarea>
                 <x-jet-input-error for="asunto" class="mt-2" />
@@ -163,7 +162,8 @@
 
 
             <div class="col-span-6 sm:col-span-4">
-                <table class="rounded-t-lg mx-2 text-gray-800 border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative">
+                <table
+                    class="rounded-t-lg mx-2 text-gray-800 border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative">
                     <tr class="text-left border-b-2 border-gray-300">
                         <th colspan="2" class="font-bold  py-1">COMISIONES CONFIRMADAS: </th>
                     </tr>
@@ -180,6 +180,9 @@
                 {{ $commissions->links() }}
                 <x-jet-input-error for="selectedCommission" class="mt-2" />
             </div>
+            @isset($fechafinComision)
+                {{ $fechafinComision }}
+            @endisset
         </x-slot>
 
         <x-slot name="footer">

@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {return view('frontend.landing');})->name('home');
+Route::get('/', function () {return view('auth.login');})->name('home');
 /* Rutas para el frontend */
 Route::group([],function () {
     Route::get('/estaciones', function () {return view('frontend.services.estaciones');})->name('serv-estations');

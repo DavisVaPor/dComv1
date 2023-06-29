@@ -70,7 +70,7 @@
         {{-- Modal de Confirmar --}}
     <x-jet-dialog-modal wire:model="modalConf">
         <x-slot name="title">
-            <h1 class="font-bold ">{{ __('Aviso') }}</h1>
+            <h1 class="font-bold ">{{ __('AVISO') }}</h1>
         </x-slot>
 
         <x-slot name="content">

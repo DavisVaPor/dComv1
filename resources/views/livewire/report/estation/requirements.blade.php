@@ -1,20 +1,23 @@
 <div>
-    <h1 class="mr-5 text-lg font-bold text-blue-800 text-center">REGISTRO DE REQUERIMIENTOS DE EQUIPOS </h1>
-    <div class="flex justify-end my-2 items-center">
-        @if ($informe->estado == 'BORRADOR')
-            <x-jet-button wire:click="addModal" class="bg-blue-500 justify-end">
-                Añadir
-                <span class="w-6 h-6 ml-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                            clip-rule="evenodd" />
-                    </svg>
-                </span>
-            </x-jet-button>
-        @endif
+    <div>
+        <h1 class="mr-5 text-lg font-bold text-blue-800 text-center">REGISTRO DE REQUERIMIENTOS DE EQUIPOS </h1>
+        <div class="flex justify-end -my-8 items-center">
+            @if ($informe->estado == 'BORRADOR')
+                <x-jet-button wire:click="addModal" class="bg-blue-500 justify-end">
+                    Añadir
+                    <span class="w-6 h-6 ml-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                </x-jet-button>
+            @endif
+        </div>
     </div>
-    <table class="rounded-t-lg m-5 w-11/12 mx-auto bg-gray-200 text-gray-800">
+   
+    <table class="rounded-t-lg m-2 w-full mx-auto bg-gray-200 text-gray-800">
         <tr class="text-left border-b-2 border-gray-300">
             <th class="text-center">#</th>
             <th class="w-1/2 px-4 py-3">Equipo</th>

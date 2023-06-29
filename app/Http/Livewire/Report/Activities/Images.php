@@ -45,7 +45,6 @@ class Images extends Component
     public function addModalImage()
     {
         $this->modalAdd = true;
-
     }
 
     public function addSubModalImage ()
@@ -96,5 +95,4 @@ class Images extends Component
         $this->modalDel = false;
         $this->emit('imageSup');
     }
-
 }

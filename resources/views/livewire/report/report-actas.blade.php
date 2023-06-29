@@ -105,7 +105,7 @@
                         value="{{ __('Archivo') }}" />
                         @isset($acta)
                             {{$acta->name}}
-                        @endisset ()
+                        @endisset
                     <label
                         class="inline-flex items-center py-2 px-2 bg-gray-300 text-white rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:text-white">
                         <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -177,7 +177,7 @@
         </x-slot>
 
         <x-slot name="content">
-            {{ __('¿Seguro que desea eliminar?') }}
+            {{ __('¿Seguro que desea eliminar el registro?') }}
         </x-slot>
 
         <x-slot name="footer">

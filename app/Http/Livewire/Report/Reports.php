@@ -2,9 +2,10 @@
 
 namespace App\Http\Livewire\Report;
 
+use App\Http\Livewire\Commission\Commissions as CommissionCommissions;
+use App\Models\Commission;
 use Livewire\Component;
 use App\Models\Report;
-use App\Models\Commission;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\WithPagination;
@@ -21,11 +22,13 @@ class Reports extends Component
     public $selectedCommission;
     public $estado;
     public $fechactual;
+    public $fechafinComision;
     public $asunto = 'INFORME DE ACTIVIDADES REALIZADAS ';
 
     protected $rules = [
         'asunto' => 'required|min:20',
         'selectedCommission' => 'required',
+        'fechactual' => 'required'
     ];
 
     public function render()
@@ -37,6 +40,13 @@ class Reports extends Component
                     ->latest('id')->paginate(10);
 
         $this->fechactual = date('Y-m-d');
+        if ($this->selectedCommission && $this->asunto ='INFORME DE ACTIVIDADES REALIZADAS') {
+            $commission = Commission::find($this->selectedCommission);
+            $this->asunto = $this->asunto.' '.$commission->name;
+        }elseif ($this->selectedCommission) {
+            $this->reset('asunto');
+        }
+       
         $commissions = User::find(Auth::user()->id)
                     ->commissions()
                     ->where('estado','CONFIRMADA')

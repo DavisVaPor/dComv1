@@ -1,13 +1,24 @@
 <div>
     <p class="text-center text-green-600 text-lg font-bold">
-        EQUIPOS DE TELECOMUNICACION DE LA ESTACION
+        INVENTARIO DE LOS EQUIPOS DE TELECOMUNICACION DE LA ESTACION
     </p>
 
-    <div>
+    <div class="flex justify-end">
+        {{-- Falta de Programar --}}
+        <x-jet-button wire:click="addModal" class="bg-red-500 justify-end mr-2">
+            Retiro Total
+            <span class="w-6 h-6 ml-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M15.707 4.293a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 011.414-1.414L10 8.586l4.293-4.293a1 1 0 011.414 0zm0 6a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L10 14.586l4.293-4.293a1 1 0 011.414 0z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </span>
+        </x-jet-button>
         @livewire('report.article.install-equipament', ['estation' => $estation,'informe' => $informe],key($estation->id))
     </div>
 
-    <div class="flex justify-between ml-2">
+    <div class="flex justify-between ml-2 mt-2">
         <input wire:model='search' class="form-control w-full rounded-xl" type="search" placeholder="Búsqueda de Bienes"
             aria-label="Search">
         <select class="rounded-xl mx-2 text-sm" name="sistema" id="sistema" wire:model='sistema'>
@@ -19,10 +30,10 @@
     </div>
     
     @empty(!$articles)
-        <table class="text-sm rounded-t-lg m-5 w-full mx-auto bg-gray-200 text-gray-800">
+        <table class="text-sm rounded-t-lg m-2 w-full mx-auto bg-gray-200 text-gray-800">
             <tr class="border-b-2 border-gray-300">
-                <th class="px-4 py-3">Cod.</th>
-                <th class="px-4 py-3">Nombre del Bien</th>
+                <th class="px-4 py-3">Cod. Pat. DRTC</th>
+                <th class="px-4 py-3">Nombre del Equipo</th>
                 <th class="px-4 py-3">Serie</th>
                 <th class="px-4 py-3 text-center">Sistema</th>
                 <th class="px-4 py-3 text-center">Estado</th>
@@ -36,11 +47,11 @@
             </tr>
             @forelse ($articles as $article)
                 <tr class="bg-gray-100 border-b border-gray-200">
-                    <td class="px-4 font-bold">{{ $article->codPatrimonial }}</td>
-                    <td class="px-4 py-3">{{ $article->denominacion }}</td>
-                    <td class="px-4 py-3">{{ $article->nserie }}</td>
-                    <td class="px-4 py-3 text-center">{{ $article->system->name }}</td>
-                    <td class="px-4 py-3 text-center font-bold">
+                    <td class="px-4 font-bold ">{{ $article->codPatrimonial }}</td>
+                    <td class="px-4 py-1">{{ $article->denominacion }}</td>
+                    <td class="px-4 py-1">{{ $article->nserie }}</td>
+                    <td class="px-4 py-1 text-center">{{ $article->system->name }}</td>
+                    <td class="px-4 py-1 text-center font-bold">
                         @if ($article->estado == 'BUENO')
                             <p class="text-green-500">
                                 {{ $article->estado }}
@@ -85,7 +96,7 @@
 
 
     {{-- //Se debe de pasar a otro archivo --}}
-    @isset($informe->maintenances)
+    {{-- @isset($informe->maintenances)
         <h2 class="mb-2 font-bold text-lg text-blue-500 uppercase"> Reparaciones a Equipos Realizadas</h2>
         <div class=" text-gray-500">
 
@@ -132,7 +143,7 @@
                 @endforelse
             </table>
         </div>
-    @endisset
+    @endisset --}}
 
     {{-- Modal de Reparacion --}}
     @if ($articulo)

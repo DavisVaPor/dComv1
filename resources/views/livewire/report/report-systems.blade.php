@@ -5,12 +5,12 @@
     <div class="tabs">
         @foreach ($informe->commission->estations as $estation)
             <div class="border-b tab">
-                <div class="border-l-2 border-transparent relative">
-                    <input class="w-full absolute z-10 cursor-pointer opacity-0 h-5 top-6" type="checkbox" id="chck1">
+                <div class="relative">
+                    <input class="w-full h absolute z-10 cursor-pointer opacity-0 h-5 top-6" type="checkbox" id="chck1">
                     <header class="flex justify-between items-center p-5 pl-8 pr-8 cursor-pointer select-none tab-label"
                         for="chck1">
                         <span class="text-grey-darkest text-xl font-bold">
-                            Estacion : E-{{ $estation->id }} {{ $estation->name }}
+                            Estación : E-{{ $estation->id }} {{ $estation->name }}
                         </span>
                         <div class="rounded-full border border-grey w-7 h-7 flex items-center justify-center test">
                             <svg aria-hidden="true" class="" data-reactid="266" fill="none" height="24"
@@ -21,10 +21,9 @@
                             </svg>
                         </div>
                     </header>
-                    <div class="tab-content mb-2">
+                    <div class="tab-content mb-1 h-full">
                         <div class=" pb-2 text-gray-500">
-                            <div class=" rounded-lg w-full mt-4 p-2 shadow">
-                                <div>
+                            <div class=" rounded-lg w-full mt-2 p-2">
                                     <div class="flex justify-between mb-2 border-b border-gray-600 items-center">
                                         <div class="flex items-center">
                                             <span class="text-base text-gray-900 block">DEPARTAMENTO :</span>
@@ -104,7 +103,14 @@
                                         </div>
                                         @livewire('report.estado.updating-status', ['estation' => $estation, 'informe' => $informe], key($estation->id))
                                     </div>
-                                </div>
+                                    <div class="flex text-sm mb-2 border-b border-gray-600">
+                                        <div class="w-8/12">
+                                            <p class="text-base text-gray-900 block">CONTACTO RESPONSABLE: <span class="font-bold">Nombre del Responsable</span> </p>
+                                        </div>
+                                        <div class="w-3/12">
+                                            <span class="text-base text-gray-900 block">TELEFONO: 983066493</span>
+                                        </div>
+                                    </div>
                                 <section>
                                     <div x-data="{
                                         openTab: 1,
@@ -213,7 +219,7 @@
                                                 </a>
                                             </li>
 
-                                            <li @click="openTab = 8" class="mr-1 cursor-pointer">
+                                            {{-- <li @click="openTab = 8" class="mr-1 cursor-pointer">
                                                 <a :class="openTab === 8 ? activeClass : inactive"
                                                     class="bg-gray-100 py-2 px-2 flex items-center">
                                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
@@ -224,12 +230,11 @@
                                                     </svg>
                                                     <span class="text-sm">Siniestro</span>
                                                 </a>
-                                            </li>
+                                            </li> --}}
                                         </ul>
                                         <div x-show="openTab === 1">
                                             @livewire('report.report-articles', ['estation' => $estation, 'informe' => $informe], key($estation->id))
                                         </div>
-
                                         <div x-show="openTab === 2">
                                             @livewire('report.report-activities', ['estation' => $estation, 'informe' => $informe], key($estation->id))
                                         </div>
@@ -248,12 +253,11 @@
                                         <div x-show="openTab === 7">
                                             @livewire('report.report-actas', ['estation' => $estation, 'informe' => $informe], key($estation->id))
                                         </div>
-                                        <div x-show="openTab === 8">
+                                        {{--<div x-show="openTab === 8">
                                             @livewire('report.report-observations', ['estation' => $estation, 'informe' => $informe], key($estation->id))
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </section>
-
                             </div>
                         </div>
                     </div>

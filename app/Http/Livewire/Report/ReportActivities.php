@@ -5,6 +5,10 @@ namespace App\Http\Livewire\Report;
 use Livewire\Component;
 use App\Models\Activity;
 use App\Models\Estation;
+use App\Models\Image;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+
 
 class ReportActivities extends Component
 {
@@ -54,7 +58,7 @@ class ReportActivities extends Component
             $this->activity->save();
         } else {
             $this->informe->activities()->create([
-                'descripcion' => $this->activity['descripcion'],
+                'descripcion' => Str::upper($this->activity['descripcion']),
                 'estation_id' => $this->estation->id,
                 'manteniemient_id' => $this->informe->mantenimient->id,
             ]);
@@ -71,6 +75,12 @@ class ReportActivities extends Component
 
     public function deleteActivity(Activity $activity)
     {
+        foreach ($activity->images as $image) {
+            $url = str_replace('storage','public',$image->url);
+        
+            Storage::delete($url);
+        }
+        
         $activity->delete();
         $this->modalDel = false;
         $this->emit('activitySup');

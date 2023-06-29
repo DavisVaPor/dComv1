@@ -14,9 +14,8 @@
             </x-jet-button>
         @endif
     </div>
-
-    @if ($informe->observations->isNotEmpty())
-        <table class="rounded-t-lg m-5 w-11/12 mx-auto bg-gray-200 text-gray-800">
+    <table class="rounded-t-lg m-5 w-full mx-auto bg-gray-200 text-gray-800">
+        <thead>
             <tr class="text-left border-b-2 border-gray-300">
                 <th class="px-4 py-3 w-1/12 text-center">#</th>
                 <th class="px-4 py-3 w-8/12">Descripcion</th>
@@ -25,7 +24,9 @@
                     <th class="px-4 py-3">Acciones</th>
                 @endif
             </tr>
-            @foreach ($informe->observations as $observation)
+        </thead>
+        <tbody>
+            @forelse ($informe->observations as $observation)
                 <tr class="bg-gray-100 border-b border-gray-200">
                     <td class="px-4 mb-auto font-bold text-center">{{ $loop->iteration }}</td>
                     <td class="px-4 py-3">{{ $observation->detalle }}</td>
@@ -35,13 +36,15 @@
                                 class="text-gray-100  text-sm text-center bg-red-500 bg-clip-content font-bold w-auto rounded-xl">
                                 {{ $observation->nivel }}
                             </div>
-                        @else @if ($observation->nivel == 'MODERADO')
+                        @else
+                            @if ($observation->nivel == 'MODERADO')
                                 <div
                                     class="text-gray-700  text-sm text-center bg-yellow-500 bg-clip-content font-bold w-auto rounded-xl">
                                     <p class="m-2"> {{ $observation->nivel }}</p>
 
                                 </div>
-                            @else @if ($observation->nivel == 'BAJA')
+                            @else
+                                @if ($observation->nivel == 'BAJA')
                                     <div
                                         class="text-gray-100  text-sm text-center bg-green-500 bg-clip-content font-bold w-auto rounded-xl">
                                         {{ $observation->nivel }}
@@ -78,13 +81,14 @@
                         </td>
                     @endif
                 </tr>
-            @endforeach
-        </table>
-    @else
-        <div class="text-center border border-gray-100">
-            <p class="text-gray-400">.::  Sin registro de observaciones ::.</p>
-        </div>
-    @endif
+            @empty
+                <tr class="bg-gray-100 border-b border-gray-200">
+                    <td colspan="4" class="text-center my-2">.... Sin Registro Añadido....</td>
+                </tr>
+            @endforelse
+
+        </tbody>
+    </table>
 
     {{-- Modal de Añadir --}}
     <x-jet-dialog-modal wire:model="modalAdd">
@@ -96,8 +100,7 @@
             <div class="col-span-6 sm:col-span-4 bg-gray-50 p-2 border rounded-xl">
                 <x-jet-label class="text-base font-bold border-gray-200" for="name"
                     value="{{ __('Descripcion de la obeservacion') }}" />
-                <textarea id="name" wire:model.defer='observation.detalle'
-                    class="resize-none w-full h-1/4 border rounded-md"></textarea>
+                <textarea id="name" wire:model.defer='observation.detalle' class="resize-none w-full h-1/4 border rounded-md"></textarea>
                 <x-jet-input-error for="observation.detalle" class="mt-2" />
 
                 <x-jet-label class="text-base font-bold border-gray-200 mt-2" for="tipo"
