@@ -12,17 +12,28 @@ class LandingPageController extends Controller
     {
        $commissions = Commission::where('anho','LIKE',date('Y'))
                                 ->get();
-       $estations = Estation::all();
-       $estationDef = Estation::where('estado','LIKE','INOPERATIVO')->get();
+       $estationsvhf = Estation::where('sistema','LIKE','VHF')->get();
 
-       $estationDef = 100 * ($estationDef->count()/$estations->count());
+       $estationvhfDef = Estation::where('sistema','LIKE','VHF')->where('estado','LIKE','INOPERATIVO')->get();
 
-       $estationDef = number_format($estationDef,2);
+       $estationshf = Estation::where('sistema','LIKE','HF')->get();
+
+       $estationhfDef = Estation::where('sistema','LIKE','HF')->where('estado','LIKE','INOPERATIVO')->get();
+
+       $estationvhfDef = 100 * ($estationvhfDef->count()/$estationsvhf->count());
+
+       $estationvhfDef = number_format($estationvhfDef,2);
+
+       $estationhfDef = 100 * ($estationhfDef->count()/$estationshf->count());
+
+       $estationhfDef = number_format($estationhfDef,2);
 
        return view('backend.dashboard',[
             'commissions' => $commissions,
-            'estations' => $estations,
-            'estationDef' => $estationDef
+            'estationsVHF' => $estationsvhf,
+            'estationvfhDef' => $estationvhfDef,
+            'estationsHF' => $estationshf,
+            'estationhfDef' => $estationhfDef,
        ]);
     }
 }

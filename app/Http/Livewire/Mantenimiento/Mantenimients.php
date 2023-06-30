@@ -15,14 +15,11 @@ class Mantenimients extends Component
 
     public function render()
     {
-        $mantenimients = Mantenimient::all();
 
-        $activities = Activity::where('descripcion','LIKE','%'.$this->search.'%')
-        ->where('tipoActivity','LIKE',$this->tipo.'%')
-        ->latest('id')->paginate(15);
+        $mantenimients = Mantenimient::where('tipo','LIKE','%'.$this->tipo.'%')
+                                    ->latest('id')->paginate(15);
         
         return view('livewire.mantenimiento.mantenimients',[
-            'activities' => $activities,
             'mantenimients' => $mantenimients,
         ]);
     }

@@ -222,18 +222,6 @@
                                     <span class="ml-2 text-xs">OBSERVACIONES</span>
                                 </a>
                             </li>
-                            {{-- <li class="relative px-1 ">
-                                <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
-                                    href="#">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                            d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    <span class="ml-2 text-xs">SINIESTRO</span>
-                                </a>
-                            </li> --}}
 
                             <li class="relative px-1 ">
                                 <a class="inline-flex items-center w-full text-sm font-semibold text-white transition-colors duration-150 cursor-pointer hover:text-green-500"
@@ -275,7 +263,7 @@
             </div>
         </aside>
 
-        <div class="flex flex-col flex-1 w-full overflow-y-auto">
+        <div class="flex flex-col flex-1 w-full h-full overflow-y-auto">
             <header class="z-40 py-2  bg-gray-800  ">
                 <div class="flex items-center justify-between h-2 px-6 mx-auto">
                     <!-- Mobile hamburger -->

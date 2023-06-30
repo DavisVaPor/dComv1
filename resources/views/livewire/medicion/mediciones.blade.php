@@ -30,7 +30,7 @@
                 <td class="px-2 text-green-600  font-extrabold">{{ $measurement->rni }}%</td>
                 <td class="text-sm px-2 w-24">{{ $measurement->fecha }}</td>
                 <td class="text-sm px-2 w-1/12 text-center">
-                    <button wire:click='#' class="text-green-500 m-auto hover:text-gray-900 cursor-pointer mr-2">
+                    <button wire:click='openModalImage({{ $measurement->id }})' class="text-green-500 m-auto hover:text-gray-900 cursor-pointer mr-2">
                         <abbr title="VER IMAGEN">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="w-6 h-6 m-auto">
                                 <path fill="currentColor"
@@ -46,4 +46,41 @@
             </tr>
         @endforelse
     </table>
+
+    {{-- Modal de Ver Evidencia --}}
+    @isset($openimagen)
+        <x-jet-dialog-modal wire:model="modalImagen">
+            <x-slot name="title">
+                <h1 class="uppercase">Evidencia de La Medicion de RNI</h1>
+            </x-slot>
+
+            <x-slot name="content">
+                <h1 class="uppercase font-bold text-lg">Medicion de {{$openimagen->ubicacion}}</h1>
+                <div class=" ">
+                    <div class=" shadow-md border  rounded-lg">
+                        <div>
+                            <img class="rounded-t-lg m-auto w-96 h-auto" src="{{ Storage::url($openimagen->imagen) }}"
+                                alt="">
+                        </div>
+                        <div class="mx-4 my-2 text-base uppercase">
+                            <label class="text-center text-lg underline my-2" for="">Detalles del Registro </label>
+                            <p class="border-b border-gray-200">Fecha de Medicion : <span class="font-bold">{{$openimagen->fecha}}</span></p>
+                            <p class="border-b border-gray-200">Provincia : <span class="font-bold">{{$openimagen->ubigee->provincia}}</span></p>
+                            <p class="border-b border-gray-200">Distrito : <span class="font-bold">{{$openimagen->ubigee->distrito}}</span></p>
+                            <p class="border-b border-gray-200">Latitud : <span class="font-bold">{{$openimagen->latitud}}</span></p>
+                            <p class="border-b border-gray-200">Longitud : <span class="font-bold">{{$openimagen->longitud}}</span></p>
+                            <p class="border-b border-gray-200">Valor de RNI : <span class="font-bold">{{$openimagen->rni . ' '}} %</span></p>
+                            <p class="border-b border-gray-200">Maps : <a target="_blank" href="{{ $measurement->maps }}" class="font-bold hover:text-blue-900">Ubicacion Geografica en Google Maps</a></p>
+                        </div>
+                    </div>
+                </div>
+            </x-slot>
+
+            <x-slot name="footer">
+                <x-jet-secondary-button wire:click="$set('modalImagen',false)" wire:loading.attr="disabled">
+                    {{ __('Cerrar') }}
+                </x-jet-secondary-button>
+            </x-slot>
+        </x-jet-dialog-modal>
+    @endisset
 </div>

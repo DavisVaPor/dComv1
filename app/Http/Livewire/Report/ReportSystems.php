@@ -13,6 +13,10 @@ class ReportSystems extends Component
 {
     public $informe;
     public $estation;
+    
+    protected $listeners = [
+        
+    ];
 
     public function mount(Report $informe)
     {

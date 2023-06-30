@@ -45,7 +45,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="flex mb-2 border-b border-gray-600">
+                                    <div class="flex justify-between mb-2 border-b border-gray-600">
                                         <div class="w-3/12">
                                             <span class="text-base text-gray-900 block">LATITUD</span>
                                         </div>
@@ -67,45 +67,36 @@
                                                 class="text-base text-gray-900 block font-bold uppercase">{{ $estation->longitud }} W</span>
                                         </div>
 
-                                        <div class="w-9/12">
-                                            <span class="text-base text-gray-900 block">TIPO DE ESTACION:</span>
+                                        <div class="flex text-base text-gray-900">
+                                            <span class="">SISTEMA:</span>
+                                            <span class="font-extrabold ml-2">{{ $estation->sistema }}</span>
                                         </div>
-                                        <div class="w-9/12">
-                                            <span
-                                                class="text-base text-gray-900 block font-extrabold">{{ $estation->tipo }}</span>
+
+                                        <div class="w-9/12 flex ml-5 text-base text-gray-900 ">
+                                            <span class="">TIPO DE ESTACION:</span>
+                                            <span class="font-extrabold ml-2">{{ $estation->tipo }}</span>
                                         </div>
 
                                     </div>
-                                    <div class="flex mb-2 border-b border-gray-600">
-                                        <div class="w-3/12">
-                                            <span class="text-base text-gray-900 block">ENERGIA</span>
-                                        </div>
-                                        <div class="w-1/12">
-                                            <span class="text-base text-gray-900 block">:</span>
-                                        </div>
-                                        <div class="w-9/12">
+                                    <div class="justify-between flex mb-2 border-b border-gray-600">
+                                        <div class="flex">
+                                            <span class="text-base text-gray-900 block">ENERGIA:</span>
                                             <span
-                                                class="text-base text-gray-900 block font-bold uppercase">{{ $estation->energia }}</span>
+                                                class="text-base ml-2 text-gray-900 block font-bold uppercase">{{ $estation->energia }}</span>
                                         </div>
-                                        <div class="w-3/12">
-                                            <span class="text-base text-gray-900 block">SINIESTRADO</span>
+                                    
+                                        <div class="flex">
+                                            <span class="text-base text-gray-900 block ml-5">SINIESTRADO:</span>
+                                            @livewire('report.estation.siniester', ['estation' => $estation, 'informe' => $informe], key($estation->id))
                                         </div>
-                                        <div class="w-1/12">
-                                            <span class="text-base text-gray-900 block">:</span>
-                                        </div>
-                                        <div class="w-9/12">
-                                            <span
-                                                class="text-base text-gray-900 block font-extrabold">{{ $estation->siniestrado }}</span>
-                                        </div>
-
-                                        <div class="w-3/12">
+                                        <div class="flex">
                                             <span class="text-base text-gray-900 block">ESTADO:</span>
+                                            @livewire('report.estado.updating-status', ['estation' => $estation, 'informe' => $informe], key($estation->id))
                                         </div>
-                                        @livewire('report.estado.updating-status', ['estation' => $estation, 'informe' => $informe], key($estation->id))
                                     </div>
                                     <div class="flex text-sm mb-2 border-b border-gray-600">
                                         <div class="w-8/12">
-                                            <p class="text-base text-gray-900 block">CONTACTO RESPONSABLE: <span class="font-bold">Nombre del Responsable</span> </p>
+                                            <p class="text-base text-gray-900 block">CONTACTO RESPONSABLE: <span class="font-extrabold">Nombre del Responsable</span> </p>
                                         </div>
                                         <div class="w-3/12">
                                             <span class="text-base text-gray-900 block">TELEFONO: 983066493</span>

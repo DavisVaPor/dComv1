@@ -8,6 +8,9 @@ use Livewire\WithPagination;
 
 class Mediciones extends Component
 {
+    public $measurement;
+    public $openimagen;
+    public $modalImagen = false;
     use WithPagination;
     public function render()
     {
@@ -15,5 +18,14 @@ class Mediciones extends Component
         return view('livewire.medicion.mediciones',[
             'mediciones'  => $mediciones,
         ]);
+    }
+
+    public function openModalImage(Measurement $measurement)
+    {
+        $this->measurement = $measurement;
+        $this->openimagen =  $this->measurement;
+
+        $this->modalImagen = true;
+
     }
 }

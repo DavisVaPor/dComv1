@@ -23,10 +23,11 @@ class ReportObservations extends Component
     }
 
     protected $listeners = ['observationAdd' => 'render',
-                            'observationSup' => 'render',];
+                            'observationSup' => 'render',
+                            'SiensterAdd' => 'render'];
 
     protected $rules = [
-        'observation.detalle' => 'required',
+        'observation.detalle' => 'required|min:50',
         'observation.nivel' => 'required',
     ];
 

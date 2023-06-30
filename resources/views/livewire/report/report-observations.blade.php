@@ -93,26 +93,30 @@
     {{-- Modal de Añadir --}}
     <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
-            <h1 class="font-bold uppercase">Registro de una observación</h1>
+            <h1 class="font-bold uppercase">Añadir Observación</h1>
         </x-slot>
 
         <x-slot name="content">
             <div class="col-span-6 sm:col-span-4 bg-gray-50 p-2 border rounded-xl">
+                <div class="flex">
+                    <x-jet-label class="text-base font-bold mr-2 border-gray-200 mt-2" for="tipo"
+                        value="{{ __('Tipo de la actividad') }}" />
+                    <select class="rounded-xl" name="tipo" id="tipo" wire:model.defer='observation.nivel'>
+                        <option>NIVEL DE PRIORIDAD ...</option>
+                        <option value="ALTA">ALTA</option>
+                        <option value="MODERADO">MODERADO</option>
+                        <option value="BAJA">BAJA</option>
+                        <option value="NINGUNA">NINGUNA</option>
+                    </select>
+                    <x-jet-input-error for="observation.atencion" class="mt-2" />
+                </div>
+
                 <x-jet-label class="text-base font-bold border-gray-200" for="name"
                     value="{{ __('Descripcion de la obeservacion') }}" />
                 <textarea id="name" wire:model.defer='observation.detalle' class="resize-none w-full h-1/4 border rounded-md"></textarea>
                 <x-jet-input-error for="observation.detalle" class="mt-2" />
 
-                <x-jet-label class="text-base font-bold border-gray-200 mt-2" for="tipo"
-                    value="{{ __('Tipo de la actividad') }}" />
-                <select class="rounded-xl" name="tipo" id="tipo" wire:model.defer='observation.nivel'>
-                    <option>NIVEL DE PRIORIDAD ...</option>
-                    <option value="ALTA">ALTA</option>
-                    <option value="MODERADO">MODERADO</option>
-                    <option value="BAJA">BAJA</option>
-                    <option value="NINGUNA">NINGUNA</option>
-                </select>
-                <x-jet-input-error for="observation.atencion" class="mt-2" />
+
             </div>
         </x-slot>
 
