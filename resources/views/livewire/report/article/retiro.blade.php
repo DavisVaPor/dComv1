@@ -16,27 +16,23 @@
         </x-slot>
 
         <x-slot name="content">
-            <x-jet-label class="text-base font-bold border-gray-200 uppercase" for="ArticleSelect"
-                value="{{ __('Equipos Retirados') }}" />
-            {{ $article->codPatrimonial }}
-            {{ $article->denominacion }}
-            <x-jet-label class="text-base font-bold uppercase" for="url" value="{{ __('Acta de Retiro') }}" />
-            <div class="col-span-6 sm:col-span-4 border rounded-lg ">
-                <div class="m-2">
-                    <x-jet-label class="text-base uppercase font-bold border-gray-200" for="fecha"
-                        value="{{ __('Fecha de Retiro') }}" />
-                    <input class="rounded-xl text-sm" type="date" name="fecha" id="fecha" wire:model='fecha'>
-                    <x-jet-input-error for="fecha" class="mt-2" />
-                </div>
-                <div class="m-2">
-                    <x-jet-label class="text-base uppercase font-bold border-gray-200" for="file_url"
-                        value="{{ __('Archivo') }}" />
-                    <input type='file' wire:model='file_url' accept="application/pdf">
-                    {{$file_url}}
-                    <x-jet-input-error for="file_url" class="mt-2" />
-                </div>
-
+            <div class="m-2 flex justify-end items-center">
+                <x-jet-label class="text-base uppercase mr-2 font-bold border-gray-200" for="fecha"
+                    value="{{ __('Fecha de Retiro') }}" />
+                <input class="rounded-xl text-sm" type="date" name="fecha" id="fecha" max="{{$fechaActual}}" wire:model='fecha'>
+                <x-jet-input-error for="fecha" class="mt-2" />
             </div>
+            <x-jet-label class="text-base font-bold border-gray-200 uppercase" for="ArticleSelect"
+                value="{{ __('Equipo hacer Retirado') }}" />
+            <nav class="text-base">
+                {{ $article->denominacion }}
+                <li>Codigo Patrimonial: {{ $article->codPatrimonial }}</li>
+                <li> Marca: {{ $article->marca }}</li>
+                <li>Modelo: {{ $article->modelo }}</li>
+                <li>Serie: {{ $article->nserie }}</li>
+                <li>Estado: {{ $article->estado }}</li>
+                <li>Operativo: {{ $article->operatividad }}</li>
+            </nav>
         </x-slot>
 
         <x-slot name="footer">

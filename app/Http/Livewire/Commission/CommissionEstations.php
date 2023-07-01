@@ -15,7 +15,6 @@ class CommissionEstations extends Component
     public $searchEstation = '';
     public $ubigeo = '';
     public $selectedEstation;
-    public $estationes = [];
 
     public $modalAdd = false;
     public $modalDel = false;

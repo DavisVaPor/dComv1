@@ -52,36 +52,5 @@ class ReportArticles extends Component
         ]);
     }
 
-    public function addModal($art)
-    {
-        $this->articulo = Article::findOrFail($art);
-        $this->estado =  $this->articulo->estado;
-        $this->estadoOld = ''. $this->articulo->estado;
-        $this->modalEdit = true;
-    }
-
-    public function updateArticle(){
-        $this->validate();
-        if (!empty($this->obbArticle)) {
-            if ($this->estadoOld === $this->articulo->estado ) {
-                $cambios = ''.$this->estado;
-            } else {
-                $cambios = $this->estadoOld. ' X ' . $this->estado;
-            }
-            $this->articulo->manintenance()->create([
-                'descripcion' => $this->obbArticle,
-                'cambios' => $cambios,  
-                'tipo' => $this->articulo['tipo'],  
-                'user_id' => Auth::user()->id,
-                'report_id' => $this->informe->id,
-             ]);
-             $this->articulo->estado = $this->estado;
-             $this->articulo->save();
-        }
-        $this->obbArticle = '';
-        $this->estadoOld = '';
-        $this->modalEdit = false;
-        $this->emit('ArtEdit');
-        $this->reset('articulo','tipo','estado');
-    }
+    
 }

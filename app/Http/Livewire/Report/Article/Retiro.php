@@ -9,17 +9,15 @@ use Livewire\WithFileUploads;
 
 class Retiro extends Component
 {
-    use WithFileUploads;
     public $article;
     public $estation;
     public $informe;
-    public $file_url;
     public $fecha;
     public $modalDel = false;
+    public $fechaActual;
 
     protected $rules = [
-        'file_url' => 'required',
-        'fecha' => 'required',
+        'fecha' => 'required|before:fechaActual',
     ];
 
     protected $listeners = [
@@ -33,12 +31,13 @@ class Retiro extends Component
 
     public function render()
     {
+        $this->fechaActual = date('Y-m-d');
         return view('livewire.report.article.retiro');
     }
 
     public function openModal()
     {
-        $this->reset('fecha', 'file_url');
+        $this->reset('fecha');
         $this->modalDel = true;
     }
 
@@ -46,12 +45,11 @@ class Retiro extends Component
     {
         $this->validate();
 
-        $acta_url = $this->file_url->store('Movimient'.'/'.'Retiro'.'/'.$this->article->id.'-'.$this->article->codPatrimonial);
-
+        // $this->article->commissions()->attach($this->informe->commission->id);
+    
         $this->article->movimient()->create([
             'tipo_movimiento' => 'RETIRO',
             'fecha_move' => $this->fecha,
-            'acta' => $acta_url,
             'report_id' => $this->informe->id,
             'estacion_out_id' =>  $this->estation->id,
             'estacion_out_name' =>  $this->estation->name,
@@ -59,11 +57,14 @@ class Retiro extends Component
             'user_id' => Auth::user()->id,
         ]);
 
+
         $this->article->system_id = null;
         $this->article->estation_id = 1;
         $this->article->save();
 
         $this->emit('EquipoRetiro');
+
+        $this->reset('fecha');
 
         $this->modalDel = false;
     }

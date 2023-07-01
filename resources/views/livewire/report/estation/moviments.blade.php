@@ -84,7 +84,7 @@
                 {{ __('Cancel') }}
             </x-jet-secondary-button>
 
-            <x-jet-button class="ml-2" wire:click="deleteMovimient({{ $modalSup }})"
+            <x-jet-button class="ml-2" wire:click="deleteMovimient({{ $movement }})"
                 wire:loading.attr="disabled">
                 {{ __('Eliminar') }}
             </x-jet-button>

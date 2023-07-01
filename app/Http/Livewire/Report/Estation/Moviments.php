@@ -21,6 +21,7 @@ class Moviments extends Component
     protected $listeners = [
         'movementDelete' => 'render',
         'EquipoInstall' => 'render',
+        'EquipoRetiro' => 'render',
     ];
 
     public function mount(Estation $estation)
@@ -37,17 +38,11 @@ class Moviments extends Component
         ]);
     }
 
-    /* public function infoActa(Movements $moviment)
-    {
-        $this->modalActa = true;
-        $this->actamovimiento =  $moviment;
-    } */
-
     public function deleteModal($id)
     {
         $this->movement = Movements::findOrFail($id);
         $this->article = Article::findOrFail($this->movement->article_id);
-        $this->modalSup =  $id;
+        $this->modalSup = true;
     }
 
     public function deleteMovimient(Movements $movement)
@@ -55,8 +50,9 @@ class Moviments extends Component
         $this->article->estation_id = $this->movement->estacion_out_id;
         $movement->delete();
         $this->article->save();
-        $this->modalSup = false;
+        $this->reset('movement');
         $this->emit('movementDelete');
+        $this->modalSup = false;
     }
 
 }
