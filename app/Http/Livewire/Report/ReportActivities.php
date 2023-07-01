@@ -77,10 +77,8 @@ class ReportActivities extends Component
     {
         foreach ($activity->images as $image) {
             $url = str_replace('storage','public',$image->url);
-        
             Storage::delete($url);
         }
-        
         $activity->delete();
         $this->modalDel = false;
         $this->emit('activitySup');

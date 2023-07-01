@@ -9,11 +9,13 @@ class Promotion extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'ubicacion',
         'fecha',
         'tema',
+        'descripcion',
         'ubigee_id',
         'report_id',
+        'imagen',
+        'merchandising_cantidad',
     ];
     public function report(){
         return $this->belongsTo(Report::class);
@@ -23,4 +25,15 @@ class Promotion extends Model
     {
         return $this->belongsTo(Ubigee::class);
     }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
+
+    public function livraisons()
+    {
+        return $this->belongsTo(Livraison::class);
+    }
+
 }

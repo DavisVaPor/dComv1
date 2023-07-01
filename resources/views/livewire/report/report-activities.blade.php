@@ -101,31 +101,6 @@
             </div>
 
             <div class="col-span-8 sm:col-span-4">
-                {{-- <div class="flex justify-between">
-                        <x-jet-label class="text-base font-bold border-gray-200 " for="tipo"
-                            value="{{ __('Tipo de la actividad') }}" />
-                        <select class="rounded-xl text-sm" name="tipo" id="tipo"
-                            wire:model.defer='activity.tipoActivity'>
-                            <option>Seleccione</option>
-                            <option value="DIAGNOSTICO">DIAGNOSTICO</option>
-                            <option value="MANT. PREVENTIVO">MANTENIMIENTO PREVENTIVO</option>
-                            <option value="MANT. CORRECTIVO">MANTENIMIENTO CORRECTIVO</option>
-                        </select>
-                        <x-jet-input-error for="activity.tipoActivity" class="mt-2" />
-                    </div> --}}
-                    {{--                <div class="flex justify-between">
-                        <div class="block">
-                            <x-jet-label class="text-base font-bold border-gray-200" for="name"
-                                value="{{ __('Fechas de la Actividad') }}" />
-                            <input class="rounded-xl text-sm" type="date" name="" id=""
-                                wire:model.defer='activity.fechaInicio'>
-                            <x-jet-input-error for="activity.finicio" class="mt-2" />
-                            AL
-                            <input class="rounded-xl text-sm" type="date" name="" id=""
-                                wire:model.defer='activity.fechaFin'>
-                            <x-jet-input-error for="activity.ffin" class="mt-2" />
-                        </div>
-                    </div> --}}
                 <x-jet-label class="text-base font-bold border-gray-200 mt-2" for="descripcion"
                     value="{{ __('Descripcion de la actividad') }}" />
                 <textarea id="name" wire:model.defer='activity.descripcion' class="resize-none w-full h-1/4 border rounded-md"></textarea>

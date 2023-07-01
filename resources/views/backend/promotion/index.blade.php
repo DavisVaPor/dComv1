@@ -5,6 +5,7 @@
         <h1>ACTIVIDADES DE PROMOCION DE LAS TELECOMUNICACIONES</h1>
     </div>
     
+    @livewire('promotion.promotions')
 @endsection
 
   

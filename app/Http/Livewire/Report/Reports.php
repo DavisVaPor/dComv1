@@ -23,7 +23,7 @@ class Reports extends Component
     public $estado;
     public $fechactual;
     public $fechafinComision;
-    public $asunto = 'INFORME DE ACTIVIDADES REALIZADAS ';
+    public $asunto = 'INFORME DE ACTIVIDADES REALIZADAS EN LA ';
 
     protected $rules = [
         'asunto' => 'required|min:20',
@@ -77,7 +77,7 @@ class Reports extends Component
             $this->report->save();
         } else {
             $newreport = Report::create([
-                'asunto' => Str::upper($this->asunto.'EN LA '.$commission->name),
+                'asunto' => Str::upper($this->asunto),
                 'tipo' => $tipo,
                 'fechaCreacion' => $this->fechactual,
                 'user_id' => Auth::user()->id,

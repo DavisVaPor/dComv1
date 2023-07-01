@@ -14,7 +14,6 @@ class Moviments extends Component
     public $informe;
     public $movement;
     public $article;
-    public $actamovimiento;
     public $modalActa = false;
     public $modalSup = false;
     

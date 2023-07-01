@@ -39,8 +39,7 @@ class CommissionEstations extends Component
                     ->orderBy('name','asc')
                     ->paginate(15);
 
-        return view(
-            'livewire.commission.commission-estations',
+        return view('livewire.commission.commission-estations',
             [
                 'estations' => $estations,
             ]
