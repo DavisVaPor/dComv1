@@ -81,6 +81,7 @@
                         <th class="py-3">Longitud</th>
                         <th class="py-3">Latitud</th>
                         <th class="py-3">Maps</th>
+                        <th class="py-3">Sistema</th>
                         <th class="py-3">Tipo</th>
                         <th class="py-3"></th>
                     </tr>
@@ -107,6 +108,7 @@
                                     </svg>
                                 </a>
                             </td>
+                            <td class="text-center">{{ $item->sistema }} </td>
                             <td class="text-center">{{ $item->tipo }}</td>
                             <td>
                                 @if ($item->estado == 'OPERATIVO')
@@ -168,6 +170,11 @@
                                 <h3 class=" ml-3 my-2 text-base font-semibold">Longitud :</h3>
                                 <p class="font-light text-gray-500 text-base ml-3 my-2">
                                     {{ $estation->longitud }} W
+                                </p>
+                            </div>
+                            <div class="flex">
+                                <h3 class=" ml-3 my-2 text-base font-semibold">Sistema :</h3>
+                                <p class="font-normal text-blue-700 text-base ml-3 my-2">{{ $estation->sistema }}
                                 </p>
                             </div>
                             <div class="flex">
