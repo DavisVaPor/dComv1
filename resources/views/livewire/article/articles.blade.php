@@ -4,7 +4,7 @@
             placeholder="Búsqueda" aria-label="Search">
         <div class="">
             <select class="rounded-lg mx-2" wire:model='estation' name="" id="">
-                <option value="{{ $estation }}">Todos</option>
+                <option selected value="">Todos</option>
                 @foreach ($estations as $estacion)
                     <option value="{{ $estacion->id }}">{{ $estacion->name }}</option>
                 @endforeach
@@ -129,11 +129,11 @@
         </x-slot>
 
         <x-slot name="content">
-            <div class="flex justify-end items-center col-span-6 sm:col-span-4">
+            <div class="flex items-center col-span-6 sm:col-span-4">
                 <x-jet-label class="text-base mr-2 font-bold border-gray-200" for="codPatrimonial"
                     value="{{ __('Cod. Patrimonial') }}" />
-                <x-jet-input id="name" type="number" class="text-sm block w-full font-semibold"
-                    wire:model.defer='article.codPatrimonial' />
+                <x-jet-input id="name" type="number" class="text-sm block w-48 font-semibold"
+                    wire:model.defer='article.codPatrimonial' maxlength="9" />
             </div>
             <x-jet-input-error for="article.codPatrimonial" class="mt-1" />
 
@@ -184,7 +184,8 @@
                     <x-jet-label class="text-base font-bold border-gray-200" for="estado"
                         value="{{ __('Estado') }}" />
                     <select class="rounded-lg text-sm font-semibold" wire:model.defer='article.estado'>
-                        <option value="BUENO" selected>BUENO</option>
+                        <option value="" selected></option>
+                        <option value="BUENO">BUENO</option>
                         <option value="REGULAR">REGULAR</option>
                         <option value="MALO">MALO</option>
                     </select>

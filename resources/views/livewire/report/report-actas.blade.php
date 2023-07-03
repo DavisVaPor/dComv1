@@ -95,7 +95,7 @@
         </table>
     </div>
 
-
+    {{-- Modal Añadir Acta --}}
     <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
             <h1 class="font-bold">Registro de Acta</h1>

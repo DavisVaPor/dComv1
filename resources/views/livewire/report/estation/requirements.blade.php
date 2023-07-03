@@ -16,7 +16,7 @@
             @endif
         </div>
     </div>
-   
+
     <table class="rounded-t-lg m-2 w-full mx-auto bg-gray-200 text-gray-800">
         <tr class="text-left border-b-2 border-gray-300">
             <th class="text-center">#</th>
@@ -95,8 +95,7 @@
                 @endisset
                 <div class="ml-2">
                     <x-jet-button wire:click="addsubModal" class="bg-blue-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 20 20"
-                            fill="currentColor">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 20 20" fill="currentColor">
                             <path d="M9 9a2 2 0 114 0 2 2 0 01-4 0z"></path>
                             <path fill-rule="evenodd"
                                 d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a4 4 0 00-3.446 6.032l-2.261 2.26a1 1 0 101.414 1.415l2.261-2.261A4 4 0 1011 5z"
@@ -132,10 +131,7 @@
         </x-slot>
     </x-jet-dialog-modal>
 
-
-
     {{-- Modal de Catalogo --}}
-
     <x-jet-dialog-modal wire:model="submodalAdd">
         <x-slot name="title">
             <h1 class="font-bold uppercase">Busqueda en el Catálogo</h1>
@@ -206,30 +202,31 @@
     </x-jet-dialog-modal>
 
     {{-- Modal de Info --}}
-    <x-jet-dialog-modal wire:model="modalInfo">
-        <x-slot name="title">
-            <h1 class="font-bold">{{ __('Especificaciones Tecnicas del Equipo ') }}</h1>
-        </x-slot>
+    @isset($equiponame)
+        <x-jet-dialog-modal wire:model="modalInfo">
+            <x-slot name="title">
+                <h1 class="font-bold">{{ __('Especificaciones Tecnicas del Equipo ') }}</h1>
+            </x-slot>
+            <x-slot name="content">
+                <label class="text-lg" for="">{{ $equiponame->name }}</label>
+                <label class="text-lg" for="">{{ $equiponame->identificador }}</label>
+                <label class="text-lg" for="">{{ $equiponame->unidad }}</label>
 
-        <x-slot name="content">
 
-        {{-- {{ $requirement->equipment->name }} --}}
-            {{-- @if ($requirement)
-                {{ $requirement->equipment->name }}
-            @endif --}}
 
-            <x-jet-label class="text-base font-bold border-gray-200" for="requirement.descripcion"
-                value="{{ __('Descripcion') }}" />
-            <textarea id="descripcion" wire:model.defer='requirement.descripcion' class="resize-none w-full h-1/4 border rounded-md"
-                disabled></textarea>
-            <x-jet-input-error for="requirement.descripcion" class="mt-2" />
-        </x-slot>
+                <x-jet-label class="text-base font-bold border-gray-200" for="requirement.descripcion"
+                    value="{{ __('Descripcion') }}" />
+                <textarea id="descripcion" wire:model.defer='requirement.descripcion'
+                    class="resize-none w-full h-1/4 border rounded-md" disabled></textarea>
+            </x-slot>
 
-        <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$set('modalInfo',false)" wire:loading.attr="disabled">
-                {{ __('Cerrar') }}
-            </x-jet-secondary-button>
+            <x-slot name="footer">
+                <x-jet-secondary-button wire:click="$set('modalInfo',false)" wire:loading.attr="disabled">
+                    {{ __('Cerrar') }}
+                </x-jet-secondary-button>
 
-        </x-slot>
-    </x-jet-dialog-modal>
+            </x-slot>
+        </x-jet-dialog-modal>
+    @endisset
+
 </div>

@@ -1,7 +1,6 @@
 <div>
-    <h1 class="mr-5 text-lg font-bold text-green-800 text-center">GALERIA DE FOTOS</h1>
     <div class="mx-auto rounded-md  py-8 justify-center md:grid-cols-3 grid grid-cols-1 gap-2 ">
-        @foreach ($informe->activities as $item)
+        @foreach ($estation->activities as $item)
             @foreach ($item->images as $item)
             <div class="bg-white w-90 shadow-2xl rounded-xl">
                 <div class="p-2">
