@@ -60,7 +60,7 @@ class ReportActivities extends Component
             $this->informe->activities()->create([
                 'descripcion' => Str::upper($this->activity['descripcion']),
                 'estation_id' => $this->estation->id,
-                'manteniemient_id' => $this->informe->mantenimient->id,
+                //'manteniemient_id' => $this->informe->mantenimient->id,
             ]);
         }
         $this->emit('activityAdd');

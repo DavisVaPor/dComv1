@@ -1,7 +1,7 @@
 <div>
     <div>
         <h1 class="mr-5 text-lg font-bold text-blue-800 text-center">REGISTRO DE REQUERIMIENTOS DE EQUIPOS </h1>
-        <div class="flex justify-end -my-8 items-center">
+        <div class="flex justify-end my-2 items-center">
             @if ($informe->estado == 'BORRADOR')
                 <x-jet-button wire:click="addModal" class="bg-blue-500 justify-end">
                     Añadir
@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <table class="rounded-t-lg m-2 w-full mx-auto bg-gray-200 text-gray-800">
+    <table class="rounded-t-lg m-2 p-2 w-full mx-auto bg-gray-200 text-gray-800">
         <tr class="text-left border-b-2 border-gray-300">
             <th class="text-center">#</th>
             <th class="w-1/2 px-4 py-3">Equipo</th>

@@ -100,7 +100,7 @@
             <div class="col-span-6 sm:col-span-4 bg-gray-50 p-2 border rounded-xl">
                 <div class="flex">
                     <x-jet-label class="text-base font-bold mr-2 border-gray-200 mt-2" for="tipo"
-                        value="{{ __('Tipo de la actividad') }}" />
+                        value="{{ __('Nivel de Prioridad') }}" />
                     <select class="rounded-xl" name="tipo" id="tipo" wire:model.defer='observation.nivel'>
                         <option>NIVEL DE PRIORIDAD ...</option>
                         <option value="ALTA">ALTA</option>
@@ -112,7 +112,7 @@
                 </div>
 
                 <x-jet-label class="text-base font-bold border-gray-200" for="name"
-                    value="{{ __('Descripcion de la obeservacion') }}" />
+                    value="{{ __('DESCRIPCION') }}" />
                 <textarea id="name" wire:model.defer='observation.detalle' class="resize-none w-full h-1/4 border rounded-md"></textarea>
                 <x-jet-input-error for="observation.detalle" class="mt-2" />
 
