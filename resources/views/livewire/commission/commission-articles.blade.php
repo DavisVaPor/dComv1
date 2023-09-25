@@ -20,6 +20,7 @@
         @if ($commission->articles->isNotEmpty())
             <table class="rounded-t-lg m-2 w-full mx-auto bg-gray-200 text-gray-800">
                 <tr class="text-left">
+                    <th class="px-4 py-3">Cod. Patrimonial</th>
                     <th class="px-4 py-3">Nombre</th>
                     <th class="px-4 py-3">Modelo</th>
                     <th class="px-4 py-3">Serie</th>
@@ -28,6 +29,7 @@
                 </tr>
                 @foreach ($commission->articles as $article)
                         <tr class="bg-gray-100 border-b border-gray-200">
+                            <td class="px-4 py-3">{{ $article->codPatrimonial }}</td>
                             <td class="px-4 py-3">{{ $article->denominacion }}</td>
                             <td class="px-4 py-3">{{ $article->modelo }}</td>
                             <td class="px-4 py-3">{{ $article->nserie }}</td>

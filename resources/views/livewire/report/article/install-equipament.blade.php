@@ -1,5 +1,5 @@
 <div>
-    <div class="flex justify-end my-2 items-center">
+    <div class="flex justify-end items-center">
         @if ($informe->estado == 'BORRADOR')
             <x-jet-button wire:click="addModal" class="bg-green-500 justify-end">
                 Instalar Equipo
@@ -26,7 +26,7 @@
                     <x-jet-label class="text-base uppercase font-bold border-gray-200" for="fecha"
                         value="{{ __('Fecha de instalacion') }}" />
                     <input class="rounded-xl text-sm" type="date" name="fecha" id="fecha"
-                        wire:model='fecha'>
+                        wire:model='fecha' max="{{$fechaActual}}">
                     <x-jet-input-error for="fecha" class="mt-2" />
                 </div>
                 <x-jet-label class="text-base font-bold border-gray-200 uppercase" for="ArticleSelect"
@@ -61,21 +61,13 @@
                             </tr>
                         @else
                             <tr class="bg-gray-100 border-b border-gray-200 text-sm">
-                                <td colspan="5" class="py-3 text-center">No se encuentran registros</td>
+                                <td colspan="5" class="py-3 text-center">.:: No se encuentran registros ::.</td>
                             </tr>
                         @endif
                     @endforeach
                 </table>
                 <x-jet-input-error for="ArticleSelect" />
                 <x-jet-input-error for="SystemSelect" />
-
-                {{-- <div class="m-2">
-                    <x-jet-label class="text-base uppercase font-bold border-gray-200" for="file_url"
-                        value="{{ __('Archivo') }}" />
-                    <input type='file' class="" wire:model='file_url' accept="application/pdf">
-                    <x-jet-input-error for="file_url" class="mt-2" />
-                </div> --}}
-        
             </div>
         </x-slot>
 

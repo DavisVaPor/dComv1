@@ -1,5 +1,5 @@
 <div>
-    <h1 class="mr-5 text-lg font-bold text-blue-800 text-center">REGISTRO DE MOVIMIENTOS DE LOS EQUIPOS DE
+    <h1 class="mr-5 text-lg font-bold text-blue-800 text-center">MOVIMIENTOS DE LOS EQUIPOS DE
         TELECOMUNICACION</h1>
 
     <table class="text-sm text-center rounded-t-lg m-5 w-full mx-auto bg-gray-200 text-gray-800">
@@ -84,7 +84,7 @@
                 {{ __('Cancel') }}
             </x-jet-secondary-button>
 
-            <x-jet-button class="ml-2" wire:click="deleteMovimient({{ $modalSup }})"
+            <x-jet-button class="ml-2" wire:click="deleteMovimient({{ $movement }})"
                 wire:loading.attr="disabled">
                 {{ __('Eliminar') }}
             </x-jet-button>

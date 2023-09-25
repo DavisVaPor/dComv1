@@ -48,21 +48,22 @@
                         <td class="py-3 w-1/12 text-center">
                             <div class="flex item-center justify-center">
                                 <abbr title="Previsualizcion del Documento">
-                                    <div wire:click='infoActa({{ $item }})'
-                                    class="w-6 mr-2 transform hover:text-blue-500 hover:scale-110">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                                    </svg>
-                                </div>
+                                    <button wire:click='infoActa({{ $item }})'
+                                        class="w-6 mr-2 transform hover:text-blue-500 hover:scale-110">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                        </svg>
+                                    </button>
                                 </abbr>
 
                                 @if ($informe->estado == 'BORRADOR')
                                     <abbr title="Editar Registro">
-                                        <div wire:click='editModal({{ $item }})' class="w-6 mr-2 transform hover:text-blue-500 hover:scale-110">
+                                        <div wire:click='editModal({{ $item }})'
+                                            class="w-6 mr-2 transform hover:text-blue-500 hover:scale-110">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -70,9 +71,10 @@
                                             </svg>
                                         </div>
                                     </abbr>
-                                
+
                                     <abbr title="Eliminar Registro">
-                                        <div wire:click='deleteModal({{ $item->id }})' class="w-6 mr-2 transform hover:text-red-500 hover:scale-110">
+                                        <div wire:click='deleteModal({{ $item->id }})'
+                                            class="w-6 mr-2 transform hover:text-red-500 hover:scale-110">
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                                 stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -81,7 +83,7 @@
                                         </div>
                                     </abbr>
                                 @endif
-                            
+
                             </div>
                         </td>
                     @empty
@@ -93,7 +95,7 @@
         </table>
     </div>
 
-
+    {{-- Modal Añadir Acta --}}
     <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
             <h1 class="font-bold">Registro de Acta</h1>
@@ -103,9 +105,9 @@
                 <div class="col-span-6 sm:col-span-4 mt-2">
                     <x-jet-label class="text-base font-bold border-gray-200" for="url"
                         value="{{ __('Archivo') }}" />
-                        @isset($acta)
-                            {{$acta->name}}
-                        @endisset ()
+                    @isset($acta)
+                        {{ $acta->name }}
+                    @endisset
                     <label
                         class="inline-flex items-center py-2 px-2 bg-gray-300 text-white rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:text-white">
                         <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -170,14 +172,14 @@
         </x-jet-dialog-modal>
     @endisset
 
-     {{-- Modal de Eliminar --}}
-     <x-jet-dialog-modal wire:model="modalEliminar">
+    {{-- Modal de Eliminar --}}
+    <x-jet-dialog-modal wire:model="modalEliminar">
         <x-slot name="title">
             <h1 class="font-bold uppercase">{{ __('Eliminar Registro') }}</h1>
         </x-slot>
 
         <x-slot name="content">
-            {{ __('¿Seguro que desea eliminar?') }}
+            {{ __('¿Seguro que desea eliminar el registro?') }}
         </x-slot>
 
         <x-slot name="footer">
@@ -185,8 +187,7 @@
                 {{ __('Cancel') }}
             </x-jet-secondary-button>
 
-            <x-jet-button class="ml-2" wire:click="deleteActa({{ $modalEliminar }})"
-                wire:loading.attr="disabled">
+            <x-jet-button class="ml-2" wire:click="deleteActa({{ $modalEliminar }})" wire:loading.attr="disabled">
                 {{ __('Eliminar') }}
             </x-jet-button>
         </x-slot>

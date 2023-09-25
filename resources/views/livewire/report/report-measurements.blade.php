@@ -44,9 +44,9 @@
                     <td class="px-2">
 
                         <div class="flex justify-between">
-                            <button wire:click='openModalImage'
+                            <button wire:click='openModalImage({{ $measurement->id }})'
                                 class="text-green-500 hover:text-gray-900 cursor-pointer mr-2">
-                                <abbr title="AGREGAR IMAGEN">
+                                <abbr title="VER IMAGEN">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                                         class="w-6 h-6 m-auto">
                                         <path fill="currentColor"
@@ -77,7 +77,7 @@
             </tr>
         @empty
             <tr class="bg-gray-100 border-b border-gray-200 text-center">
-                <td colspan="7" class="py-2"> No hay registro</td>
+                <td colspan="8" class="py-2"> ..::No hay registro::..</td>
             </tr>
         @endforelse
     </table>
@@ -105,8 +105,7 @@
 
                 <x-jet-label class="text-base font-bold border-gray-200 mt-2" for="name"
                     value="{{ __('REFERENCIA DE LA TOMA DE MEDIDA') }}" />
-                <textarea id="name" wire:model.defer='measurement.ubicacion'
-                    class="resize-none w-full h-20 border rounded-md"></textarea>
+                <textarea id="name" wire:model.defer='measurement.ubicacion' class="resize-none w-full h-20 border rounded-md"></textarea>
                 <x-jet-input-error for="measurement.ubicacion" class="mt-2" />
 
                 <h1 class="text-base font-bold border-gray-200 text-gray-800 mt-2">COORDENADAS</h1>
@@ -114,7 +113,7 @@
                     <div>
                         <x-jet-label class="text-base border-gray-200 font-semibold" for="name"
                             value="{{ __('LATITUD') }}" />
-                            <p></p>
+                        <p></p>
                         <div class="flex items-center text-xs">
                             <x-jet-input id="Latitud" type="number" class="w-16 mt-1 rounded-xl block"
                                 wire:model='latgra' />
@@ -134,14 +133,14 @@
                         <x-jet-label class="text-base border-gray-200 font-semibold" for="name"
                             value="{{ __('LONGITUD ') }}" />
                         <div class="flex items-center text-xs">
-                            <x-jet-input id="longra" type="number" class="w-16 mt-1 rounded-xl block font-semibold"
-                                wire:model='longra' />
+                            <x-jet-input id="longra" type="number"
+                                class="w-16 mt-1 rounded-xl block font-semibold" wire:model='longra' />
                             <p class="font-bold text-lg">°</p>
-                            <x-jet-input id="lonmin" type="number" class="w-16 mt-1 ml-1 rounded-xl block font-semibold"
-                                wire:model='lonmin' />
+                            <x-jet-input id="lonmin" type="number"
+                                class="w-16 mt-1 ml-1 rounded-xl block font-semibold" wire:model='lonmin' />
                             <p class="font-bold text-lg">' </p>
-                            <x-jet-input id="lonseg" type="number" class="w-20 mt-1 ml-1 rounded-xl block font-semibold"
-                                wire:model='lonseg' />
+                            <x-jet-input id="lonseg" type="number"
+                                class="w-20 mt-1 ml-1 rounded-xl block font-semibold" wire:model='lonseg' />
                             <p class="font-bold text-lg">" W</p>
                         </div>
                         <x-jet-input-error for="longra" class="" />
@@ -152,41 +151,33 @@
                 <div class="flex justify-between">
                     <div>
                         <x-jet-label class="text-base font-bold border-gray-200 mt-2" for="name"
-                            value="{{ __('Fecha Registro') }}" />
-                        <input class="rounded-xl" type="date" name="" id="" wire:model.defer='measurement.fecha'>
+                            value="{{ __('Fecha') }}" />
+                        <input class="rounded-xl" type="date" max="{{ $fechaActual }}" name=""
+                            id="" wire:model.defer='measurement.fecha'>
                         <x-jet-input-error for="measurement.fecha" class="mt-2" />
                     </div>
                     <div class="ml-8">
                         <x-jet-label class="text-base font-bold border-gray-200 mt-2" for="name"
                             value="{{ __('Valor de RNI') }}" />
-                        <input class="rounded-xl" type="text" name="" id="" wire:model.defer='measurement.rni'>
+                        <input class="rounded-xl" type="text" name="" id=""
+                            wire:model.defer='measurement.rni'>
                         <x-jet-input-error for="measurement.rni" class="mt-2" />
                     </div>
                 </div>
 
                 <div class="mt-2">
                     <label
-                        class="inline-flex items-center py-2 px-2 bg-gray-300 text-white rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:text-white">
+                        class="inline-flex items-center py-2 px-2 bg-blue-300 text-white rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:text-white">
                         <svg class="w-8 h-8" fill="currentColor" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20">
                             <path
                                 d="M16.88 9.1A4 4 0 0 1 16 17H5a5 5 0 0 1-1-9.9V7a3 3 0 0 1 4.52-2.59A4.98 4.98 0 0 1 17 8c0 .38-.04.74-.12 1.1zM11 11h3l-4-4-4 4h3v3h2v-3z" />
                         </svg>
-                        <input type='file' class="" wire:model='measurement.imagen' accept="image/*">
+                        <input type='file' class="" wire:model='imagen' accept="image/*">
                     </label>
-                    <x-jet-input-error for="measurement.imagen" class="mt-2" />
+                    <x-jet-input-error for="imagen" class="mt-2" />
                 </div>
-      
-                
 
-                <div wire:loading wire:target="imagen" class="bg-green-300 border-l-4 border-red-300 p-4 m-auto"
-                    role="alert">
-                    <p class="font-bold text-center">Previsualizacion</p>
-                    <p>Cargando la imagen ...</p>
-                </div>
-                @if ($imagen)
-                    <img class="border-gray-200 border-2 mx-auto mt-2" src="{{ $imagen->temporaryUrl() }}">
-                @endif
             </div>
         </x-slot>
 
@@ -225,42 +216,41 @@
     </x-jet-dialog-modal>
 
     {{-- Modal de Ver Evidencia --}}
-    <x-jet-dialog-modal wire:model="modalImagen">
-        <x-slot name="title">
-            <h1 class="uppercase">Evidencia Medicion de RNI</h1>
-        </x-slot>
+    @isset($openimagen)
+        <x-jet-dialog-modal wire:model="modalImagen">
+            <x-slot name="title">
+                <h1 class="uppercase">Evidencia de La Medicion de RNI</h1>
+            </x-slot>
 
-        <x-slot name="content">
-            <div class="w-100 ">
-    
-                <div class=" m-auto shadow-md border  rounded-lg max-w-sm bg-gray-800">
-                    <div class="flex justify-end">
-                       
-                    </div>
-                    
-                    <div href="#">
-                        <img class="rounded-t-lg" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="">
-                    </div>
-                    <div class="p-5">
-                        <p href="#">
-                            <h5 class="text-gray-900 font-bold text-lg tracking-tight mb-2 dark:text-white">Medicion de RNI Colegio San Nicolas</h5>
-                        </p>
-                        <li class="">Medicion</li>
-                        <li class=""></li>
-                        <li class=""></li>
-                        <li class=""></li>
-                        <li class=""></li>
-                        <li class=""></li>
-                        <p class="font-normal text-gray-700 mb-3 dark:text-gray-400"></p>
+            <x-slot name="content">
+                <h1 class="uppercase font-bold text-lg">Medicion de {{$openimagen->ubicacion}}</h1>
+                <div class=" ">
+                    <div class=" shadow-md border  rounded-lg">
+                        <div>
+                            <img class="rounded-t-lg m-auto w-96 h-auto" src="{{ Storage::url($openimagen->imagen) }}"
+                                alt="">
+                        </div>
+                        <div class="mx-4 my-2 text-base uppercase">
+                            <label class="text-center text-lg underline my-2" for="">Detalles del Registro </label>
+                            <p class="border-b border-gray-200">Fecha de Medicion : <span class="font-bold">{{$openimagen->fecha}}</span></p>
+                            <p class="border-b border-gray-200">Provincia : <span class="font-bold">{{$openimagen->ubigee->provincia}}</span></p>
+                            <p class="border-b border-gray-200">Distrito : <span class="font-bold">{{$openimagen->ubigee->distrito}}</span></p>
+                            <p class="border-b border-gray-200">Latitud : <span class="font-bold">{{$openimagen->latitud}}</span></p>
+                            <p class="border-b border-gray-200">Longitud : <span class="font-bold">{{$openimagen->longitud}}</span></p>
+                            <p class="border-b border-gray-200">Valor de RNI : <span class="font-bold">{{$openimagen->rni . ' '}} %</span></p>
+                            <p class="border-b border-gray-200">Maps : <a target="_blank" href="{{ $measurement->maps }}" class="font-bold hover:text-blue-900">Ubicacion Geografica en Google Maps</a></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </x-slot>
+            </x-slot>
 
-        <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$set('modalImagen',false)" wire:loading.attr="disabled">
-                {{ __('Cerrar') }}
-            </x-jet-secondary-button>
-        </x-slot>
-    </x-jet-dialog-modal>
+            <x-slot name="footer">
+                <x-jet-secondary-button wire:click="$set('modalImagen',false)" wire:loading.attr="disabled">
+                    {{ __('Cerrar') }}
+                </x-jet-secondary-button>
+            </x-slot>
+        </x-jet-dialog-modal>
+    @endisset
+
+
 </div>

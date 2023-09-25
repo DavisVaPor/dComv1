@@ -1,7 +1,7 @@
 @extends('backend.admin')
 @section('main')
     <div class="text-center text-3xl mt-2 font-extrabold text-green-600">
-        <h1>INTRANET DE LA DIRECCION DE COMUNICACIONES AMAZONAS</h1>
+        <h1>TABLETRO DE CONTROL DE LA DIRECCIÓN DE COMUNICACIONES AMAZONAS</h1>
     </div>
     <div class="grid grid-cols-12 gap-6">
         <div class="grid grid-cols-12 col-span-12 gap-6 xxl:col-span-9">
@@ -11,11 +11,12 @@
                         href="{{ route('comision.index') }}">
                         <div class="p-5">
                             <div class="flex justify-between">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-blue-400"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="briefcase"
+                                    class="h-7 w-7 svg-inline--fa fa-briefcase fa-w-16 text-blue-700" role="img"
+                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                    <path fill="currentColor"
+                                        d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z">
+                                    </path>
                                 </svg>
                             </div>
                            
@@ -39,14 +40,37 @@
                                 </svg>                                
                                 <div
                                     class="bg-red-500 rounded-full h-6 px-2 flex justify-items-center text-white font-semibold text-sm">
-                                    <span class="flex items-center">{{$estationDef}}%</span>
+                                    <span class="flex items-center">{{$estationvfhDef}}%</span>
                                 </div>
                             </div>
                             <div class="ml-2 w-full flex-1">
                                 <div>
-                                    <div class="mt-3 text-3xl font-bold leading-8">{{$estations->count()}}</div>
+                                    <div class="mt-3 text-3xl font-bold leading-8">{{$estationsVHF->count()}}</div>
 
-                                    <div class="mt-1 text-base text-gray-600">Estaciones VHF - HF</div>
+                                    <div class="mt-1 text-base text-gray-600">Estaciones VHF</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white"
+                        href="{{ route('estacion.index') }}">
+                        <div class="p-5">
+                            <div class="flex justify-between">
+                                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="wifi" class="h-6 w-6 text-yellow-600 svg-inline--fa fa-wifi fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+                                    <path fill="currentColor"
+                                        d="M634.91 154.88C457.74-8.99 182.19-8.93 5.09 154.88c-6.66 6.16-6.79 16.59-.35 22.98l34.24 33.97c6.14 6.1 16.02 6.23 22.4.38 145.92-133.68 371.3-133.71 517.25 0 6.38 5.85 16.26 5.71 22.4-.38l34.24-33.97c6.43-6.39 6.3-16.82-.36-22.98zM320 352c-35.35 0-64 28.65-64 64s28.65 64 64 64 64-28.65 64-64-28.65-64-64-64zm202.67-83.59c-115.26-101.93-290.21-101.82-405.34 0-6.9 6.1-7.12 16.69-.57 23.15l34.44 33.99c6 5.92 15.66 6.32 22.05.8 83.95-72.57 209.74-72.41 293.49 0 6.39 5.52 16.05 5.13 22.05-.8l34.44-33.99c6.56-6.46 6.33-17.06-.56-23.15z">
+                                    </path>
+                                </svg>                                
+                                <div
+                                    class="bg-red-500 rounded-full h-6 px-2 flex justify-items-center text-white font-semibold text-sm">
+                                    <span class="flex items-center">{{$estationhfDef}}%</span>
+                                </div>
+                            </div>
+                            <div class="ml-2 w-full flex-1">
+                                <div>
+                                    <div class="mt-3 text-3xl font-bold leading-8">{{$estationsHF->count()}}</div>
+
+                                    <div class="mt-1 text-base text-gray-600">Estaciones HF</div>
                                 </div>
                             </div>
                         </div>
@@ -61,14 +85,14 @@
                             </div>
                             <div class="ml-2 w-full flex-1">
                                 <div>
-                                    <div class="mt-3 text-3xl font-bold leading-8">450</div>
+                                    <div class="mt-3 text-3xl font-bold leading-8">159</div>
 
-                                    <div class="mt-1 text-base text-gray-600">Radiacion</div>
+                                    <div class="mt-1 text-base text-gray-600">Radiacion - {{date('Y')}}</div>
                                 </div>
                             </div>
                         </div>
                     </a>
-                    <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white"
+                    {{-- <a class="transform  hover:scale-105 transition duration-300 shadow-xl rounded-lg col-span-12 sm:col-span-6 xl:col-span-3 intro-y bg-white"
                         href="{{ route('mantenimient.index') }}">
                         <div class="p-5">
                             <div class="flex justify-between">
@@ -88,7 +112,7 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </a> --}}
                 </div>
             </div>
             <div class="col-span-12 mt-5">

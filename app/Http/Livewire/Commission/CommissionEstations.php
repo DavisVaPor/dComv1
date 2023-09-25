@@ -15,7 +15,6 @@ class CommissionEstations extends Component
     public $searchEstation = '';
     public $ubigeo = '';
     public $selectedEstation;
-    public $estationes = [];
 
     public $modalAdd = false;
     public $modalDel = false;
@@ -40,8 +39,7 @@ class CommissionEstations extends Component
                     ->orderBy('name','asc')
                     ->paginate(15);
 
-        return view(
-            'livewire.commission.commission-estations',
+        return view('livewire.commission.commission-estations',
             [
                 'estations' => $estations,
             ]

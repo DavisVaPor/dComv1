@@ -13,7 +13,6 @@ class Movements extends Model
         'fecha_move',
         'tipo_movimiento',
         'article_id',
-        'acta',
         'estation_id',
         'estacion_out_id',
         'estacion_out_name',

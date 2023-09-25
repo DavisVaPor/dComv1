@@ -19,19 +19,18 @@ class InstallEquipament extends Component
     public $file_url;
     public $fecha;
     public $article;
+    public $fechaActual;
     
     public $modalAdd =  false;
 
     protected $rules = [
         'ArticleSelect' => 'required',
         'SystemSelect' => 'required',
-        'fecha' => 'required',
+        'fecha' => 'required|date|before:fechaActual',
     ];
 
     protected $listeners = [
         'EquipoInstall' => 'render',
-        'activitySup' => 'render',
-        'EquipoRetiro' => 'render',
     ];
 
     public function mount(Estation $estation)
@@ -42,6 +41,7 @@ class InstallEquipament extends Component
     public function render()
     {
         $systems = System::all();
+        $this->fechaActual = date('Y-m-d');
 
         $articles = $this->informe->commission->articles;
 

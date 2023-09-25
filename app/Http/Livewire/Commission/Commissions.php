@@ -24,16 +24,18 @@ class Commissions extends Component
     public $tipo = '';
     public $mes, $anho;
     public $fechainicio, $fechafin, $periodo;
+    public $fechaActual;
 
     protected $rules = [
         'nameCommision' => 'required | min:35 |max:255',
         'tipo' => 'required',
-        'fechainicio' => 'required',
+        'fechainicio' => 'required|after_or_equal:fechaActual',
         'fechafin' => 'required|date|after_or_equal:fechainicio',
     ];
 
     public function render()
     {
+        $this->fechaActual = date('Y-m-d');
         $commissions = Commission::where('name', 'LIKE', '%' . $this->search . '%')
             ->where('numero', 'LIKE', '%' . $this->searchcode . '%')
             ->where('estado', 'LIKE', '%' . $this->estado . '%')

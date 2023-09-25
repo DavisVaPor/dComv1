@@ -184,12 +184,12 @@
                 <x-jet-label class="text-sm font-bold border-gray-200 uppercase mr-2 " for="fecha"
                     value="{{ __('Fecha de la Comisión DEL') }}" />
                 <x-jet-input id="fechainicio" type="date" class=" block font-semibold"
-                    wire:model='fechainicio' />
+                    wire:model='fechainicio' min="{{ $fechaActual }}" />
                 
                 <x-jet-label class="text-sm font-bold mx-2 border-gray-200 uppercase " for="fecha"
                     value="{{ __('AL') }}" />
                 <x-jet-input id="fechafin" type="date" class=" block font-semibold"
-                    wire:model='fechafin' />
+                    wire:model='fechafin' min="{{ $fechaActual }}"/>
                 
             </div>
             <x-jet-input-error for="fechainicio" class="mt-2" />

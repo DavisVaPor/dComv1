@@ -6,7 +6,7 @@
                 class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">
                 <p class="text-xs my-auto">Regresar</p>
             </a>
-            <a href="{{ route('estationpdf', [$estation]) }}"
+            <a href="#"
                 class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">
                 <p class="text-xs my-auto">Imprimir</p>
             </a>
@@ -102,6 +102,17 @@
                             <div class="w-9/12">
                                 <span
                                     class="text-base text-gray-900 block font-extrabold">{{ $estation->estado}}</span>
+                            </div>
+                        </div>
+                        <div class="flex mb-2 border-b border-gray-600">
+                            <div class="w-3/12">
+                                <span class="text-base text-gray-900 block">SISTEMA</span>
+                            </div>
+                            <div class="w-1/12">
+                                <span class="text-base text-gray-900 block">:</span>
+                            </div>
+                            <div class="w-9/12">
+                                <span class="text-base text-gray-900 block font-extrabold">{{ $estation->sistema }}</span>
                             </div>
                         </div>
                         <div class="flex mb-2 border-b border-gray-600">
@@ -218,19 +229,6 @@
                                     <span class="text-sm">Actas</span>
                                 </a>
                             </li>
-
-                            <li @click="openTab = 7" class="mr-1 cursor-pointer">
-                                <a :class="openTab === 7 ? activeClass : inactive"
-                                    class="bg-white py-2 px-2 flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4"
-                                        viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                            d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>
-                                    <span class="text-sm">Siniestro</span>
-                                </a>
-                            </li>
                         </ul>
 
 
@@ -266,35 +264,30 @@
                         <div x-show="openTab === 4">
                             <div class="w-full mt-2">
                                 <h2 class="text-center text-blue-700 text-lg underline">
-                                    OBSERVACIONES DE LA ESTACION
+                                    REQUERIMIENTOS DE LA ESTACION
                                 </h2>
+                                @livewire('estation.estation-requerimient', ['estation' => $estation], key($estation->id))
                             </div>
                         </div>
 
                         <div x-show="openTab === 5">
                             <div class="w-full mt-2">
                                 <h2 class="text-center text-blue-700 text-lg underline">
-                                    OBSERVACIONES DE LA ESTACION
+                                    GALERIA DE FOTOGRÁFICA DE LA ESTACION
                                 </h2>
+                                @livewire('estation.estation-galeria', ['estation' => $estation], key($estation->id))
                             </div>
                         </div>
 
                         <div x-show="openTab === 6">
                             <div class="w-full mt-2">
                                 <h2 class="text-center text-blue-700 text-lg underline">
-                                    OBSERVACIONES DE LA ESTACION
+                                    ACTAS DE LA ESTACION
                                 </h2>
+                                @livewire('estation.estatio-actas', ['estation' => $estation], key($estation->id))
+
                             </div>
                         </div>
-
-                        <div x-show="openTab === 7">
-                            <div class="w-full mt-2">
-                                <h2 class="text-center text-blue-700 text-lg underline">
-                                    OBSERVACIONES DE LA ESTACION
-                                </h2>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>

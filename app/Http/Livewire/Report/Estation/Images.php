@@ -7,9 +7,15 @@ use Livewire\Component;
 
 class Images extends Component
 {
-
     public $estation;
     public $informe;
+
+    protected $listeners = [
+        'activityAdd' => 'render',
+        'activitySup' => 'render', 
+        'imageSave' => 'render',
+        'imageSup' => 'render'
+    ];
     
     public function mount(Estation $estation)
     {

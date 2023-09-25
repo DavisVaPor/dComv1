@@ -24,7 +24,6 @@ class Articles extends Component
     protected $rules = [
         'article.codPatrimonial' => 'required',
         'article.denominacion' => 'required',
-        'article.cantidad' => 'required',
         'article.marca' => 'required',
         'article.modelo' => 'required',
         'article.color' => 'required',
@@ -39,12 +38,11 @@ class Articles extends Component
     {
         $articles = Article::where('denominacion','LIKE','%'.$this->search.'%')
                     ->where('nserie','LIKE','%'.$this->searchserie.'%')
-                    ->where('estation_id','LIKE',$this->estation)
+                    ->where('estation_id','LIKE','%'.$this->estation)
                     ->latest('denominacion')
                     ->paginate(13);
 
         $estations = Estation::all();
-        // $estaciones = Estation::all();
 
         $categories = Category::all();
 
@@ -55,7 +53,6 @@ class Articles extends Component
             'categories' => $categories,
             'estations' => $estations,
             'systems' => $systems,
-            // 'estaciones' => $estaciones,
         ]);
     }
 
@@ -82,22 +79,6 @@ class Articles extends Component
             'estation_id'=> 1,
             'system_id' => $this->article['system_id'],
         ]);
-        /* if (isset($this->article->id)) {
-            $this->article->save();
-        } else {
-            Article::create([
-                'codPatrimonial' => $this->article['codPatrimonial'],
-                'denominacion' => $this->article['denominacion'],
-                'cantidad' => $this->article['cantidad'],
-                'marca' => $this->article['marca'],
-                'modelo' => $this->article['modelo'],
-                'category_id' => $this->article['category_id'],
-                'color' => $this->article['color'],
-                'nserie' => $this->article['nserie'],
-                'estado' => $this->article['estado'],
-                'estation_id'=> 1,
-            ]);
-        } */
         
         $this->modalAdd = false;
         $this->reset('article');

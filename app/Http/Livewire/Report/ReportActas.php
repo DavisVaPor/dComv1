@@ -71,8 +71,6 @@ class ReportActas extends Component
             ]);
         }
 
-
-        
         $this->emit('acta');
         $this->reset(['file_url', 'acta']);
         $this->modalAdd = false;
@@ -93,10 +91,11 @@ class ReportActas extends Component
         Storage::delete($acta->file_url);
         $acta->delete();
         $this->modalEliminar = false;
-        $this->emit('ActaDelete');
         $this->reset('acta');
+        $this->emit('ActaDelete');
     }
-    function editModal(Acta $acta) {
+
+    public function editModal(Acta $acta) {
         $this->acta = $acta;
         $this->fechaActa = $acta->fecha;
         $this->file_url = $acta->file_url;

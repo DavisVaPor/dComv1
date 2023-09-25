@@ -12,7 +12,13 @@ class Measurement extends Model
     protected $fillable = [
         'ubicacion',
         'latitud',
+        'latgra',
+        'latmin',
+        'latseg',
         'longitud',
+        'longra',
+        'longmin',
+        'longseg',
         'rni',
         'maps',
         'fecha',

@@ -1,34 +1,32 @@
 <div>
-    @livewire('report.servicio.mantenimiento', ['estation' => $estation, 'informe' => $informe], key($estation->id))
-
-    {{-- @livewire('report.servicio.mantenimient.activity', ['mantenimient' => $mantenimient], key($mantenimient->id)) --}}
-
     <h1 class="mr-5 text-lg font-bold text-blue-800 text-center">REGISTRO DE ACTIVIDADES REALIZADAS</h1>
-    <div class="flex justify-end my-2 items-center">
-        @if ($informe->estado == 'BORRADOR')
-            @isset($informe->mantenimient)
-                <x-jet-button wire:click="addModal" class="bg-blue-500 justify-end">
-                    Añadir
-                    <span class="w-4 h-4 ml-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </span>
-                </x-jet-button>
-            @endisset
-        @endif
+    <div class="flex justify-between items-center">
+        @livewire('report.servicio.mantenimiento', ['estation' => $estation, 'informe' => $informe], key($estation->id))
+        <div class="flex justify-end items-center">
+            @if ($informe->estado == 'BORRADOR')
+                @isset($informe->mantenimient)
+                    <x-jet-button wire:click="addModal" class="bg-blue-500 justify-end">
+                        Añadir
+                        <span class="w-4 h-4 ml-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </span>
+                    </x-jet-button>
+                @endisset
+            @endif
+        </div>
     </div>
 
     @isset($informe->mantenimient)
-        <table class="rounded-t-lg m-5 w-full mx-auto bg-gray-200 text-gray-800">
+        <table class="rounded-t-lg m-2 w-full mx-auto bg-gray-200 text-gray-800">
             <tr class="text-left border-b-2 border-gray-300">
-                <th class="px-2 text-center">#</th>
-                <th class="px-4 py-2">Descripcion</th>
+                <th class="px-2 py-2 w-10/12 ml-2" colspan="2">REGISTRO DE ACTIVIDADES REALIZADAS</th>
                 @if ($informe->estado == 'BORRADOR')
-                    <th class="px-4 py-2 w-1/12">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 m-auto" viewBox="0 0 20 20"
+                    <th class="px-1 py-2 w-1/12">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 m-auto" viewBox="0 0 20 20"
                             fill="currentColor">
                             <path
                                 d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z">
@@ -40,15 +38,12 @@
 
             @forelse ($informe->activities as $activity)
                 <tr class="bg-gray-100 border-b border-gray-200">
-                    <td class="px-2 font-bold text-xs text-center">{{ $loop->iteration }}</td>
-                    <td class="px-4 py-1 text-sm">{{ $activity->descripcion }}</td>
-                    <td class="px-4 py-1 text-sm text-center">{{ $activity->tipoActivity }}</td>
-                    <td class="text-sm text-center w-24">{{ $activity->fechaInicio }}</td>
+                    <td class="px-2 font-bold text-xs text-center w-4">{{ $loop->iteration }}</td>
+                    <td class="px-2 py-2 w-10/12 text-sm">{{ $activity->descripcion }}</td>
                     @if ($informe->estado == 'BORRADOR')
                         <td class="px-4 py-1 w-1/12">
                             <div class="flex justify-between">
                                 @livewire('report.activities.images', ['estation' => $estation,'activity' => $activity, 'informe' => $informe], key($activity->id))
-
                                 <button wire:click="editActivity({{ $activity->id }})"
                                     class="text-blue-500 hover:text-gray-900 cursor-pointer mr-2">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 m-auto" fill="none"
@@ -57,7 +52,6 @@
                                             d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                     </svg>
                                 </button>
-
                                 <button class="text-red-500 hover:text-gray-900 cursor-pointer"
                                     wire:click="mostrarDel({{ $activity->id }})" wire:loading.attr="disabled">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 m-auto" fill="none"
@@ -72,7 +66,7 @@
                 </tr>
             @empty
                 <tr class="bg-gray-100 border-b border-gray-200">
-                    <td colspan="5" class="text-center font-mono my-2">.... Sin Registro ....</td>
+                    <td colspan="5" class="text-center my-2">.... Sin Registro Añadido....</td>
                 </tr>
             @endforelse
         </table>
@@ -84,7 +78,6 @@
     <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
             <h1 class="font-bold uppercase">Registrar una Actividad</h1>
-
         </x-slot>
 
         <x-slot name="content">
@@ -108,33 +101,6 @@
             </div>
 
             <div class="col-span-8 sm:col-span-4">
-                <div class="flex justify-between">
-                    {{-- <div>
-                        <x-jet-label class="text-base font-bold border-gray-200 " for="tipo"
-                            value="{{ __('Tipo de la actividad') }}" />
-                        <select class="rounded-xl text-sm" name="tipo" id="tipo"
-                            wire:model.defer='activity.tipoActivity'>
-                            <option>Seleccione</option>
-                            <option value="DIAGNOSTICO">DIAGNOSTICO</option>
-                            <option value="MANT. PREVENTIVO">MANTENIMIENTO PREVENTIVO</option>
-                            <option value="MANT. CORRECTIVO">MANTENIMIENTO CORRECTIVO</option>
-                        </select>
-                        <x-jet-input-error for="activity.tipoActivity" class="mt-2" />
-                    </div> --}}
-                    {{--                <div class="flex justify-between">
-                        <div class="block">
-                            <x-jet-label class="text-base font-bold border-gray-200" for="name"
-                                value="{{ __('Fechas de la Actividad') }}" />
-                            <input class="rounded-xl text-sm" type="date" name="" id=""
-                                wire:model.defer='activity.fechaInicio'>
-                            <x-jet-input-error for="activity.finicio" class="mt-2" />
-                            AL
-                            <input class="rounded-xl text-sm" type="date" name="" id=""
-                                wire:model.defer='activity.fechaFin'>
-                            <x-jet-input-error for="activity.ffin" class="mt-2" />
-                        </div>
-                    </div> --}}
-                </div>
                 <x-jet-label class="text-base font-bold border-gray-200 mt-2" for="descripcion"
                     value="{{ __('Descripcion de la actividad') }}" />
                 <textarea id="name" wire:model.defer='activity.descripcion' class="resize-none w-full h-1/4 border rounded-md"></textarea>

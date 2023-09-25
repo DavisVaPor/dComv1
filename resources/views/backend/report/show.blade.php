@@ -1,26 +1,27 @@
 @extends('backend.admin')
 
 @section('main')
-
     <livewire:report.show-report :informe="$informe">
 
         <div class=" mt-2 font-extrabold text-gray-600">
             <h2 class="text-xl  text-center">INF {{ $informe->id }}-{{ $informe->asunto }}</h2>
             <div class="flex justify-between items-center">
-                <h2 class="font-bold flex justify-end items-center">
-                    <p>Fecha: {{ $informe->fechaCreacion }}</p>
-                </h2>
+
                 <h2 class="mr-4">
-                    @if ($informe->tipo === 'MANTENIMIENTO')
-                        <p>Tipo: <span class="font-bold underline ">MANTENIEMIENTO DE LOS SISTEMAS DE COMUNICACIONES</span>
-                        </p>
-                    @else
-                        @if ($informe->tipo === 'MEDICION')
-                            <p>Tipo: <span class="font-bold underline">MEDICION DE RADIACION NO IONIZANTE (RNI)</span></p>
-                        @else
-                            <p>Tipo: <span class="font-bold underline">PROMOCION DE LAS TELECOMUNIACIONES</span></p>
-                        @endif
-                    @endif
+
+                    <p>Tipo:
+                        <span class="font-bold underline ">
+                            @if ($informe->tipo === 'MANTENIMIENTO')
+                                MANTENIEMIENTO DE LOS SISTEMAS DE COMUNICACIONES\
+                            @else
+                                @if ($informe->tipo === 'MEDICION')
+                                    MEDICION DE RADIACION NO IONIZANTE (RNI)
+                                @else
+                                    PROMOCION DE LAS TELECOMUNIACIONES
+                                @endif
+                            @endif
+                        </span>
+                    </p>
                 </h2>
                 <h2 class="font-bold flex justify-end items-center">
                     Estado:
@@ -47,6 +48,14 @@
                         @endif
                     @endif
                 </h2>
+                <h2 class="font-bold flex justify-end items-center">
+                    <p>Periodo del {{ $informe->commission->fechainicio }} al {{ $informe->commission->fechafin }}
+                        ({{ $informe->commission->periodo }} Dias)</p>
+                </h2>
+
+                <h2 class="font-bold flex justify-end items-center">
+                    <p>Fecha: {{ $informe->fechaCreacion }}</p>
+                </h2>
             </div>
         </div>
 
@@ -58,14 +67,34 @@
                 class="text-blue-500 font-semibold underline ml-10">
                 #C-{{ $informe->commission->id }}: {{ $informe->commission->name }}
             </a>
+
+            <div class="flex my-3 justify-between border-b border-gray-300 border-3">
+                <h1 class="mr-5 text-lg font-bold text-gray-800 ">PERSONAL</h1>
+            </div>
+            <div class=" ml-10">
+                @if ($informe->commission->users->isNotEmpty())
+                    @foreach ($informe->commission->users as $user)
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            <p class="font-bold">{{ $user->name }}{{ ' ' . $user->apellido }} <span class="font-normal">{{ ' : ' . $user->cargo }}</span></p>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
+
             <div class="flex my-3 justify-between border-b border-gray-300 border-3">
                 <h1 class="mr-5 text-lg font-bold text-gray-800 ">OBJETIVOS</h1>
             </div>
 
             <div class=" ml-10">
                 @if ($informe->commission->objetives->isNotEmpty())
-                    <div class="flex items-center">
-                        @foreach ($informe->commission->objetives as $objective)
+                    @foreach ($informe->commission->objetives as $objective)
+                        <div class="flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" viewBox="0 0 20 20"
                                 fill="currentColor">
                                 <path fill-rule="evenodd"
@@ -73,12 +102,12 @@
                                     clip-rule="evenodd"></path>
                             </svg>
                             <p class="font-bold">{{ $objective->name }}</p>
-                        @endforeach
-                    </div>
+                        </div>
+                    @endforeach
                 @endif
             </div>
-            
-            @if ($informe->commission->tipo === 'MEDICION')
+
+            @if ($informe->commission->tipo === 'MEDICION' || $informe->commission->tipo === 'PROMOCION')
                 <div class="flex my-3 justify-between border-b border-gray-300 border-3">
                     <h1 class="mr-5 text-lg font-bold text-gray-800">LUGARES A VISITAR</h1>
                 </div>
@@ -86,16 +115,15 @@
                     @foreach ($informe->commission->ubigee as $item)
                         <div class="flex">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                clip-rule="evenodd"></path>
+                                fill="currentColor">
+                                <path fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                                    clip-rule="evenodd"></path>
                             </svg>
                             <p class="font-bold uppercase">
-                                {{ $item->provincia }} : <span class="font-normal">{{ $item->distrito }}</span> 
+                                {{ $item->provincia }} : <span class="font-normal">{{ $item->distrito }}</span>
                             </p>
                         </div>
-                       
                     @endforeach
                 </div>
             @endif
@@ -129,7 +157,6 @@
                             input:checked~.tab-content {
                                 max-height: 100vh;
                             }
-
                         </style>
                         <main class="w-full mx-auto">
                             <section class="shadow row">
@@ -150,7 +177,7 @@
         @endif
         @if ($informe->tipo == 'PROMOCION')
             <section>
-                {{-- <livewire:report-promotions :informe="$informe"> --}}
+                <livewire:report.promotion.promotions :informe="$informe">
             </section>
         @endif
     @endsection

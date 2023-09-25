@@ -37,8 +37,10 @@
             <p>Hora : {{ date('h:i:s') }}</p>
         </div>
         <header>
-            <div>
-                <img class="w-64" src="images/DRTC.png" alt="">
+            <div class="font-bold text-xs">
+                <h1>Gobierno Regional Amazonas</h1>
+                <h1>Direccion Regional de Transportes y Comunicaciones</h1>
+                <h1>Direccion de Comunicaciones</h1>
             </div>
         </header>
 
