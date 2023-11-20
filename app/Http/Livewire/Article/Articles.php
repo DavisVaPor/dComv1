@@ -22,7 +22,7 @@ class Articles extends Component
 
 
     protected $rules = [
-        'article.codPatrimonial' => 'required',
+        'article.codPatrimonial' => 'required|size:12',
         'article.denominacion' => 'required',
         'article.marca' => 'required',
         'article.modelo' => 'required',

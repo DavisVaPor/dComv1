@@ -102,6 +102,7 @@
                                 <th class="font-bold px-2 py-1 ">Estacion</th>
                                 <th class="font-bold px-2 py-1 text-center">Provincia</th>
                                 <th class="font-bold px-2 py-1 text-center">Distrito</th>
+                                <th class="font-bold px-2 py-1 text-center">Sistema:Tipo</th>
                             </tr>
                             @foreach ($estations as $estation)
                                 @if (!$commission->estations->contains($estation->id))
@@ -114,6 +115,7 @@
                                             <td class="px-2 py-1">{{ $estation->name }}</td>
                                             <td class="px-2 py-1">{{ $estation->ubigeo->provincia }}</td>
                                             <td class="px-2 py-1">{{ $estation->ubigeo->distrito }}</td>
+                                            <td class="px-2 py-1 text-center">{{ $estation->sistema }}:{{ $estation->tipo }}</td>
                                         </tr>                        
                                     @endif
                                 @endif

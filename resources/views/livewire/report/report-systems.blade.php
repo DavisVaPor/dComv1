@@ -115,10 +115,10 @@
                                 <div class="flex text-sm mb-2 border-b border-gray-600">
                                     <div class="w-8/12">
                                         <p class="text-base text-gray-900 block">CONTACTO RESPONSABLE: <span
-                                                class="font-extrabold">Nombre del Responsable</span> </p>
+                                                class="font-extrabold">{{ $estation->responsable }}</span> </p>
                                     </div>
                                     <div class="w-3/12">
-                                        <span class="text-base text-gray-900 block">TELEFONO: 983066493</span>
+                                        <span class="text-base text-gray-900 block">TELEFONO: {{ $estation->resptelefono }}</span>
                                     </div>
                                 </div>
                                 <section>

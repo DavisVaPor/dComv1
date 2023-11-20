@@ -125,15 +125,15 @@
     {{-- Modal de Añadir --}}
     <x-jet-dialog-modal wire:model="modalAdd">
         <x-slot name="title">
-            <h1 class="font-bold">Ingreso de Equipo</h1>
+            <h1 class="font-bold">Ingreso de Equipo a Almacen</h1>
         </x-slot>
 
         <x-slot name="content">
             <div class="flex items-center col-span-6 sm:col-span-4">
                 <x-jet-label class="text-base mr-2 font-bold border-gray-200" for="codPatrimonial"
                     value="{{ __('Cod. Patrimonial') }}" />
-                <x-jet-input id="name" type="number" class="text-sm block w-48 font-semibold"
-                    wire:model.defer='article.codPatrimonial' maxlength="9" />
+                <x-jet-input id="name" type="number" class="text-sm block w-auto font-semibold text-right" 
+                    wire:model.defer='article.codPatrimonial' maxlength="12" size='12' />
             </div>
             <x-jet-input-error for="article.codPatrimonial" class="mt-1" />
 
@@ -216,27 +216,6 @@
                 </select>
                 <x-jet-input-error for="article.system_id" class="mt-2" />
             </div>
-
-            {{-- <div class="mt-2 flex items-center col-span-6 sm:col-span-4">
-                <x-jet-label class="text-base font-bold border-gray-200" for="estacion"
-                    value="{{ __('Ubicacion del Equipo') }}" />
-                <select class="rounded-lg text-sm ml-2" wire:model='article.estacion'>
-                    <option value="">Estaciones</option>
-                    @foreach ($estaciones as $estacion)
-                        <option value="{{ $estacion->id }}">{{ $estacion->name }}</option>
-                    @endforeach
-                </select>
-                <abbr title="Buscar estación">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="text-blue-800 h-10 w-10" viewBox="0 0 20 20"
-                        fill="currentColor">
-                        <path d="M9 9a2 2 0 114 0 2 2 0 01-4 0z"></path>
-                        <path fill-rule="evenodd"
-                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a4 4 0 00-3.446 6.032l-2.261 2.26a1 1 0 101.414 1.415l2.261-2.261A4 4 0 1011 5z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </abbr>
-            </div> --}}
-            {{-- <x-jet-input-error for="article.estacion" class="mt-2 " /> --}}
         </x-slot>
 
         <x-slot name="footer">

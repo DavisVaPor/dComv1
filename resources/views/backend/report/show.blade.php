@@ -4,15 +4,13 @@
     <livewire:report.show-report :informe="$informe">
 
         <div class=" mt-2 font-extrabold text-gray-600">
-            <h2 class="text-xl  text-center">INF {{ $informe->id }}-{{ $informe->asunto }}</h2>
+            <h2 class="text-lg  text-center">INF {{ $informe->id }}-{{ $informe->asunto }}</h2>
             <div class="flex justify-between items-center">
-
                 <h2 class="mr-4">
-
                     <p>Tipo:
                         <span class="font-bold underline ">
                             @if ($informe->tipo === 'MANTENIMIENTO')
-                                MANTENIEMIENTO DE LOS SISTEMAS DE COMUNICACIONES\
+                                MANTENIEMIENTO DE LOS SISTEMAS DE COMUNICACIONES
                             @else
                                 @if ($informe->tipo === 'MEDICION')
                                     MEDICION DE RADIACION NO IONIZANTE (RNI)
@@ -48,13 +46,11 @@
                         @endif
                     @endif
                 </h2>
+            </div>
+            <div>
                 <h2 class="font-bold flex justify-end items-center">
                     <p>Periodo del {{ $informe->commission->fechainicio }} al {{ $informe->commission->fechafin }}
                         ({{ $informe->commission->periodo }} Dias)</p>
-                </h2>
-
-                <h2 class="font-bold flex justify-end items-center">
-                    <p>Fecha: {{ $informe->fechaCreacion }}</p>
                 </h2>
             </div>
         </div>

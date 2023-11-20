@@ -77,9 +77,10 @@
 
                     <div class="flex flex-col">
                         <div class="flex-grow overflow-auto">
-                            <table class="rounded-t-lg m-5 w-full mx-auto bg-gray-200 text-gray-800">
+                            <table class="rounded-t-lg m-2 w-full mx-auto bg-gray-200 text-gray-800">
                                 <tr class="text-left border-b-2 border-gray-300">
                                     <th class=""></th>
+                                    <th class="px-4 py-3">Cod. Pat. </th>
                                     <th class="px-4 py-3">Nombre</th>
                                     <th class="px-4 py-3">Modelo</th>
                                     <th class="px-4 py-3">Serie</th>
@@ -87,14 +88,15 @@
                                 </tr>
                                 @foreach ($articles as $article)
                                     @if (!$commission->articles->contains($article->id))
-                                        <tr class="bg-gray-100 border-b border-gray-200">
+                                        <tr class="bg-gray-100 border-b border-gray-200 text-sm">
                                             <td class="">
                                                 <input class="rounded-2xl ml-2" wire:model='selectedArticle'
                                                     value="{{ $article->id }}" type="radio">
                                             </td>
+                                            <td class="px-4 py-3">{{ $article->codPatrimonial }}</td>
                                             <td class="px-4 py-3">{{ $article->denominacion }}</td>
                                             <td class="px-4 py-3">{{ $article->modelo }}</td>
-                                            <td class="px-4 py-3">{{ $article->nserie }}</td>
+                                            <td class="px-4 py-3 text-xs">{{ $article->nserie }}</td>
                                             <td class="px-4 py-3">{{ $article->estado }}</td>
                                         </tr>
                                     @endif

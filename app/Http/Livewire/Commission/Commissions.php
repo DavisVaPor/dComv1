@@ -72,7 +72,7 @@ class Commissions extends Component
             $num =  $ultimo->numero + 1;
         }
 
-        $this->periodo = $day;
+        $this->periodo = $day + 1;
 
         if ($this->fechafin == $this->fechainicio) {
             $this->periodo = 1;
