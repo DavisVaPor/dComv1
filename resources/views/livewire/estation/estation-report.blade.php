@@ -11,7 +11,7 @@
 
         <select class="rounded-lg mr-6" wire:model='anho' name="" id="">
             <option selected value="">Año</option>
-            <option class="font-bold" value="2023">2023</option>
+            <option class="font-bold" value="2023">2024</option>
         </select>
 
         <div>

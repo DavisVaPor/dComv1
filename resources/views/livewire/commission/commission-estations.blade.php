@@ -23,6 +23,7 @@
                     <th class="px-4 py-3 text-center">Localidad</th>
                     <th class="px-4 py-3 text-center">Provincia</th>
                     <th class="px-4 py-3 text-center">Distrito</th>
+                    <th class="px-4 py-3 text-center">Tipo</th>
                     <th class="px-4 py-3 text-center">Estado</th>
                     <th class="px-4 py-3"></th>
                 </tr>
@@ -31,6 +32,7 @@
                         <td class="px-4 py-3 text-center">{{ $estation->name }}</td>
                         <td class="px-4 py-3 text-center">{{ $estation->ubigeo->provincia }}</td>
                         <td class="px-4 py-3 text-center">{{ $estation->ubigeo->distrito }}</td>
+                        <td class="px-4 py-3 text-center">{{ $estation->sistema }}:{{ $estation->tipo }}</td>
                         <td class="px-4 py-3">
                             @if ($estation->estado == 'OPERATIVO')
                                 <div

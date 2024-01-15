@@ -12,7 +12,7 @@ use Livewire\WithPagination;
 class ReportArticles extends Component
 {   use WithPagination;
     public $obbArticle = '';
-    public $estation;
+    public $estation ;
     public $sistema;
     public $search = '';
     public $article;
@@ -38,7 +38,7 @@ class ReportArticles extends Component
                             'EquipoInstall' => 'render',
                             'EquipoRetiro' => 'render',
                             'movementDelete' => 'render',
-                            'articleset' => 'render'];
+                            'articleset' => 'render',];
                         
     public function mount(Estation $estation)
     {
@@ -52,38 +52,11 @@ class ReportArticles extends Component
         $articles = Article::where('estation_id',$this->estation->id)
                             ->where('denominacion','LIKE', '%'.$this->search.'%')
                             ->where('system_id','LIKE', '%'.$this->sistema)
-                            ->paginate(5);
+                            ->paginate(10);
         return view('livewire.report.report-articles',[
             'systems' => $systems,
             'articles' => $articles,
             'categories' => $categories,
         ]);
-    }
-    function modalOpen() {
-        $this->modalOpen = true;
-        $this->reset('article');
-    }
-
-    public function saveArticle()
-    {
-        $this->validate();
-
-        Article::create([
-            'codPatrimonial' => $this->article['codPatrimonial'],
-            'denominacion' => $this->article['denominacion'],
-            'cantidad' => 1,
-            'marca' => $this->article['marca'],
-            'modelo' => $this->article['modelo'],
-            'category_id' => $this->article['category_id'],
-            'color' => $this->article['color'],
-            'nserie' => $this->article['nserie'],
-            'estado' => $this->article['estado'],
-            'estation_id'=> $this->estation->id,
-            'system_id' => $this->article['system_id'],
-        ]);
-        $this->emit('articleset');
-        $this->modalOpen = false;
-        $this->reset('article');
-    }
-    
+    } 
 }

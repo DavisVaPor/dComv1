@@ -50,7 +50,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/informe',[ReportControlle
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/informe/{informe}',[ReportController::class , 'show'] )->name('informe.show');
 
-//Route::middleware(['auth:sanctum', 'verified'])->get('/informe/report/{informe}',[ReportController::class , 'report'] )->name('informepdf');
+Route::middleware(['auth:sanctum', 'verified'])->get('/informe/report/{informe}',[ReportController::class , 'reporte'] )->name('informepdf');
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/estacion',[EstationController::class , 'index'] )->name('estacion.index');

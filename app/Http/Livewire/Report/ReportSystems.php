@@ -20,9 +20,7 @@ class ReportSystems extends Component
     public $selectedEstation;
     public $searchEstation;
     
-    protected $listeners = [
-        
-    ];
+    protected $listeners = ['articleset' => 'render'];
 
     public function mount(Report $informe)
     {

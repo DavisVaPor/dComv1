@@ -1,28 +1,23 @@
 <?php
 
-namespace App\Http\Livewire\Estation;
+namespace App\Http\Livewire\Report\Article;
 
 use App\Models\Article;
 use App\Models\Category;
 use App\Models\Estation;
 use App\Models\System;
 use Livewire\Component;
-use Livewire\WithPagination;
 
-class EstationInventary extends Component
+class Uptated extends Component
 {
-    use WithPagination;
-    public $estation;
-    public $article;
-    public $system;
-    public $search;
+    public $article, $estation;
     public $modalOpen = false;
 
     public function mount(Estation $estation)
     {
         $this->estation = $estation;
     }
-
+    
     protected $rules = [
         'article.codPatrimonial' => 'required|size:12',
         'article.denominacion' => 'required',
@@ -33,32 +28,22 @@ class EstationInventary extends Component
         'article.estado' => 'required',
         'article.category_id' => 'required',
         'article.system_id' => 'required',
-    ];
+    ]; 
 
-    protected $listeners = [
-        'articleinveset' => 'render',
-    ];
+    protected $listeners = ['articleset' => 'render'];
 
     public function render()
-    {
-        $articles = Article::where('estation_id',$this->estation->id)
-                    ->where('denominacion','LIKE','%'.$this->search.'%')
-                    ->where('system_id','LIKE','%'.$this->system.'%')
-                    ->paginate(15);
+    {   $systems = System::all();
         $categories = Category::all();
-        $systems = System::all();
-
-        return view('livewire.estation.estation-inventary',[
-            'articles' => $articles,
-            'categories' => $categories,
+        return view('livewire.report.article.uptated',[
             'systems' => $systems,
+            'categories' => $categories,
         ]);
     }
-
+    
     function modalOpen() {
         $this->modalOpen = true;
         $this->reset('article');
-
     }
 
     public function saveArticle()
@@ -78,7 +63,7 @@ class EstationInventary extends Component
             'estation_id'=> $this->estation->id,
             'system_id' => $this->article['system_id'],
         ]);
-        $this->emit('articleinveset');
+        $this->emit('articleset');
         $this->modalOpen = false;
         $this->reset('article');
     }

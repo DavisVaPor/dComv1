@@ -100,7 +100,9 @@
                                 <span class="text-base text-gray-900 block">:</span>
                             </div>
                             <div class="w-9/12">
-                                <span class="text-base  block font-extrabold">{{ $estation->estado }}</span>
+                                <span class="text-base  block font-extrabold">
+                                    @livewire('estation.estado-update', ['estation' => $estation], key($estation->id))
+                                </span>
                             </div>
                         </div>
                         <div class="flex mb-2 border-b border-gray-600">
