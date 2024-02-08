@@ -76,7 +76,7 @@ class ReportMeasurements extends Component
             $lat = $this->latgra . $this->latmin . $this->latseg;
             $log = $this->longra . $this->lonmin . $this->lonseg;
 
-            $url = $this->imagen->storeAs('RNI' . '/' . $this->report->id, 'RNI' . $lat . $log.'.png');
+            $url = $this->imagen->store('RNI' . '/' . $this->report->id, 'RNI' . $lat . $log.'.png');
             
 
             Measurement::create([
