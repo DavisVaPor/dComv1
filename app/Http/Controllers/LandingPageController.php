@@ -14,11 +14,11 @@ class LandingPageController extends Controller
                                 ->get();
        $estationsvhf = Estation::where('sistema','LIKE','VHF')->get();
 
-       $estationvhfDef = Estation::where('sistema','LIKE','VHF')->where('estado','LIKE','INOPERATIVO')->get();
+       $estationvhfDef = Estation::where('sistema','LIKE','VHF')->where('estado','LIKE','OPERATIVO')->get();
 
        $estationshf = Estation::where('sistema','LIKE','HF')->get();
 
-       $estationhfDef = Estation::where('sistema','LIKE','HF')->where('estado','LIKE','INOPERATIVO')->get();
+       $estationhfDef = Estation::where('sistema','LIKE','HF')->where('estado','LIKE','OPERATIVO')->get();
 
        $estationvhfDef = 100 * ($estationvhfDef->count()/$estationsvhf->count());
 

@@ -77,6 +77,7 @@ class ReportMeasurements extends Component
             $log = $this->longra . $this->lonmin . $this->lonseg;
 
             $url = $this->imagen->storeAs('RNI' . '/' . $this->report->id, 'RNI' . $lat . $log.'.png');
+            
 
             Measurement::create([
                 'ubicacion' => Str::upper($this->measurement['ubicacion']),

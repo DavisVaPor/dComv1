@@ -19,6 +19,11 @@ class ShowReport extends Component
         $this->report = $informe;
     }
 
+    protected $listeners = [
+        'updatedoc' => 'render',
+    ];
+
+
     public function render()
     {
         return view('livewire.report.show-report');
@@ -37,11 +42,11 @@ class ShowReport extends Component
 
         $presentar->save();
 
-        $this->reset('report');
-
+        $this->report = Report::findOrFail($this->report->id);
+        
         $this->modalPre = false;
 
-        return redirect()->route('informe.index');
+        $this->emit("updatedoc");
     }
 
     public function mostrarPen()
